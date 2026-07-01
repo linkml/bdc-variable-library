@@ -158,7 +158,7 @@ slots:
       Sentinel value to indicate a missing value or other data nuance
   comment:
     range: string
-    descrioption: >-
+    description: >-
       Any text comment provided by the original data provider. Corresponds to the 
       COMMENT field in dbGAP
   cde_id:
