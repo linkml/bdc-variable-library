@@ -1,0 +1,16 @@
+# Changes here will be overwritten by Copier
+_commit: v0.5.0
+_src_path: https://github.com/linkml/linkml-project-copier
+add_example: true
+copyright_year: '2026'
+email: annethessen@gmail.com
+existing_license_file: LICENSE
+full_name: Anne Thessen
+gh_action_docs_preview: true
+gh_action_pypi: true
+github_org: linkml
+license: BSD-3-Clause
+project_description: LinkML models for variables in the BDC Knowledge Library
+project_name: bdc-variable-library
+project_slug: bdc_variable_library
+

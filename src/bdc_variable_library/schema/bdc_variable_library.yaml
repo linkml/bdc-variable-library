@@ -15,6 +15,7 @@ prefixes:
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: http://www.example.org/rdf#
+  bdchm: https://w3id.org/bdchm/
 default_prefix: bdc_variable_library
 default_range: string
 
@@ -23,76 +24,204 @@ imports:
 
 classes:
 
-  NamedThing:
+  Entity:
     description: >-
-      A generic grouping for any identifiable entity
+      Any resource that has its own identifier
+    class_uri: schema:Thing
     slots:
       - id
-      - name
-      - description
-    class_uri: schema:Thing
 
-  Person:
-    is_a: NamedThing
+  Variable:
+    is_a: Entity
     description: >-
-      Represents a Person
+      A generic grouping for any variable
     slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      - associated_study
+      - variable_description
+      - concept_type
+      - variable_label
 
-  PersonCollection:
-    tree_root: true
+  SingleVariable:
+    is_a: Variable
     description: >-
-      A holder for Person objects
-    attributes:
-      people:
-        range: Person
-        multivalued: true
-        inlined_as_list: true
+      Represents a single entry in a data dictionary
+    slots:
+      - source_id
+      - file_id
+      - file_name
+      - variable_name
+      - source_variable_description
+      - data_type
+      - unit
+      - minimum_value
+      - maximum_value
+      - resolution
+      - coded_values
+      - missing_value
+      - comment
+
+  CompoundVariable:
+    is_a: Variable
+    description: >-
+      Represents a variable and all metadata
+    slots:
+     - cde_id
+     - bdchm_type
+     - metadata
+     - alert_value
+       multivalued: true
+
+  MissingValue:
+    is_a: Entity
+    description: >-
+      Character used to indicate a missing value in a data set
+    slots:
+      - indicator_char
+      - indicator_meaning
+
+  AlertValue:
+    is_a: Entity
+    description: >-
+      Character used to add information to a datum
+    slots:
+      - indicator_char
+      - indicator_meaning
 
 slots:
   id:
     identifier: true
     slot_uri: schema:identifier
     range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
+    description: A unique identifier for a variable within BDC
+  associated_study:
+    slot_uri: bdchm:ResearchStudy
+    range: ResearchStudy
+    description: The study that produced the variable data
+  source_id:
+    description: >-
+      Identifier used by the organization providing the variable to BDC
+      to uniquely identify the variable in their system.
+      In most cases this will be a phv value.
+  file_id:
+    description: >-
+      Identifier used by the organization providing the variable to BDC
+      to uniquely identify the file or data table in their system.
+      In most cases this will be a pht value
+  file_name:
+    description: Name of file containing variable data
+  variable_name:
+    range: string
+    description: >-
+      The name of the variable according to the original data provider
+      Corresponds to the VARNAME field in dbGAP
+  variable_description:
+    range: string
+    description: >-
+      Human readable description of the variable.
+  source_variable_description:
+    range: string
+    description: >-
+      Description of the variable provided by the original data provider
+      Corresponds to the VARDESC field in dbGAP
+  data_type:
+    range: DataTypeEnum
+    description: >-
+      The data type found in this variable. Corresponds to the TYPE field
+      in dbGAP
+  unit:
+    range: UnitOfMeasurementEnum
+    description: >-
+      The unit of measure from UCUM. Corresponds to the UNITS field in dbGAP
+  minimum_value:
+    range: decimal
+    description: >-
+      The lowest value present in the data for this variable. Corresponds to 
+      the MIN field in dbGAP
+  maximum_value:
+    range: decimal
+    description: >-
+      The highest value present in the data for this variable. Corresponds to
+      the MAX field in dbGAP
+  resolution:
     range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+    description: >-
+      The number of decimal places a measurement is represented in the data.
+      Corresponds to the RESOLUTION field in dbGAP
+  coded_values:
+    range: string
+    description: >-
+      Pipe-delimited string of allowable values. Should only be used if the data_type
+      is enum. Corresponds to VALUES field in dbGAP
+  missing_value:
+    range: MissingValue
+    multivalued: true
+    description: >-
+      Sentinel value to indicate a missing value or other data nuance
+  comment:
+    range: string
+    descrioption: >-
+      Any text comment provided by the original data provider. Corresponds to the 
+      COMMENT field in dbGAP
+  cde_id:
+    range: uriorcurie
+    description: >-
+      CURIE from Condor
+  variable_label:
+    range: string
+    description: >-
+      Human readable label describing the variable
+  concept_type:
+    range: uriorcurie
+    description: >-
+      CURIE describing the main content of the variable. This can be from OBA,
+      OMOP, or LOINC
+  bdchm_type:
+    range: BdchmTypeEnum
+  metadata: 
+    multivalued: true
+    description: >-
+      List of variable identifiers providing metadata for a compound variable
+  alert_value:
+    range: AlertValue
+    multivalued: true
+    description: >-
+      List of values that provide extra optional information about a variable.
+      Often this is used to indicate a violation of QA/QC
+  indicator_char:
+    range: string
+    description: >-
+      Sentinel value used to add information to a datum or indicate a missing
+      datum
+  indicator_meaning:
+    range: string
+    description: >-
+      Meaning of the indicator character verbatim from original data provider
+      when possible
 
 enums:
-  PersonStatus:
+  DataTypeEnum:
     description:
-      The vital status of a person
+      A category of data
     permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+      NUMERIC:
+        description: >-
+          decimal or integer data type for continuous variables
+      STRING:
+        description: >-
+          free text data type
+      CODE:
+        description: >-
+          data are a list of acceptable values or a controlled vocabulary
+
+  BdchmTypeEnum:
+    description:
+      A list of BDCHM entities used to describe variables
+    permissible_values:
+      OBSERVATION:
+        meaning: bdchm:Observation
+      CONDITION:
+        meaning: bdchm:Condition
+      PROCEDURE:
+        meaning: bdchm:Procedure
+      EXPOSURE:
+        meaning: bdchm:Exposure
