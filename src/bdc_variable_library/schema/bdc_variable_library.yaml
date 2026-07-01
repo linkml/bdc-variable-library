@@ -86,6 +86,10 @@ classes:
       - indicator_char
       - indicator_meaning
 
+  ResearchStudy:
+    is_a: Entity
+    class_uri: bdchm:ResearchStudy
+
 slots:
   id:
     identifier: true
