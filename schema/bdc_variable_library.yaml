@@ -703,7 +703,7 @@ classes:
     class_uri: bdchm:ResearchStudy
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-07-01T19:30:42'
+source_file_date: '2026-07-01T19:31:30'
 source_file_size: 6241
-generation_date: '2026-07-01T19:30:53'
+generation_date: '2026-07-01T19:31:39'
 
