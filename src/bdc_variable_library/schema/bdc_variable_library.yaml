@@ -132,9 +132,9 @@ slots:
       The data type found in this variable. Corresponds to the TYPE field
       in dbGAP
   unit:
-    range: UnitOfMeasurementEnum
+    range: string
     description: >-
-      The unit of measure from UCUM. Corresponds to the UNITS field in dbGAP
+      Ideally a unit of measure from UCUM. Corresponds to the UNITS field in dbGAP
   minimum_value:
     range: decimal
     description: >-
@@ -228,3 +228,4 @@ enums:
         meaning: bdchm:Procedure
       EXPOSURE:
         meaning: bdchm:Exposure
+
