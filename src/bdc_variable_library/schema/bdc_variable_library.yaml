@@ -69,7 +69,6 @@ classes:
      - bdchm_type
      - metadata
      - alert_value
-       multivalued: true
 
   MissingValue:
     is_a: Entity
