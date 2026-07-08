@@ -1,0 +1,21 @@
+id: FHSg3b0483phv00177539s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Height"
+concept_type: OBA:VT0001253
+variable_label: "Height"
+source_id: phv00177539v6p14
+file_id: pht003094v6
+file_name: e_exam_2011_m_0017s
+variable_name: g3b0483
+source_variable_description: "Anthropometry: Height"
+data_type: decimal
+unit: https://units-of-measurement.org/%5Bin_i%5D
+minimum_value: 53.75
+maximum_value: 78.5
+missing_value:
+  - id: mv:001
+    indicator_char: "."
+    indicator_meaning: "Not done or unknown"
+comment: >-
+  G3B0483-G3B0484 are related variables. See annotated form for relationship between
+  related variables

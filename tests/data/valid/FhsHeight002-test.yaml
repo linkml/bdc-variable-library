@@ -1,0 +1,17 @@
+id: FHSg3b0483phv00177539c
+associated_study: FraminghamHeartStudy000007
+variable_description: "Height"
+concept_type: OBA:VT0001253
+variable_label: "Height"
+cde_id: CONDOR:00001
+bdchm_type: observation
+metadata:
+  - id: meta:001
+    variable_path: pht003094.phv00177539
+    microschema_slot: measurement_value
+  - id: meta:002
+    variable_path: pht003099.phv00177932
+    microschema_slot: age_at_measurement
+  - id: meta:003
+    variable_path: pht003094.phv00177237
+    microschema_slot: subject_identifier

@@ -16,11 +16,23 @@ prefixes:
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: http://www.example.org/rdf#
   bdchm: https://w3id.org/bdchm/
+  OMOP: https://athena.ohdsi.org/search-terms/terms/
+  OBA: http://purl.obolibrary.org/obo/OBA_
+  LOINC: https://loinc.org/
+  UCUM: https://units-of-measurement.org/
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  HP: http://purl.obolibrary.org/obo/HP_
+  MMO: http://purl.obolibrary.org/obo/MMO_
+  RxNorm: http://purl.bioontology.org/ontology/RXNORM/
+  ISO11179: http://purl.org/iso11179/
 default_prefix: bdc_variable_library
 default_range: string
 
 imports:
   - linkml:types
+  - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.1/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
@@ -85,10 +97,29 @@ classes:
     slots:
       - indicator_char
       - indicator_meaning
+      
+  MetadataVariable:
+    is_a: Entity
+    description: >-
+      Specific data point used to add information to an observation. This will
+      typically be a unique identifier for a SingleVariable and a slot from a 
+      microschema
+    slots:
+      - variable_path
+      - microschema_slot
+
+  FhsHeight002:
+    is_a: CompoundVariable
+    description: >-
+      FHS height variable harmonized to HumanBodyHeightRecord002 microschema
+    instantiates:
+      - HumanBodyHeightRecord002
 
   ResearchStudy:
     is_a: Entity
     class_uri: bdchm:ResearchStudy
+    description: >-
+      Name of research study that produced the variable
 
 slots:
   id:
@@ -126,15 +157,6 @@ slots:
     description: >-
       Description of the variable provided by the original data provider
       Corresponds to the VARDESC field in dbGAP
-  data_type:
-    range: DataTypeEnum
-    description: >-
-      The data type found in this variable. Corresponds to the TYPE field
-      in dbGAP
-  unit:
-    range: string
-    description: >-
-      Ideally a unit of measure from UCUM. Corresponds to the UNITS field in dbGAP
   minimum_value:
     range: decimal
     description: >-
@@ -158,6 +180,8 @@ slots:
   missing_value:
     range: MissingValue
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     description: >-
       Sentinel value to indicate a missing value or other data nuance
   comment:
@@ -180,8 +204,13 @@ slots:
       OMOP, or LOINC
   bdchm_type:
     range: BdchmTypeEnum
+    description: >-
+      Entity type from BDCHM that defines the variable type
   metadata: 
+    range: MetadataVariable
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     description: >-
       List of variable identifiers providing metadata for a compound variable
   alert_value:
@@ -200,32 +229,47 @@ slots:
     description: >-
       Meaning of the indicator character verbatim from original data provider
       when possible
+  variable_path:
+    range: string
+    description: >-
+      Unique identifier pointing to variable
+  microschema_slot:
+    range: ClinicalMicroschemaEnum
+    description: >-
+      The slot that the variable identified in the variable path should go
 
 enums:
-  DataTypeEnum:
-    description:
-      A category of data
-    permissible_values:
-      NUMERIC:
-        description: >-
-          decimal or integer data type for continuous variables
-      STRING:
-        description: >-
-          free text data type
-      CODE:
-        description: >-
-          data are a list of acceptable values or a controlled vocabulary
 
   BdchmTypeEnum:
-    description:
+    description: >-
       A list of BDCHM entities used to describe variables
     permissible_values:
-      OBSERVATION:
+      observation:
         meaning: bdchm:Observation
-      CONDITION:
+      condition:
         meaning: bdchm:Condition
-      PROCEDURE:
+      procedure:
         meaning: bdchm:Procedure
-      EXPOSURE:
+      exposure:
         meaning: bdchm:Exposure
 
+  ClinicalMicroschemaEnum:
+    description: >-
+      A list of slots describing clinical measurements in microschema
+    permissible_values:
+      subject_identifier:
+      measurement_type:
+      measurement_value:
+      unit:
+      method:
+      instrument:
+      reagent_kit:
+      calculated_from:
+      body_location:
+      body_position:
+      context:
+      collected_by:
+      data_type:
+      age_at_measurement:
+      study_site:
+      absolute_time:
