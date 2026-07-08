@@ -447,7 +447,7 @@
 
 
 <h1 id="enum-datatypeenum">Enum: DataTypeEnum</h1>
-<p><em>A category of data</em></p>
+<p><em>The data type of an observation value</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/DataTypeEnum">bdc_variable_library:DataTypeEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -461,19 +461,24 @@
 </thead>
 <tbody>
 <tr>
-<td>NUMERIC</td>
+<td>decimal</td>
 <td>None</td>
-<td>decimal or integer data type for continuous variables</td>
+<td>Decimal number</td>
 </tr>
 <tr>
-<td>STRING</td>
+<td>integer</td>
 <td>None</td>
-<td>free text data type</td>
+<td>Integer number</td>
 </tr>
 <tr>
-<td>CODE</td>
+<td>enum</td>
 <td>None</td>
-<td>data are a list of acceptable values or a controlled vocabulary</td>
+<td>Enumerated value</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>None</td>
+<td>Boolean value</td>
 </tr>
 </tbody>
 </table>
@@ -488,7 +493,7 @@
 <tbody>
 <tr>
 <td><a href="../data_type/">data_type</a></td>
-<td>The data type found in this variable</td>
+<td>The data type of the observation</td>
 </tr>
 </tbody>
 </table>
@@ -500,19 +505,22 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataTypeEnum</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A category of data</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The data type of an observation value</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">permissible_values</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">NUMERIC</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUMERIC</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal or integer data type for continuous variables</span>
-<span class="w">  </span><span class="nt">STRING</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STRING</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">free text data type</span>
-<span class="w">  </span><span class="nt">CODE</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CODE</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data are a list of acceptable values or a controlled vocabulary</span>
+<span class="w">  </span><span class="nt">decimal</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Decimal number</span>
+<span class="w">  </span><span class="nt">integer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Integer number</span>
+<span class="w">  </span><span class="nt">enum</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enum</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enumerated value</span>
+<span class="w">  </span><span class="nt">boolean</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Boolean value</span>
 </code></pre></div>
 </details>
 </div>

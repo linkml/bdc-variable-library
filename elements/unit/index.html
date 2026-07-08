@@ -486,9 +486,9 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p><em>Ideally a unit of measure from UCUM. Corresponds to the UNITS field in dbGAP</em></p>
+<p><em>A unit from UCUM</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/unit">bdc_variable_library:unit</a></p>
+<p>URI: <a href="https://w3id.org/bdchm/unit">bdchm:unit</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -505,6 +505,91 @@
 <td>Represents a single entry in a data dictionary</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
+<td>A data structure with key and value attributes that represents a single obser...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord/">HumanBodyHeightRecord</a></td>
+<td>Measurement of linear distance of a human body from the bottom of a flat foot...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord001/">HumanBodyHeightRecord001</a></td>
+<td>Measurement of linear distance of a standing human body from the bottom of a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord002/">HumanBodyHeightRecord002</a></td>
+<td>Measurement of linear distance of a standing human body from the bottom of a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyWeightRecord/">HumanBodyWeightRecord</a></td>
+<td>Measurement of the force exerted by a human body on a scale due to gravity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyWeightRecord001/">HumanBodyWeightRecord001</a></td>
+<td>Measurement of the force exerted by a human body on a mechanical beam balance...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyWeightRecord002/">HumanBodyWeightRecord002</a></td>
+<td>Measurement of the force exerted by a human body on a mechanical beam balance...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BodyMassIndexRecord/">BodyMassIndexRecord</a></td>
+<td>A calculated numerical quantity representing an individual's weight-to-height...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFvcRecord/">HumanFvcRecord</a></td>
+<td>Total amount of air a person can forcibly exhale after taking the deepest bre...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMeasuredFvcRecord/">HumanMeasuredFvcRecord</a></td>
+<td>Total amount of air a person can forcibly exhale after taking the deepest bre...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMeasuredFvcRecord001/">HumanMeasuredFvcRecord001</a></td>
+<td>Total amount of air a person can forcibly exhale after taking the deepest bre...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPredictedFvcRecord/">HumanPredictedFvcRecord</a></td>
+<td>Predicted total amount of air a person can forcibly exhale after taking the d...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPercentPredictedFvcRecord/">HumanPercentPredictedFvcRecord</a></td>
+<td>Percent of the predicted FVC that is achieved by the patient</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFev1Record/">HumanFev1Record</a></td>
+<td>Maximum amount of air a person can forcibly exhale in the first second of a b...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBasophilCountRecord/">HumanBasophilCountRecord</a></td>
+<td>Concentration of basophil cells in whole blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBasophilCountRecord001/">HumanBasophilCountRecord001</a></td>
+<td>Concentration of basophil cells in whole blood</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../HumanBasophilCountRecord002/">HumanBasophilCountRecord002</a></td>
+<td>Concentration of basophil cells in whole blood</td>
+<td>yes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -519,11 +604,15 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../Uriorcurie/">Uriorcurie</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../SingleVariable/">SingleVariable</a></td>
+<td><a href="../SingleVariable/">SingleVariable</a>, <a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
+</tr>
+<tr>
+<td>Slot URI</td>
+<td><a href="https://w3id.org/bdchm/unit">bdchm:unit</a></td>
 </tr>
 </tbody>
 </table>
@@ -558,7 +647,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>bdc_variable_library:unit</td>
+<td>bdchm:unit</td>
 </tr>
 <tr>
 <td>native</td>
@@ -569,13 +658,14 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ideally a unit of measure from UCUM. Corresponds to the UNITS field in</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">dbGAP</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A unit from UCUM</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:unit</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleVariable</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 </code></pre></div>
 </details>
 </div>

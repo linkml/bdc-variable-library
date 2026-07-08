@@ -286,6 +286,11 @@
       Variable &lt;|-- CompoundVariable
         click Variable href "../Variable/"
 
+
+      CompoundVariable &lt;|-- FhsHeight002
+        click FhsHeight002 href "../FhsHeight002/"
+
+
       CompoundVariable : alert_value
 
 
@@ -327,6 +332,15 @@
 
       CompoundVariable : metadata
 
+
+
+
+
+        CompoundVariable --&gt; "*" MetadataVariable : metadata
+        click MetadataVariable href "../MetadataVariable/"
+
+
+
       CompoundVariable : variable_description
 
       CompoundVariable : variable_label
@@ -336,7 +350,10 @@
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Variable/">Variable</a><ul>
-<li><strong>CompoundVariable</strong></li>
+<li><strong>CompoundVariable</strong><ul>
+<li><a href="../FhsHeight002/">FhsHeight002</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -362,12 +379,12 @@
 <tr>
 <td><a href="../bdchm_type/">bdchm_type</a></td>
 <td>0..1 <br/> <a href="../BdchmTypeEnum/">BdchmTypeEnum</a></td>
-<td></td>
+<td>Entity type from BDCHM that defines the variable type</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../metadata/">metadata</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../MetadataVariable/">MetadataVariable</a></td>
 <td>List of variable identifiers providing metadata for a compound variable</td>
 <td>direct</td>
 </tr>
@@ -466,6 +483,7 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">bdchm_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm_type</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity type from BDCHM that defines the variable type</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
@@ -480,8 +498,10 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetadataVariable</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">alert_value</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alert_value</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of values that provide extra optional information about a variable.</span>
