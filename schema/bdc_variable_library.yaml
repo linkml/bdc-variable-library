@@ -4922,7 +4922,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-07-14T15:38:16'
+source_file_date: '2026-07-14T15:46:53'
 source_file_size: 8321
-generation_date: '2026-07-14T15:38:27'
+generation_date: '2026-07-14T15:47:04'
 
