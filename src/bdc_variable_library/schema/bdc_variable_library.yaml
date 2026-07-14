@@ -32,7 +32,7 @@ default_range: string
 imports:
   - linkml:types
   - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.1/src/clinical_microschemas/schema/clinical_microschemas
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.2/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
@@ -52,6 +52,7 @@ classes:
       - variable_description
       - concept_type
       - variable_label
+      - unit
 
   SingleVariable:
     is_a: Variable
@@ -64,7 +65,6 @@ classes:
       - variable_name
       - source_variable_description
       - data_type
-      - unit
       - minimum_value
       - maximum_value
       - resolution
@@ -81,6 +81,17 @@ classes:
      - bdchm_type
      - metadata
      - alert_value
+     
+  IntegratedVariable:
+    is_a: Variable
+    description: >-
+      Represents a variable that contains data from multiple studies. Typically,
+      some or all of the data must undergo a transformation in order to be
+      successfully integrated
+    slots:
+      - cde_id
+      - bdchm_type
+      - integrates
 
   MissingValue:
     is_a: Entity
@@ -105,15 +116,20 @@ classes:
       typically be a unique identifier for a SingleVariable and a slot from a 
       microschema
     slots:
-      - variable_path
       - microschema_slot
-
-  FhsHeight002:
+  
+  CompoundHeight002:
     is_a: CompoundVariable
     description: >-
-      FHS height variable harmonized to HumanBodyHeightRecord002 microschema
+      Height variable with metadata, measured in inches and collected using a
+      wall-mounted stadiometer
     instantiates:
       - HumanBodyHeightRecord002
+  
+  IntegratedHeight001:
+    is_a: IntegratedVariable
+    description: >-
+      Height variable containing data from multiple studies, normalized to cm
 
   ResearchStudy:
     is_a: Entity
@@ -229,14 +245,15 @@ slots:
     description: >-
       Meaning of the indicator character verbatim from original data provider
       when possible
-  variable_path:
-    range: string
-    description: >-
-      Unique identifier pointing to variable
   microschema_slot:
     range: ClinicalMicroschemaEnum
     description: >-
       The slot that the variable identified in the variable path should go
+  integrates:
+    range: CompoundVariable
+    multivalued: true
+    description: >-
+      List of variables combined in the IntegratedVariable
 
 enums:
 

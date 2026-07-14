@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-08T12:05:54
+# Generation date: 2026-07-14T11:35:35
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -77,6 +77,7 @@ UCUM = CurieNamespace('UCUM', 'https://units-of-measurement.org/')
 BDC_VARIABLE_LIBRARY = CurieNamespace('bdc_variable_library', 'https://w3id.org/linkml/bdc-variable-library/')
 BDCHM = CurieNamespace('bdchm', 'https://w3id.org/bdchm/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
+CM = CurieNamespace('cm', 'http://example.org/UNKNOWN/cm/')
 CMS = CurieNamespace('cms', 'https://w3id.org/linkml/clinical-microschemas/')
 EXAMPLE = CurieNamespace('example', 'http://www.example.org/rdf#')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -103,6 +104,10 @@ class CompoundVariableId(VariableId):
     pass
 
 
+class IntegratedVariableId(VariableId):
+    pass
+
+
 class MissingValueId(EntityId):
     pass
 
@@ -115,7 +120,11 @@ class MetadataVariableId(EntityId):
     pass
 
 
-class FhsHeight002Id(CompoundVariableId):
+class CompoundHeight002Id(CompoundVariableId):
+    pass
+
+
+class IntegratedHeight001Id(IntegratedVariableId):
     pass
 
 
@@ -163,6 +172,7 @@ class Variable(Entity):
     variable_description: Optional[str] = None
     concept_type: Optional[Union[str, URIorCURIE]] = None
     variable_label: Optional[str] = None
+    unit: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -181,6 +191,9 @@ class Variable(Entity):
 
         if self.variable_label is not None and not isinstance(self.variable_label, str):
             self.variable_label = str(self.variable_label)
+
+        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
+            self.unit = URIorCURIE(self.unit)
 
         super().__post_init__(**kwargs)
 
@@ -204,7 +217,6 @@ class SingleVariable(Variable):
     variable_name: Optional[str] = None
     source_variable_description: Optional[str] = None
     data_type: Optional[Union[str, "DataTypeEnum"]] = None
-    unit: Optional[Union[str, URIorCURIE]] = None
     minimum_value: Optional[Decimal] = None
     maximum_value: Optional[Decimal] = None
     resolution: Optional[int] = None
@@ -235,9 +247,6 @@ class SingleVariable(Variable):
 
         if self.data_type is not None and not isinstance(self.data_type, DataTypeEnum):
             self.data_type = DataTypeEnum(self.data_type)
-
-        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
-            self.unit = URIorCURIE(self.unit)
 
         if self.minimum_value is not None and not isinstance(self.minimum_value, Decimal):
             self.minimum_value = Decimal(self.minimum_value)
@@ -294,6 +303,43 @@ class CompoundVariable(Variable):
         if not isinstance(self.alert_value, list):
             self.alert_value = [self.alert_value] if self.alert_value is not None else []
         self.alert_value = [v if isinstance(v, AlertValueId) else AlertValueId(v) for v in self.alert_value]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedVariable(Variable):
+    """
+    Represents a variable that contains data from multiple studies. Typically, some or all of the data must undergo a
+    transformation in order to be successfully integrated
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedVariable"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedVariable"
+    class_name: ClassVar[str] = "IntegratedVariable"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedVariable
+
+    id: Union[str, IntegratedVariableId] = None
+    cde_id: Optional[Union[str, URIorCURIE]] = None
+    bdchm_type: Optional[Union[str, "BdchmTypeEnum"]] = None
+    integrates: Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedVariableId):
+            self.id = IntegratedVariableId(self.id)
+
+        if self.cde_id is not None and not isinstance(self.cde_id, URIorCURIE):
+            self.cde_id = URIorCURIE(self.cde_id)
+
+        if self.bdchm_type is not None and not isinstance(self.bdchm_type, BdchmTypeEnum):
+            self.bdchm_type = BdchmTypeEnum(self.bdchm_type)
+
+        if not isinstance(self.integrates, list):
+            self.integrates = [self.integrates] if self.integrates is not None else []
+        self.integrates = [v if isinstance(v, CompoundVariableId) else CompoundVariableId(v) for v in self.integrates]
 
         super().__post_init__(**kwargs)
 
@@ -374,7 +420,6 @@ class MetadataVariable(Entity):
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.MetadataVariable
 
     id: Union[str, MetadataVariableId] = None
-    variable_path: Optional[str] = None
     microschema_slot: Optional[Union[str, "ClinicalMicroschemaEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -383,9 +428,6 @@ class MetadataVariable(Entity):
         if not isinstance(self.id, MetadataVariableId):
             self.id = MetadataVariableId(self.id)
 
-        if self.variable_path is not None and not isinstance(self.variable_path, str):
-            self.variable_path = str(self.variable_path)
-
         if self.microschema_slot is not None and not isinstance(self.microschema_slot, ClinicalMicroschemaEnum):
             self.microschema_slot = ClinicalMicroschemaEnum(self.microschema_slot)
 
@@ -393,24 +435,47 @@ class MetadataVariable(Entity):
 
 
 @dataclass(repr=False)
-class FhsHeight002(CompoundVariable):
+class CompoundHeight002(CompoundVariable):
     """
-    FHS height variable harmonized to HumanBodyHeightRecord002 microschema
+    Height variable with metadata, measured in inches and collected using a wall-mounted stadiometer
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["FhsHeight002"]
-    class_class_curie: ClassVar[str] = "bdc_variable_library:FhsHeight002"
-    class_name: ClassVar[str] = "FhsHeight002"
-    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.FhsHeight002
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundHeight002"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundHeight002"
+    class_name: ClassVar[str] = "CompoundHeight002"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundHeight002
 
-    id: Union[str, FhsHeight002Id] = None
+    id: Union[str, CompoundHeight002Id] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, FhsHeight002Id):
-            self.id = FhsHeight002Id(self.id)
+        if not isinstance(self.id, CompoundHeight002Id):
+            self.id = CompoundHeight002Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedHeight001(IntegratedVariable):
+    """
+    Height variable containing data from multiple studies, normalized to cm
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedHeight001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedHeight001"
+    class_name: ClassVar[str] = "IntegratedHeight001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedHeight001
+
+    id: Union[str, IntegratedHeight001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedHeight001Id):
+            self.id = IntegratedHeight001Id(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -653,7 +718,7 @@ class ClinicalMeasurementRecord(YAMLRoot):
     class_name: ClassVar[str] = "ClinicalMeasurementRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.ClinicalMeasurementRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     measurement_value: Union[dict, Quantity] = None
     age_at_measurement: Union[dict, Quantity] = None
@@ -673,8 +738,8 @@ class ClinicalMeasurementRecord(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.subject_identifier):
             self.MissingRequiredField("subject_identifier")
-        if not isinstance(self.subject_identifier, str):
-            self.subject_identifier = str(self.subject_identifier)
+        if not isinstance(self.subject_identifier, URIorCURIE):
+            self.subject_identifier = URIorCURIE(self.subject_identifier)
 
         if self._is_empty(self.measurement_type):
             self.MissingRequiredField("measurement_type")
@@ -742,7 +807,7 @@ class ConditionStatusRecord(YAMLRoot):
     class_name: ClassVar[str] = "ConditionStatusRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.ConditionStatusRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     condition_type: Union[str, URIorCURIE] = None
     age_at_condition_record: Union[dict, Quantity] = None
     condition_status: Union[str, "HistoricalStatusEnum"] = None
@@ -757,8 +822,8 @@ class ConditionStatusRecord(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.subject_identifier):
             self.MissingRequiredField("subject_identifier")
-        if not isinstance(self.subject_identifier, str):
-            self.subject_identifier = str(self.subject_identifier)
+        if not isinstance(self.subject_identifier, URIorCURIE):
+            self.subject_identifier = URIorCURIE(self.subject_identifier)
 
         if self._is_empty(self.condition_type):
             self.MissingRequiredField("condition_type")
@@ -813,7 +878,7 @@ class DrugStatusRecord(YAMLRoot):
     class_name: ClassVar[str] = "DrugStatusRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.DrugStatusRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     drug_type: Union[str, URIorCURIE] = None
     age_at_drug_record: Union[dict, Quantity] = None
     age_at_drug_start: Optional[Union[dict, Quantity]] = None
@@ -826,8 +891,8 @@ class DrugStatusRecord(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.subject_identifier):
             self.MissingRequiredField("subject_identifier")
-        if not isinstance(self.subject_identifier, str):
-            self.subject_identifier = str(self.subject_identifier)
+        if not isinstance(self.subject_identifier, URIorCURIE):
+            self.subject_identifier = URIorCURIE(self.subject_identifier)
 
         if self._is_empty(self.drug_type):
             self.MissingRequiredField("drug_type")
@@ -873,7 +938,7 @@ class ProcedureStatusRecord(YAMLRoot):
     class_name: ClassVar[str] = "ProcedureStatusRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.ProcedureStatusRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     procedure_type: Union[str, URIorCURIE] = None
     age_at_procedure_record: Union[dict, Quantity] = None
     collected_by: Optional[Union[str, "CollectedByEnum"]] = None
@@ -883,8 +948,8 @@ class ProcedureStatusRecord(YAMLRoot):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.subject_identifier):
             self.MissingRequiredField("subject_identifier")
-        if not isinstance(self.subject_identifier, str):
-            self.subject_identifier = str(self.subject_identifier)
+        if not isinstance(self.subject_identifier, URIorCURIE):
+            self.subject_identifier = URIorCURIE(self.subject_identifier)
 
         if self._is_empty(self.procedure_type):
             self.MissingRequiredField("procedure_type")
@@ -920,7 +985,7 @@ class HumanBodyHeightRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanBodyHeightRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyHeightQuantity"] = None
@@ -938,7 +1003,7 @@ class HumanBodyHeightRecord(ClinicalMeasurementRecord):
 class HumanBodyHeightRecord001(HumanBodyHeightRecord):
     """
     Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of
-    the head measured with a wall-mounted stadiometer
+    the head measured in centimeters with a wall-mounted stadiometer
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -947,7 +1012,7 @@ class HumanBodyHeightRecord001(HumanBodyHeightRecord):
     class_name: ClassVar[str] = "HumanBodyHeightRecord001"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord001
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyHeightQuantity001"] = None
@@ -965,7 +1030,7 @@ class HumanBodyHeightRecord001(HumanBodyHeightRecord):
 class HumanBodyHeightRecord002(HumanBodyHeightRecord):
     """
     Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of
-    the head measured with a wall-mounted stadiometer
+    the head measured in inches with a wall-mounted stadiometer
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -974,7 +1039,7 @@ class HumanBodyHeightRecord002(HumanBodyHeightRecord):
     class_name: ClassVar[str] = "HumanBodyHeightRecord002"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord002
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyHeightQuantity002"] = None
@@ -984,6 +1049,118 @@ class HumanBodyHeightRecord002(HumanBodyHeightRecord):
             self.MissingRequiredField("measurement_value")
         if not isinstance(self.measurement_value, HumanBodyHeightQuantity002):
             self.measurement_value = HumanBodyHeightQuantity002(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightRecord003(HumanBodyHeightRecord):
+    """
+    Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of
+    the head measured in inches with a portable stadiometer
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightRecord003"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightRecord003"
+    class_name: ClassVar[str] = "HumanBodyHeightRecord003"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord003
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "HumanBodyHeightQuantity002"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, HumanBodyHeightQuantity002):
+            self.measurement_value = HumanBodyHeightQuantity002(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightRecord004(HumanBodyHeightRecord):
+    """
+    Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of
+    the head measured in centimeters with an anthropometer
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightRecord004"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightRecord004"
+    class_name: ClassVar[str] = "HumanBodyHeightRecord004"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord004
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "HumanBodyHeightQuantity003"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, HumanBodyHeightQuantity003):
+            self.measurement_value = HumanBodyHeightQuantity003(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightRecord005(HumanBodyHeightRecord):
+    """
+    Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of
+    the head measured in feet with a wall-mounted stadiometer
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightRecord005"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightRecord005"
+    class_name: ClassVar[str] = "HumanBodyHeightRecord005"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord005
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "HumanBodyHeightQuantity004"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, HumanBodyHeightQuantity004):
+            self.measurement_value = HumanBodyHeightQuantity004(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightRecord006(HumanBodyHeightRecord):
+    """
+    Measurement of linear distance of a human body from the bottom of a flat foot to the top-most point of the head in
+    cm
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightRecord006"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightRecord006"
+    class_name: ClassVar[str] = "HumanBodyHeightRecord006"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord006
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "HumanBodyHeightQuantity003"] = None
+    unit: Optional[Union[str, URIorCURIE]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, HumanBodyHeightQuantity003):
+            self.measurement_value = HumanBodyHeightQuantity003(**as_dict(self.measurement_value))
+
+        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
+            self.unit = URIorCURIE(self.unit)
 
         super().__post_init__(**kwargs)
 
@@ -1000,7 +1177,7 @@ class HumanBodyWeightRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanBodyWeightRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyWeightQuantity"] = None
@@ -1026,7 +1203,7 @@ class HumanBodyWeightRecord001(HumanBodyWeightRecord):
     class_name: ClassVar[str] = "HumanBodyWeightRecord001"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord001
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyWeightQuantity001"] = None
@@ -1052,7 +1229,7 @@ class HumanBodyWeightRecord002(HumanBodyWeightRecord):
     class_name: ClassVar[str] = "HumanBodyWeightRecord002"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord002
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyWeightQuantity002"] = None
@@ -1067,10 +1244,36 @@ class HumanBodyWeightRecord002(HumanBodyWeightRecord):
 
 
 @dataclass(repr=False)
+class HumanBodyWeightRecord003(HumanBodyWeightRecord):
+    """
+    Measurement of the force exerted by a human body on a body composition analyzer due to gravity
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyWeightRecord003"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyWeightRecord003"
+    class_name: ClassVar[str] = "HumanBodyWeightRecord003"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord003
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "HumanBodyWeightQuantity003"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, HumanBodyWeightQuantity003):
+            self.measurement_value = HumanBodyWeightQuantity003(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class BodyMassIndexRecord(ClinicalMeasurementRecord):
     """
     A calculated numerical quantity representing an individual's weight-to-height ratio. BMI is calculated as weight
-    (kg) divided by height (m) squared.
+    (kg) divided by height (m) squared. The height is measured in cm and the weight is collected in kg.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1079,7 +1282,7 @@ class BodyMassIndexRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "BodyMassIndexRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.BodyMassIndexRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "BodyMassIndexQuantity"] = None
@@ -1089,6 +1292,68 @@ class BodyMassIndexRecord(ClinicalMeasurementRecord):
             self.MissingRequiredField("measurement_value")
         if not isinstance(self.measurement_value, BodyMassIndexQuantity):
             self.measurement_value = BodyMassIndexQuantity(**as_dict(self.measurement_value))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BodyMassIndexRecord001(BodyMassIndexRecord):
+    """
+    A calculated numerical quantity representing an individual's weight-to-height ratio. BMI is calculated as weight
+    (kg) divided by height (m) squared. The height is measured in cm and the weight is collected in kg.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["BodyMassIndexRecord001"]
+    class_class_curie: ClassVar[str] = "cms:BodyMassIndexRecord001"
+    class_name: ClassVar[str] = "BodyMassIndexRecord001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.BodyMassIndexRecord001
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "BodyMassIndexQuantity"] = None
+    calculated_from: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, BodyMassIndexQuantity):
+            self.measurement_value = BodyMassIndexQuantity(**as_dict(self.measurement_value))
+
+        if self.calculated_from is not None and not isinstance(self.calculated_from, str):
+            self.calculated_from = str(self.calculated_from)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BodyMassIndexRecord002(BodyMassIndexRecord):
+    """
+    A calculated numerical quantity representing an individual's weight-to-height ratio. BMI is calculated as weight
+    (kg) divided by height (m) squared. The height is measured in inches and the weight is collected in lbs.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["BodyMassIndexRecord002"]
+    class_class_curie: ClassVar[str] = "cms:BodyMassIndexRecord002"
+    class_name: ClassVar[str] = "BodyMassIndexRecord002"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.BodyMassIndexRecord002
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    measurement_type: Union[str, URIorCURIE] = None
+    age_at_measurement: Union[dict, Quantity] = None
+    measurement_value: Union[dict, "BodyMassIndexQuantity"] = None
+    calculated_from: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.measurement_value):
+            self.MissingRequiredField("measurement_value")
+        if not isinstance(self.measurement_value, BodyMassIndexQuantity):
+            self.measurement_value = BodyMassIndexQuantity(**as_dict(self.measurement_value))
+
+        if self.calculated_from is not None and not isinstance(self.calculated_from, str):
+            self.calculated_from = str(self.calculated_from)
 
         super().__post_init__(**kwargs)
 
@@ -1106,7 +1371,7 @@ class HumanFvcRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanFvcRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanFvcRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanFvcQuantity"] = None
@@ -1160,7 +1425,7 @@ class HumanMeasuredFvcRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanMeasuredFvcRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanMeasuredFvcRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanMeasuredFvcQuantity"] = None
@@ -1186,7 +1451,7 @@ class HumanMeasuredFvcRecord001(HumanMeasuredFvcRecord):
     class_name: ClassVar[str] = "HumanMeasuredFvcRecord001"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanMeasuredFvcRecord001
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanMeasuredFvcQuantity001"] = None
@@ -1213,7 +1478,7 @@ class HumanPredictedFvcRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanPredictedFvcRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanPredictedFvcRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanPredictedFvcQuantity"] = None
@@ -1239,7 +1504,7 @@ class HumanPercentPredictedFvcRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanPercentPredictedFvcRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanPercentPredictedFvcRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanPercentPredictedFvcQuantity"] = None
@@ -1265,7 +1530,7 @@ class HumanFev1Record(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanFev1Record"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanFev1Record
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanFev1Quantity"] = None
@@ -1291,7 +1556,7 @@ class HumanBasophilCountRecord(ClinicalMeasurementRecord):
     class_name: ClassVar[str] = "HumanBasophilCountRecord"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBasophilCountRecord
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBasophilCountQuantity"] = None
@@ -1317,7 +1582,7 @@ class HumanBasophilCountRecord001(HumanBasophilCountRecord):
     class_name: ClassVar[str] = "HumanBasophilCountRecord001"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBasophilCountRecord001
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBasophilCountQuantity001"] = None
@@ -1347,7 +1612,7 @@ class HumanBasophilCountRecord002(HumanBasophilCountRecord):
     class_name: ClassVar[str] = "HumanBasophilCountRecord002"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBasophilCountRecord002
 
-    subject_identifier: str = None
+    subject_identifier: Union[str, URIorCURIE] = None
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBasophilCountQuantity001"] = None
@@ -1451,8 +1716,8 @@ class HumanBodyHeightQuantity(Quantity):
 @dataclass(repr=False)
 class HumanBodyHeightQuantity001(HumanBodyHeightQuantity):
     """
-    Standing wall-mounted-stadiometer human body height in cm, bounded 30–220. Minimum represents observed limits on
-    human height. Maximum represents limit of measurement device.
+    Standing wall-mounted or portable stadiometer human body height in cm, bounded 30–230. Minimum represents observed
+    limits on human height. Maximum represents limit of measurement device.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1476,8 +1741,8 @@ class HumanBodyHeightQuantity001(HumanBodyHeightQuantity):
 @dataclass(repr=False)
 class HumanBodyHeightQuantity002(HumanBodyHeightQuantity):
     """
-    Standing wall-mounted-stadiometer human body height in in, bounded 20–90. Minimum represents observed limits on
-    human height. Maximum represents limit of measurement device.
+    Standing wall-mounted or portable stadiometer human body height in inches, bounded 20–90. Minimum represents
+    observed limits on human height. Maximum represents limit of measurement device.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1485,6 +1750,56 @@ class HumanBodyHeightQuantity002(HumanBodyHeightQuantity):
     class_class_curie: ClassVar[str] = "cms:HumanBodyHeightQuantity002"
     class_name: ClassVar[str] = "HumanBodyHeightQuantity002"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity002
+
+    quantity_unit: Union[str, URIorCURIE] = None
+    quantity_value: Decimal = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.quantity_value):
+            self.MissingRequiredField("quantity_value")
+        if not isinstance(self.quantity_value, Decimal):
+            self.quantity_value = Decimal(self.quantity_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightQuantity003(HumanBodyHeightQuantity):
+    """
+    Standing anthropometer human body height in cm, bounded 30-250. Minimum represents observed limits on human
+    height. Maximum represents limit of measurement device.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightQuantity003"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightQuantity003"
+    class_name: ClassVar[str] = "HumanBodyHeightQuantity003"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity003
+
+    quantity_unit: Union[str, URIorCURIE] = None
+    quantity_value: Decimal = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.quantity_value):
+            self.MissingRequiredField("quantity_value")
+        if not isinstance(self.quantity_value, Decimal):
+            self.quantity_value = Decimal(self.quantity_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyHeightQuantity004(HumanBodyHeightQuantity):
+    """
+    Standing wall-mounted or portable stadiometer human body height in ft, bounded 0.98-8.2. Minimum represents
+    observed limits on human height. Maximum represents limit of measurement device.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyHeightQuantity004"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyHeightQuantity004"
+    class_name: ClassVar[str] = "HumanBodyHeightQuantity004"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity004
 
     quantity_unit: Union[str, URIorCURIE] = None
     quantity_value: Decimal = None
@@ -1559,6 +1874,31 @@ class HumanBodyWeightQuantity002(HumanBodyWeightQuantity):
     class_class_curie: ClassVar[str] = "cms:HumanBodyWeightQuantity002"
     class_name: ClassVar[str] = "HumanBodyWeightQuantity002"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightQuantity002
+
+    quantity_unit: Union[str, URIorCURIE] = None
+    quantity_value: Decimal = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.quantity_value):
+            self.MissingRequiredField("quantity_value")
+        if not isinstance(self.quantity_value, Decimal):
+            self.quantity_value = Decimal(self.quantity_value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HumanBodyWeightQuantity003(HumanBodyWeightQuantity):
+    """
+    Body composition analyzer human body weight in kg, bounded 0–270. Maximum weight set based on limits of
+    measurement device.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HumanBodyWeightQuantity003"]
+    class_class_curie: ClassVar[str] = "cms:HumanBodyWeightQuantity003"
+    class_name: ClassVar[str] = "HumanBodyWeightQuantity003"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HumanBodyWeightQuantity003
 
     quantity_unit: Union[str, URIorCURIE] = None
     quantity_value: Decimal = None
@@ -2137,6 +2477,18 @@ class DataTypeEnum(EnumDefinitionImpl):
     boolean = PermissibleValue(
         text="boolean",
         description="Boolean value")
+    string = PermissibleValue(
+        text="string",
+        description="String value")
+    numeric = PermissibleValue(
+        text="numeric",
+        description="decimal or integer - from dbGAP data types")
+    code = PermissibleValue(
+        text="code",
+        description="""data are a list of acceptable values or a controlled vocabulary, from dbGAP data types, same as enum""")
+    uriorcurie = PermissibleValue(
+        text="uriorcurie",
+        description="A URI or CURIE value")
 
     _defn = EnumDefinition(
         name="DataTypeEnum",
@@ -2444,11 +2796,11 @@ slots.indicator_char = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_char, name="indic
 slots.indicator_meaning = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_meaning, name="indicator_meaning", curie=BDC_VARIABLE_LIBRARY.curie('indicator_meaning'),
                    model_uri=BDC_VARIABLE_LIBRARY.indicator_meaning, domain=None, range=Optional[str])
 
-slots.variable_path = Slot(uri=BDC_VARIABLE_LIBRARY.variable_path, name="variable_path", curie=BDC_VARIABLE_LIBRARY.curie('variable_path'),
-                   model_uri=BDC_VARIABLE_LIBRARY.variable_path, domain=None, range=Optional[str])
-
 slots.microschema_slot = Slot(uri=BDC_VARIABLE_LIBRARY.microschema_slot, name="microschema_slot", curie=BDC_VARIABLE_LIBRARY.curie('microschema_slot'),
                    model_uri=BDC_VARIABLE_LIBRARY.microschema_slot, domain=None, range=Optional[Union[str, "ClinicalMicroschemaEnum"]])
+
+slots.integrates = Slot(uri=BDC_VARIABLE_LIBRARY.integrates, name="integrates", curie=BDC_VARIABLE_LIBRARY.curie('integrates'),
+                   model_uri=BDC_VARIABLE_LIBRARY.integrates, domain=None, range=Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]])
 
 slots.profile_version = Slot(uri=LINKML['linkml-microschema-profile/profile_version'], name="profile_version", curie=LINKML.curie('linkml-microschema-profile/profile_version'),
                    model_uri=BDC_VARIABLE_LIBRARY.profile_version, domain=None, range=Optional[str])
@@ -2523,7 +2875,7 @@ slots.indication = Slot(uri=CMS.indication, name="indication", curie=CMS.curie('
                    model_uri=BDC_VARIABLE_LIBRARY.indication, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.subject_identifier = Slot(uri=CMS.subject_identifier, name="subject_identifier", curie=CMS.curie('subject_identifier'),
-                   model_uri=BDC_VARIABLE_LIBRARY.subject_identifier, domain=None, range=Optional[str])
+                   model_uri=BDC_VARIABLE_LIBRARY.subject_identifier, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.measurement_type = Slot(uri=BDCHM.observation_type, name="measurement_type", curie=BDCHM.curie('observation_type'),
                    model_uri=BDC_VARIABLE_LIBRARY.measurement_type, domain=None, range=Optional[Union[str, URIorCURIE]])
@@ -2643,7 +2995,7 @@ slots.age_at_procedure_record = Slot(uri=CMS.age_at_procedure_record, name="age_
                    model_uri=BDC_VARIABLE_LIBRARY.age_at_procedure_record, domain=None, range=Optional[Union[dict, Quantity]])
 
 slots.ClinicalMeasurementRecord_subject_identifier = Slot(uri=CMS.subject_identifier, name="ClinicalMeasurementRecord_subject_identifier", curie=CMS.curie('subject_identifier'),
-                   model_uri=BDC_VARIABLE_LIBRARY.ClinicalMeasurementRecord_subject_identifier, domain=ClinicalMeasurementRecord, range=str)
+                   model_uri=BDC_VARIABLE_LIBRARY.ClinicalMeasurementRecord_subject_identifier, domain=ClinicalMeasurementRecord, range=Union[str, URIorCURIE])
 
 slots.ClinicalMeasurementRecord_measurement_type = Slot(uri=BDCHM.observation_type, name="ClinicalMeasurementRecord_measurement_type", curie=BDCHM.curie('observation_type'),
                    model_uri=BDC_VARIABLE_LIBRARY.ClinicalMeasurementRecord_measurement_type, domain=ClinicalMeasurementRecord, range=Union[str, URIorCURIE])
@@ -2655,7 +3007,7 @@ slots.ClinicalMeasurementRecord_age_at_measurement = Slot(uri=CMS.age_at_measure
                    model_uri=BDC_VARIABLE_LIBRARY.ClinicalMeasurementRecord_age_at_measurement, domain=ClinicalMeasurementRecord, range=Union[dict, Quantity])
 
 slots.ConditionStatusRecord_subject_identifier = Slot(uri=CMS.subject_identifier, name="ConditionStatusRecord_subject_identifier", curie=CMS.curie('subject_identifier'),
-                   model_uri=BDC_VARIABLE_LIBRARY.ConditionStatusRecord_subject_identifier, domain=ConditionStatusRecord, range=str)
+                   model_uri=BDC_VARIABLE_LIBRARY.ConditionStatusRecord_subject_identifier, domain=ConditionStatusRecord, range=Union[str, URIorCURIE])
 
 slots.ConditionStatusRecord_condition_type = Slot(uri=BDCHM.condition_concept, name="ConditionStatusRecord_condition_type", curie=BDCHM.curie('condition_concept'),
                    model_uri=BDC_VARIABLE_LIBRARY.ConditionStatusRecord_condition_type, domain=ConditionStatusRecord, range=Union[str, URIorCURIE])
@@ -2670,7 +3022,7 @@ slots.ConditionStatusRecord_age_at_condition_record = Slot(uri=CMS.age_at_condit
                    model_uri=BDC_VARIABLE_LIBRARY.ConditionStatusRecord_age_at_condition_record, domain=ConditionStatusRecord, range=Union[dict, Quantity])
 
 slots.DrugStatusRecord_subject_identifier = Slot(uri=CMS.subject_identifier, name="DrugStatusRecord_subject_identifier", curie=CMS.curie('subject_identifier'),
-                   model_uri=BDC_VARIABLE_LIBRARY.DrugStatusRecord_subject_identifier, domain=DrugStatusRecord, range=str)
+                   model_uri=BDC_VARIABLE_LIBRARY.DrugStatusRecord_subject_identifier, domain=DrugStatusRecord, range=Union[str, URIorCURIE])
 
 slots.DrugStatusRecord_drug_type = Slot(uri=BDCHM.drug_concept, name="DrugStatusRecord_drug_type", curie=BDCHM.curie('drug_concept'),
                    model_uri=BDC_VARIABLE_LIBRARY.DrugStatusRecord_drug_type, domain=DrugStatusRecord, range=Union[str, URIorCURIE])
@@ -2679,7 +3031,7 @@ slots.DrugStatusRecord_age_at_drug_record = Slot(uri=CMS.age_at_drug_record, nam
                    model_uri=BDC_VARIABLE_LIBRARY.DrugStatusRecord_age_at_drug_record, domain=DrugStatusRecord, range=Union[dict, Quantity])
 
 slots.ProcedureStatusRecord_subject_identifier = Slot(uri=CMS.subject_identifier, name="ProcedureStatusRecord_subject_identifier", curie=CMS.curie('subject_identifier'),
-                   model_uri=BDC_VARIABLE_LIBRARY.ProcedureStatusRecord_subject_identifier, domain=ProcedureStatusRecord, range=str)
+                   model_uri=BDC_VARIABLE_LIBRARY.ProcedureStatusRecord_subject_identifier, domain=ProcedureStatusRecord, range=Union[str, URIorCURIE])
 
 slots.ProcedureStatusRecord_procedure_type = Slot(uri=BDCHM.procedure_concept, name="ProcedureStatusRecord_procedure_type", curie=BDCHM.curie('procedure_concept'),
                    model_uri=BDC_VARIABLE_LIBRARY.ProcedureStatusRecord_procedure_type, domain=ProcedureStatusRecord, range=Union[str, URIorCURIE])
@@ -2696,6 +3048,21 @@ slots.HumanBodyHeightRecord001_measurement_value = Slot(uri=CMS.measurement_valu
 slots.HumanBodyHeightRecord002_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord002_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord002_measurement_value, domain=HumanBodyHeightRecord002, range=Union[dict, "HumanBodyHeightQuantity002"])
 
+slots.HumanBodyHeightRecord003_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord003_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord003_measurement_value, domain=HumanBodyHeightRecord003, range=Union[dict, "HumanBodyHeightQuantity002"])
+
+slots.HumanBodyHeightRecord004_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord004_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord004_measurement_value, domain=HumanBodyHeightRecord004, range=Union[dict, "HumanBodyHeightQuantity003"])
+
+slots.HumanBodyHeightRecord005_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord005_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord005_measurement_value, domain=HumanBodyHeightRecord005, range=Union[dict, "HumanBodyHeightQuantity004"])
+
+slots.HumanBodyHeightRecord006_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord006_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord006_measurement_value, domain=HumanBodyHeightRecord006, range=Union[dict, "HumanBodyHeightQuantity003"])
+
+slots.HumanBodyHeightRecord006_unit = Slot(uri=BDCHM.unit, name="HumanBodyHeightRecord006_unit", curie=BDCHM.curie('unit'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord006_unit, domain=HumanBodyHeightRecord006, range=Optional[Union[str, URIorCURIE]])
+
 slots.HumanBodyWeightRecord_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyWeightRecord_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord_measurement_value, domain=HumanBodyWeightRecord, range=Union[dict, "HumanBodyWeightQuantity"])
 
@@ -2705,8 +3072,23 @@ slots.HumanBodyWeightRecord001_measurement_value = Slot(uri=CMS.measurement_valu
 slots.HumanBodyWeightRecord002_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyWeightRecord002_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord002_measurement_value, domain=HumanBodyWeightRecord002, range=Union[dict, "HumanBodyWeightQuantity002"])
 
+slots.HumanBodyWeightRecord003_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyWeightRecord003_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord003_measurement_value, domain=HumanBodyWeightRecord003, range=Union[dict, "HumanBodyWeightQuantity003"])
+
 slots.BodyMassIndexRecord_measurement_value = Slot(uri=CMS.measurement_value, name="BodyMassIndexRecord_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexRecord_measurement_value, domain=BodyMassIndexRecord, range=Union[dict, "BodyMassIndexQuantity"])
+
+slots.BodyMassIndexRecord001_measurement_value = Slot(uri=CMS.measurement_value, name="BodyMassIndexRecord001_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexRecord001_measurement_value, domain=BodyMassIndexRecord001, range=Union[dict, "BodyMassIndexQuantity"])
+
+slots.BodyMassIndexRecord001_calculated_from = Slot(uri=CMS.calculated_from, name="BodyMassIndexRecord001_calculated_from", curie=CMS.curie('calculated_from'),
+                   model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexRecord001_calculated_from, domain=BodyMassIndexRecord001, range=Optional[str])
+
+slots.BodyMassIndexRecord002_measurement_value = Slot(uri=CMS.measurement_value, name="BodyMassIndexRecord002_measurement_value", curie=CMS.curie('measurement_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexRecord002_measurement_value, domain=BodyMassIndexRecord002, range=Union[dict, "BodyMassIndexQuantity"])
+
+slots.BodyMassIndexRecord002_calculated_from = Slot(uri=CMS.calculated_from, name="BodyMassIndexRecord002_calculated_from", curie=CMS.curie('calculated_from'),
+                   model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexRecord002_calculated_from, domain=BodyMassIndexRecord002, range=Optional[str])
 
 slots.HumanFvcRecord_measurement_value = Slot(uri=CMS.measurement_value, name="HumanFvcRecord_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanFvcRecord_measurement_value, domain=HumanFvcRecord, range=Union[dict, "HumanFvcQuantity"])
@@ -2756,6 +3138,12 @@ slots.HumanBodyHeightQuantity001_quantity_value = Slot(uri=LINKML['linkml-micros
 slots.HumanBodyHeightQuantity002_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyHeightQuantity002_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity002_quantity_value, domain=HumanBodyHeightQuantity002, range=Decimal)
 
+slots.HumanBodyHeightQuantity003_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyHeightQuantity003_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity003_quantity_value, domain=HumanBodyHeightQuantity003, range=Decimal)
+
+slots.HumanBodyHeightQuantity004_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyHeightQuantity004_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity004_quantity_value, domain=HumanBodyHeightQuantity004, range=Decimal)
+
 slots.HumanBodyWeightQuantity_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyWeightQuantity_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightQuantity_quantity_value, domain=HumanBodyWeightQuantity, range=Decimal)
 
@@ -2764,6 +3152,9 @@ slots.HumanBodyWeightQuantity001_quantity_value = Slot(uri=LINKML['linkml-micros
 
 slots.HumanBodyWeightQuantity002_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyWeightQuantity002_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightQuantity002_quantity_value, domain=HumanBodyWeightQuantity002, range=Decimal)
+
+slots.HumanBodyWeightQuantity003_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyWeightQuantity003_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightQuantity003_quantity_value, domain=HumanBodyWeightQuantity003, range=Decimal)
 
 slots.BodyMassIndexQuantity_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="BodyMassIndexQuantity_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.BodyMassIndexQuantity_quantity_value, domain=BodyMassIndexQuantity, range=Decimal)

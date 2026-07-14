@@ -1,0 +1,10 @@
+id: DMCharmonizationPilotHeight
+associated_study: DMCPilotv1
+variable_description: "Height"
+concept_type: OBA:VT0001253
+variable_label: "Height"
+cde_id: CONDOR:00001
+bdchm_type: observation
+unit: UCUM:cm
+integrates:
+  - FHSg3b0483phv00177539c

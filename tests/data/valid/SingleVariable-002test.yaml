@@ -1,0 +1,10 @@
+id: FHSshareidphv00177237s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Participant Identifier"
+variable_label: "Participant Identifier"
+source_id: phv00177237v7p16
+file_id: pht003094v9p16
+file_name: e_exam_ex02_3b_0017s
+variable_name: shareid
+source_variable_description: "Unique study participant identification number"
+data_type: string
