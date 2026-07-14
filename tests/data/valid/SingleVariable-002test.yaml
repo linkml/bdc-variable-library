@@ -7,4 +7,4 @@ file_id: pht003094v9p16
 file_name: e_exam_ex02_3b_0017s
 variable_name: shareid
 source_variable_description: "Unique study participant identification number"
-data_type: string
+data_type: uriorcurie
