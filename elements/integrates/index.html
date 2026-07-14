@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://linkml.github.io/bdc-variable-library/elements/variable_path/">
+        <link rel="canonical" href="https://linkml.github.io/bdc-variable-library/elements/integrates/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: variable_path - bdc-variable-library</title>
+        <title>Slot: integrates - bdc-variable-library</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-variable_path" class="md-skip">
+        <a href="#slot-integrates" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: variable_path
+              Slot: integrates
             
           </span>
         </div>
@@ -485,10 +485,10 @@
   
 
 
-<h1 id="slot-variable_path">Slot: variable_path</h1>
-<p><em>Unique identifier pointing to variable</em></p>
+<h1 id="slot-integrates">Slot: integrates</h1>
+<p><em>List of variables combined in the IntegratedVariable</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/variable_path">bdc_variable_library:variable_path</a></p>
+<p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/integrates">bdc_variable_library:integrates</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -501,8 +501,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetadataVariable/">MetadataVariable</a></td>
-<td>Specific data point used to add information to an observation</td>
+<td><a href="../IntegratedVariable/">IntegratedVariable</a></td>
+<td>Represents a variable that contains data from multiple studies</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IntegratedHeight001/">IntegratedHeight001</a></td>
+<td>Height variable containing data from multiple studies, normalized to cm</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -519,11 +524,11 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../MetadataVariable/">MetadataVariable</a></td>
+<td><a href="../IntegratedVariable/">IntegratedVariable</a></td>
 </tr>
 </tbody>
 </table>
@@ -537,8 +542,8 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>Multivalued</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
@@ -558,23 +563,24 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>bdc_variable_library:variable_path</td>
+<td>bdc_variable_library:integrates</td>
 </tr>
 <tr>
 <td>native</td>
-<td>bdc_variable_library:variable_path</td>
+<td>bdc_variable_library:integrates</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">variable_path</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier pointing to variable</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integrates</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of variables combined in the IntegratedVariable</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetadataVariable</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
+<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 </div>

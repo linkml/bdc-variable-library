@@ -2,730 +2,778 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/about/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ActivityTypeEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/AlertValue/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/AssociatedEvidenceEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/BdchmTypeEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/BodyMassIndexQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/BodyMassIndexRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/BodyMassIndexRecord001/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/BodyMassIndexRecord002/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/BodyPositionEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Boolean/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ClinicalMeasurementRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ClinicalMicroschemaEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/CodedValue/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/CollectedByEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ComparatorEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/CompoundHeight002/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/CompoundVariable/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ConditionSeverityEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ConditionStatusRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Context/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ContextEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Curie/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/DataTypeEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Date/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/DateOrDatetime/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Datetime/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Decimal/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Double/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/DrugStatusRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Entity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/FamilyRelationshipEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/bdc-variable-library/elements/FhsHeight002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Float/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HistoricalStatusEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountQuantity001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountQuantity002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountRecord001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBasophilCountRecord002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightQuantity001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightQuantity002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightQuantity003/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightQuantity004/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord003/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord004/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord005/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyHeightRecord006/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightQuantity001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightQuantity002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightQuantity003/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightRecord001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightRecord002/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/HumanBodyWeightRecord003/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanFev1Quantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanFev1Record/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanFvcQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanFvcRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanMeasuredFvcQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanMeasuredFvcQuantity001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanMeasuredFvcRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanMeasuredFvcRecord001/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanPercentPredictedFvcQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanPercentPredictedFvcRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanPredictedFvcQuantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/HumanPredictedFvcRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/InstrumentEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Integer/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/IntegratedHeight001/</loc>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/IntegratedVariable/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Jsonpath/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Jsonpointer/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/MetadataVariable/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/MethodEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/MicroschemaDefinition/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/MissingValue/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Ncname/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Nodeidentifier/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Objectidentifier/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ProcedureStatusRecord/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ProvenanceEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Quantity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ReagentKitEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/RelativeTimingEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Relativity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ResearchStudy/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/RouteAdminEnum/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/SingleVariable/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Sparqlpath/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/String/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Time/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/TimeInterval/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Timepoint/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Uri/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Uriorcurie/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/ValueMicroschemaDefinition/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/Variable/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/absolute_time/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/activity_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_condition_end/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_condition_record/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_condition_start/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_drug_end/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_drug_record/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_drug_start/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_measurement/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_procedure_end/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_procedure_record/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/age_at_procedure_start/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/alert_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/associated_evidence/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/associated_study/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/bdc-variable-library/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/bdchm_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/body_location/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/body_position/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/calculated_from/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/cde_id/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/code/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/code_label/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/code_system/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/coded_values/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/collected_by/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/comment/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/comparator/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/concept_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/condition_provenance/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/condition_severity/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/condition_status/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/condition_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/context/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/data_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/datetime/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/domain_of_use/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/dose/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/drug_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/duration/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/file_id/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/file_name/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/frequency/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/id/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/indication/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/indicator_char/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/indicator_meaning/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/instrument/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/bdc-variable-library/elements/integrates/</loc>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/interval_end/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/interval_start/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/location/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/lower_limit_normal/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/maximum_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/measurement_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/measurement_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/metadata/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/method/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/methodology/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/microschema_slot/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/minimum_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/missing_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/observation_result/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/observation_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/offset/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/percent_predicted_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/predicted_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/procedure_type/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/profile_version/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/quantity_unit/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/quantity_value/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/reagent_kit/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/relationship_to_participant/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/relative_timing/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/relative_to_event/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/resolution/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/route_of_administration/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/source_id/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/source_variable_description/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/study_site/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/subject/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/subject_age/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/subject_identifier/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/temporality/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/unit/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/upper_limit_normal/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/variable_description/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/variable_label/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
     <url>
          <loc>https://linkml.github.io/bdc-variable-library/elements/variable_name/</loc>
-         <lastmod>2026-07-08</lastmod>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/bdc-variable-library/elements/variable_path/</loc>
-         <lastmod>2026-07-08</lastmod>
+         <lastmod>2026-07-14</lastmod>
     </url>
 </urlset>

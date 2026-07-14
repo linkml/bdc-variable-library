@@ -310,6 +310,8 @@
         click HumanBodyWeightRecord001 href "../HumanBodyWeightRecord001/"
       HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord002
         click HumanBodyWeightRecord002 href "../HumanBodyWeightRecord002/"
+      HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord003
+        click HumanBodyWeightRecord003 href "../HumanBodyWeightRecord003/"
 
 
       HumanBodyWeightRecord : absolute_time
@@ -432,6 +434,7 @@
 <li><strong>HumanBodyWeightRecord</strong><ul>
 <li><a href="../HumanBodyWeightRecord001/">HumanBodyWeightRecord001</a></li>
 <li><a href="../HumanBodyWeightRecord002/">HumanBodyWeightRecord002</a></li>
+<li><a href="../HumanBodyWeightRecord003/">HumanBodyWeightRecord003</a></li>
 </ul>
 </li>
 </ul>
@@ -450,7 +453,7 @@
 <tbody>
 <tr>
 <td><a href="../subject_identifier/">subject_identifier</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>An identifier for the subject of the datum</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -561,7 +564,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:VT0001259'}, {'equals_string': 'OMOP:903121'}, {'equals_string': 'LOINC:29463-7'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'kg'}, {'equals_string': '[lb_av]'}, {'equals_string': 'g'}]}, 'instrument': {'any_of': [{'equals_string': 'mechanical_beam_balance_scale'}, {'equals_string': 'digital_scale'}, {'equals_string': 'spring_scale'}, {'equals_string': 'bariatric_scale'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'kg'}, {'equals_string': '[lb_av]'}, {'equals_string': 'g'}]}, 'instrument': {'any_of': [{'equals_string': 'mechanical_beam_balance_scale'}, {'equals_string': 'digital_scale'}, {'equals_string': 'spring_scale'}, {'equals_string': 'bariatric_scale'}, {'equals_string': 'body_composition_analyzer'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -626,6 +629,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">digital_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spring_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bariatric_scale</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_composition_analyzer</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
@@ -657,7 +661,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DrugStatusRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">measurement_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_type</span>
@@ -688,7 +692,7 @@
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:unit</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyWeightRecord</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleVariable</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
@@ -830,6 +834,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">digital_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spring_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bariatric_scale</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_composition_analyzer</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>

@@ -501,13 +501,38 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SingleVariable/">SingleVariable</a></td>
-<td>Represents a single entry in a data dictionary</td>
+<td><a href="../Variable/">Variable</a></td>
+<td>A generic grouping for any variable</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 <td>A data structure with key and value attributes that represents a single obser...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SingleVariable/">SingleVariable</a></td>
+<td>Represents a single entry in a data dictionary</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
+<td>Represents a variable and all metadata</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IntegratedVariable/">IntegratedVariable</a></td>
+<td>Represents a variable that contains data from multiple studies</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CompoundHeight002/">CompoundHeight002</a></td>
+<td>Height variable with metadata, measured in inches and collected using a wall-...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IntegratedHeight001/">IntegratedHeight001</a></td>
+<td>Height variable containing data from multiple studies, normalized to cm</td>
 <td>no</td>
 </tr>
 <tr>
@@ -526,6 +551,26 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../HumanBodyHeightRecord003/">HumanBodyHeightRecord003</a></td>
+<td>Measurement of linear distance of a standing human body from the bottom of a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord004/">HumanBodyHeightRecord004</a></td>
+<td>Measurement of linear distance of a standing human body from the bottom of a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord005/">HumanBodyHeightRecord005</a></td>
+<td>Measurement of linear distance of a standing human body from the bottom of a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyHeightRecord006/">HumanBodyHeightRecord006</a></td>
+<td>Measurement of linear distance of a human body from the bottom of a flat foot...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../HumanBodyWeightRecord/">HumanBodyWeightRecord</a></td>
 <td>Measurement of the force exerted by a human body on a scale due to gravity</td>
 <td>no</td>
@@ -541,7 +586,22 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../HumanBodyWeightRecord003/">HumanBodyWeightRecord003</a></td>
+<td>Measurement of the force exerted by a human body on a body composition analyz...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../BodyMassIndexRecord/">BodyMassIndexRecord</a></td>
+<td>A calculated numerical quantity representing an individual's weight-to-height...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BodyMassIndexRecord001/">BodyMassIndexRecord001</a></td>
+<td>A calculated numerical quantity representing an individual's weight-to-height...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BodyMassIndexRecord002/">BodyMassIndexRecord002</a></td>
 <td>A calculated numerical quantity representing an individual's weight-to-height...</td>
 <td>no</td>
 </tr>
@@ -608,7 +668,7 @@
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../SingleVariable/">SingleVariable</a>, <a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
+<td><a href="../Variable/">Variable</a>, <a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
@@ -663,7 +723,7 @@
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:unit</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleVariable</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 </code></pre></div>
