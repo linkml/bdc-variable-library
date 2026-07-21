@@ -1,0 +1,12 @@
+id: ARICABI5phv00294492s
+associated_study: ARIC000280
+variable_description: "Height"
+concept_type: OBA:VT0001253
+variable_label: "Height"
+source_id: phv00294492v3p3
+file_id: pht006414v3p3
+file_name: ABI
+variable_name: ABI5
+source_variable_description: "Body height, height [Ankle Brachial BP index. ABI. Visit 5]"
+data_type: decimal
+unit: https://units-of-measurement.org/cm

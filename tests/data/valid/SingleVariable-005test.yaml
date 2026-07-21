@@ -1,0 +1,10 @@
+id: ARICSUBJECT_IDphv00294489s
+associated_study: ARIC000280
+variable_description: "Participant Identifier"
+variable_label: "Participant Identifier"
+source_id: phv00294489v3p3
+file_id: pht006414v3p3
+file_name: ABI
+variable_name: shareid
+source_variable_description: "De-identified ARIC subject ID [Ankle Brachial BP Index, ABI. Visit 5]"
+data_type: uriorcurie
