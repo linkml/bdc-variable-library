@@ -125,6 +125,14 @@ classes:
       wall-mounted stadiometer
     instantiates:
       - HumanBodyHeightRecord002
+      
+  CompoundHeight001:
+    is_a: CompoundVariable
+    description: >-
+      Height variable with metadata, measured in cm and collected using a
+      wall-mounted stadiometer
+    instantiates:
+      - HumanBodyHeightRecord001
   
   IntegratedHeight001:
     is_a: IntegratedVariable
