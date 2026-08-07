@@ -3174,6 +3174,27 @@ classes:
     - metadata
     - alert_value
     class_uri: bdc_variable_library:CompoundHeight002
+  CompoundHeight001:
+    name: CompoundHeight001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundHeight001
+    instantiates:
+    - HumanBodyHeightRecord001
+    description: Height variable with metadata, measured in cm and collected using
+      a wall-mounted stadiometer
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - unit
+    - cde_id
+    - bdchm_type
+    - metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundHeight001
   IntegratedHeight001:
     name: IntegratedHeight001
     definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedHeight001
@@ -4922,7 +4943,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-07-14T15:46:53'
-source_file_size: 8321
-generation_date: '2026-07-14T15:47:04'
+source_file_date: '2026-08-07T14:48:56'
+source_file_size: 8552
+generation_date: '2026-08-07T14:49:39'
 
