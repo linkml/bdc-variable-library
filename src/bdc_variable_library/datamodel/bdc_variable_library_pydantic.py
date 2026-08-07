@@ -2265,6 +2265,26 @@ class CompoundHeight002(CompoundVariable):
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
+class CompoundHeight001(CompoundVariable):
+    """
+    Height variable with metadata, measured in cm and collected using a wall-mounted stadiometer
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
+         'instantiates': ['HumanBodyHeightRecord001']})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[str]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+         'slot_uri': 'bdchm:unit'} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
 class IntegratedHeight001(IntegratedVariable):
     """
     Height variable containing data from multiple studies, normalized to cm
@@ -2358,5 +2378,6 @@ MissingValue.model_rebuild()
 AlertValue.model_rebuild()
 MetadataVariable.model_rebuild()
 CompoundHeight002.model_rebuild()
+CompoundHeight001.model_rebuild()
 IntegratedHeight001.model_rebuild()
 ResearchStudy.model_rebuild()

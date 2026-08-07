@@ -1,0 +1,15 @@
+id: ARICABI5phv00294492c
+associated_study: ARIC000280
+variable_description: "Height"
+concept_type: OBA:VT0001253
+variable_label: "Height"
+cde_id: CONDOR:00003
+bdchm_type: observation
+unit: https://units-of-measurement.org/cm
+metadata:
+  - id: ARICABI5phv00294492s
+    microschema_slot: measurement_value
+  - id: ARICABI4phv00294491s
+    microschema_slot: age_at_measurement
+  - id: ARICSUBJECT_IDphv00294489s
+    microschema_slot: subject_identifier

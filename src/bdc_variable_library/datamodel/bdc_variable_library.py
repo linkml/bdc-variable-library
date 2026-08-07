@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-14T11:45:29
+# Generation date: 2026-07-21T15:37:17
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -121,6 +121,10 @@ class MetadataVariableId(EntityId):
 
 
 class CompoundHeight002Id(CompoundVariableId):
+    pass
+
+
+class CompoundHeight001Id(CompoundVariableId):
     pass
 
 
@@ -453,6 +457,29 @@ class CompoundHeight002(CompoundVariable):
             self.MissingRequiredField("id")
         if not isinstance(self.id, CompoundHeight002Id):
             self.id = CompoundHeight002Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundHeight001(CompoundVariable):
+    """
+    Height variable with metadata, measured in cm and collected using a wall-mounted stadiometer
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundHeight001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundHeight001"
+    class_name: ClassVar[str] = "CompoundHeight001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundHeight001
+
+    id: Union[str, CompoundHeight001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundHeight001Id):
+            self.id = CompoundHeight001Id(self.id)
 
         super().__post_init__(**kwargs)
 
