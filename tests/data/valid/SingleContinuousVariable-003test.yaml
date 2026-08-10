@@ -3,6 +3,7 @@ associated_study: FraminghamHeartStudy000007
 variable_description: "Participant age at exam 2"
 variable_label: "Participant Age"
 source_id: phv00177932v10p16
+concept_type: OMOP:4265453
 file_id: pht003099v10p16
 file_name: vr_dates_2022_a_1487s
 variable_name: age2

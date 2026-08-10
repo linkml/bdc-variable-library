@@ -1,10 +1,11 @@
-id: FHSshareidphv00177237s
+id: FHSshareidphv00273700s
 associated_study: FraminghamHeartStudy000007
 variable_description: "Participant Identifier"
+concept_type: OMOP:42528934
 variable_label: "Participant Identifier"
-source_id: phv00177237v7p16
-file_id: pht003094v9p16
-file_name: e_exam_ex02_3b_0017s
+source_id: phv00273700v1p16
+file_id: pht006005v1p16
+file_name: e_exam_ex01_2_0813s
 variable_name: shareid
 source_variable_description: "Unique study participant identification number"
-data_type: uriorcurie
+data_type: string

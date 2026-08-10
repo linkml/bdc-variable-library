@@ -1,0 +1,26 @@
+id: FHSg3b0431phv00177516s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Asthma status"
+concept_type: OMOP:317009
+variable_label: "Asthma"
+source_id: phv00177516.v7.p16
+file_id: pht003094.v9
+file_name: e_exam_ex02_3b_0017s
+variable_name: g3b0431
+source_variable_description: "Clinical Diagnostic Impression: Asthma"
+data_type: enum
+missing_value:
+  - id: mv:002
+    indicator_char: "."
+    indicator_meaning: "Unknown"
+coded_values:
+  - id: cv:001
+    indicator_char: "0"
+    indicator_meaning: "No"
+  - id: cv:002
+    indicator_char: "1"
+    indicator_meaning: "Yes"
+  - id: cv:003
+    indicator_char: "2"
+    indicator_meaning: "Maybe"
+comment: "Clinical Diagnostic Impression ONLY. Not hard data. Use with caution. Not verified"

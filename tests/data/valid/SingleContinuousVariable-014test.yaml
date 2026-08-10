@@ -1,0 +1,13 @@
+id: FHSage1phv00177930s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Participant age at exam 1"
+variable_label: "Participant Age"
+source_id: phv00177930v10p16
+file_id: pht003099v10p16
+file_name: vr_dates_2022_a_1487s
+variable_name: age1
+source_variable_description: "Age at Exam 1"
+data_type: integer
+unit: UCUM:a
+minimum_value: 5
+maximum_value: 83

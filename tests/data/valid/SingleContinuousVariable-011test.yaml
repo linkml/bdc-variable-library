@@ -1,0 +1,23 @@
+id: FHSg3a542phv00274122s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Asthma status"
+concept_type: OMOP:40766910
+variable_label: "Asthma"
+source_id: phv00274122.v1.p16
+file_id: pht006005.v1
+file_name: e_exam_ex01_2_0813s
+variable_name: g3a542
+source_variable_description: "Asthma: At what age did it start?"
+data_type: integer
+unit: UCUM:a
+missing_value:
+  - id: mv:002
+    indicator_char: "."
+    indicator_meaning: "Unknown"
+alert_values:
+  - id: al:001
+    indicator_char: "0"
+    indicator_meaning: "No asthma"
+  - id: al:002
+    indicator_char: "1"
+    indicator_meaning: "1 year or less"

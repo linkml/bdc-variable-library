@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-21T15:37:17
+# Generation date: 2026-08-10T14:50:48
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -77,7 +77,6 @@ UCUM = CurieNamespace('UCUM', 'https://units-of-measurement.org/')
 BDC_VARIABLE_LIBRARY = CurieNamespace('bdc_variable_library', 'https://w3id.org/linkml/bdc-variable-library/')
 BDCHM = CurieNamespace('bdchm', 'https://w3id.org/bdchm/')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
-CM = CurieNamespace('cm', 'http://example.org/UNKNOWN/cm/')
 CMS = CurieNamespace('cms', 'https://w3id.org/linkml/clinical-microschemas/')
 EXAMPLE = CurieNamespace('example', 'http://www.example.org/rdf#')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -96,7 +95,11 @@ class VariableId(EntityId):
     pass
 
 
-class SingleVariableId(VariableId):
+class SingleContinuousVariableId(VariableId):
+    pass
+
+
+class SingleCategoricalVariableId(VariableId):
     pass
 
 
@@ -116,7 +119,15 @@ class AlertValueId(EntityId):
     pass
 
 
+class EnumValueId(EntityId):
+    pass
+
+
 class MetadataVariableId(EntityId):
+    pass
+
+
+class DocumentationVariableId(EntityId):
     pass
 
 
@@ -129,6 +140,14 @@ class CompoundHeight001Id(CompoundVariableId):
 
 
 class IntegratedHeight001Id(IntegratedVariableId):
+    pass
+
+
+class CompoundAsthma001Id(CompoundVariableId):
+    pass
+
+
+class IntegratedAsthma001Id(IntegratedVariableId):
     pass
 
 
@@ -176,7 +195,6 @@ class Variable(Entity):
     variable_description: Optional[str] = None
     concept_type: Optional[Union[str, URIorCURIE]] = None
     variable_label: Optional[str] = None
-    unit: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -196,25 +214,22 @@ class Variable(Entity):
         if self.variable_label is not None and not isinstance(self.variable_label, str):
             self.variable_label = str(self.variable_label)
 
-        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
-            self.unit = URIorCURIE(self.unit)
-
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class SingleVariable(Variable):
+class SingleContinuousVariable(Variable):
     """
-    Represents a single entry in a data dictionary
+    Represents a single entry in a data dictionary of a variable with a continuous value
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["SingleVariable"]
-    class_class_curie: ClassVar[str] = "bdc_variable_library:SingleVariable"
-    class_name: ClassVar[str] = "SingleVariable"
-    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.SingleVariable
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["SingleContinuousVariable"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:SingleContinuousVariable"
+    class_name: ClassVar[str] = "SingleContinuousVariable"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.SingleContinuousVariable
 
-    id: Union[str, SingleVariableId] = None
+    id: Union[str, SingleContinuousVariableId] = None
     source_id: Optional[str] = None
     file_id: Optional[str] = None
     file_name: Optional[str] = None
@@ -224,15 +239,16 @@ class SingleVariable(Variable):
     minimum_value: Optional[Decimal] = None
     maximum_value: Optional[Decimal] = None
     resolution: Optional[int] = None
-    coded_values: Optional[str] = None
     missing_value: Optional[Union[dict[Union[str, MissingValueId], Union[dict, "MissingValue"]], list[Union[dict, "MissingValue"]]]] = empty_dict()
+    unit: Optional[Union[str, URIorCURIE]] = None
+    alert_values: Optional[Union[dict[Union[str, AlertValueId], Union[dict, "AlertValue"]], list[Union[dict, "AlertValue"]]]] = empty_dict()
     comment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, SingleVariableId):
-            self.id = SingleVariableId(self.id)
+        if not isinstance(self.id, SingleContinuousVariableId):
+            self.id = SingleContinuousVariableId(self.id)
 
         if self.source_id is not None and not isinstance(self.source_id, str):
             self.source_id = str(self.source_id)
@@ -261,10 +277,69 @@ class SingleVariable(Variable):
         if self.resolution is not None and not isinstance(self.resolution, int):
             self.resolution = int(self.resolution)
 
-        if self.coded_values is not None and not isinstance(self.coded_values, str):
-            self.coded_values = str(self.coded_values)
+        self._normalize_inlined_as_list(slot_name="missing_value", slot_type=MissingValue, key_name="id", keyed=True)
+
+        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
+            self.unit = URIorCURIE(self.unit)
+
+        self._normalize_inlined_as_list(slot_name="alert_values", slot_type=AlertValue, key_name="id", keyed=True)
+
+        if self.comment is not None and not isinstance(self.comment, str):
+            self.comment = str(self.comment)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SingleCategoricalVariable(Variable):
+    """
+    Represents a single entry in a data dictionary of a variable with a categorical value
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["SingleCategoricalVariable"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:SingleCategoricalVariable"
+    class_name: ClassVar[str] = "SingleCategoricalVariable"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.SingleCategoricalVariable
+
+    id: Union[str, SingleCategoricalVariableId] = None
+    source_id: Optional[str] = None
+    file_id: Optional[str] = None
+    file_name: Optional[str] = None
+    variable_name: Optional[str] = None
+    source_variable_description: Optional[str] = None
+    data_type: Optional[Union[str, "DataTypeEnum"]] = None
+    missing_value: Optional[Union[dict[Union[str, MissingValueId], Union[dict, "MissingValue"]], list[Union[dict, "MissingValue"]]]] = empty_dict()
+    coded_values: Optional[Union[dict[Union[str, EnumValueId], Union[dict, "EnumValue"]], list[Union[dict, "EnumValue"]]]] = empty_dict()
+    comment: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SingleCategoricalVariableId):
+            self.id = SingleCategoricalVariableId(self.id)
+
+        if self.source_id is not None and not isinstance(self.source_id, str):
+            self.source_id = str(self.source_id)
+
+        if self.file_id is not None and not isinstance(self.file_id, str):
+            self.file_id = str(self.file_id)
+
+        if self.file_name is not None and not isinstance(self.file_name, str):
+            self.file_name = str(self.file_name)
+
+        if self.variable_name is not None and not isinstance(self.variable_name, str):
+            self.variable_name = str(self.variable_name)
+
+        if self.source_variable_description is not None and not isinstance(self.source_variable_description, str):
+            self.source_variable_description = str(self.source_variable_description)
+
+        if self.data_type is not None and not isinstance(self.data_type, DataTypeEnum):
+            self.data_type = DataTypeEnum(self.data_type)
 
         self._normalize_inlined_as_list(slot_name="missing_value", slot_type=MissingValue, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="coded_values", slot_type=EnumValue, key_name="id", keyed=True)
 
         if self.comment is not None and not isinstance(self.comment, str):
             self.comment = str(self.comment)
@@ -287,8 +362,10 @@ class CompoundVariable(Variable):
     id: Union[str, CompoundVariableId] = None
     cde_id: Optional[Union[str, URIorCURIE]] = None
     bdchm_type: Optional[Union[str, "BdchmTypeEnum"]] = None
-    metadata: Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, "MetadataVariable"]], list[Union[dict, "MetadataVariable"]]]] = empty_dict()
-    alert_value: Optional[Union[Union[str, AlertValueId], list[Union[str, AlertValueId]]]] = empty_list()
+    unit: Optional[Union[str, URIorCURIE]] = None
+    row_metadata: Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, "MetadataVariable"]], list[Union[dict, "MetadataVariable"]]]] = empty_dict()
+    documentation_metadata: Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, "DocumentationVariable"]], list[Union[dict, "DocumentationVariable"]]]] = empty_dict()
+    alert_value: Optional[Union[dict[Union[str, AlertValueId], Union[dict, "AlertValue"]], list[Union[dict, "AlertValue"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -302,11 +379,14 @@ class CompoundVariable(Variable):
         if self.bdchm_type is not None and not isinstance(self.bdchm_type, BdchmTypeEnum):
             self.bdchm_type = BdchmTypeEnum(self.bdchm_type)
 
-        self._normalize_inlined_as_list(slot_name="metadata", slot_type=MetadataVariable, key_name="id", keyed=True)
+        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
+            self.unit = URIorCURIE(self.unit)
 
-        if not isinstance(self.alert_value, list):
-            self.alert_value = [self.alert_value] if self.alert_value is not None else []
-        self.alert_value = [v if isinstance(v, AlertValueId) else AlertValueId(v) for v in self.alert_value]
+        self._normalize_inlined_as_list(slot_name="row_metadata", slot_type=MetadataVariable, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="documentation_metadata", slot_type=DocumentationVariable, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="alert_value", slot_type=AlertValue, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -327,6 +407,7 @@ class IntegratedVariable(Variable):
     id: Union[str, IntegratedVariableId] = None
     cde_id: Optional[Union[str, URIorCURIE]] = None
     bdchm_type: Optional[Union[str, "BdchmTypeEnum"]] = None
+    unit: Optional[Union[str, URIorCURIE]] = None
     integrates: Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -340,6 +421,9 @@ class IntegratedVariable(Variable):
 
         if self.bdchm_type is not None and not isinstance(self.bdchm_type, BdchmTypeEnum):
             self.bdchm_type = BdchmTypeEnum(self.bdchm_type)
+
+        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
+            self.unit = URIorCURIE(self.unit)
 
         if not isinstance(self.integrates, list):
             self.integrates = [self.integrates] if self.integrates is not None else []
@@ -411,6 +495,41 @@ class AlertValue(Entity):
 
 
 @dataclass(repr=False)
+class EnumValue(Entity):
+    """
+    One possible answer in a list of enumerated values
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["EnumValue"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:EnumValue"
+    class_name: ClassVar[str] = "EnumValue"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.EnumValue
+
+    id: Union[str, EnumValueId] = None
+    indicator_char: Optional[str] = None
+    indicator_meaning: Optional[str] = None
+    indicator_type: Optional[Union[str, URIorCURIE]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EnumValueId):
+            self.id = EnumValueId(self.id)
+
+        if self.indicator_char is not None and not isinstance(self.indicator_char, str):
+            self.indicator_char = str(self.indicator_char)
+
+        if self.indicator_meaning is not None and not isinstance(self.indicator_meaning, str):
+            self.indicator_meaning = str(self.indicator_meaning)
+
+        if self.indicator_type is not None and not isinstance(self.indicator_type, URIorCURIE):
+            self.indicator_type = URIorCURIE(self.indicator_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class MetadataVariable(Entity):
     """
     Specific data point used to add information to an observation. This will typically be a unique identifier for a
@@ -431,6 +550,38 @@ class MetadataVariable(Entity):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetadataVariableId):
             self.id = MetadataVariableId(self.id)
+
+        if self.microschema_slot is not None and not isinstance(self.microschema_slot, ClinicalMicroschemaEnum):
+            self.microschema_slot = ClinicalMicroschemaEnum(self.microschema_slot)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DocumentationVariable(Entity):
+    """
+    Information derived from study documentation or text in a data dictionary that provides essential metadata for a
+    variable
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["DocumentationVariable"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:DocumentationVariable"
+    class_name: ClassVar[str] = "DocumentationVariable"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.DocumentationVariable
+
+    id: Union[str, DocumentationVariableId] = None
+    contr_vocab: Optional[str] = None
+    microschema_slot: Optional[Union[str, "ClinicalMicroschemaEnum"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DocumentationVariableId):
+            self.id = DocumentationVariableId(self.id)
+
+        if self.contr_vocab is not None and not isinstance(self.contr_vocab, str):
+            self.contr_vocab = str(self.contr_vocab)
 
         if self.microschema_slot is not None and not isinstance(self.microschema_slot, ClinicalMicroschemaEnum):
             self.microschema_slot = ClinicalMicroschemaEnum(self.microschema_slot)
@@ -503,6 +654,52 @@ class IntegratedHeight001(IntegratedVariable):
             self.MissingRequiredField("id")
         if not isinstance(self.id, IntegratedHeight001Id):
             self.id = IntegratedHeight001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundAsthma001(CompoundVariable):
+    """
+    A record of participant asthma status
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundAsthma001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundAsthma001"
+    class_name: ClassVar[str] = "CompoundAsthma001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundAsthma001
+
+    id: Union[str, CompoundAsthma001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundAsthma001Id):
+            self.id = CompoundAsthma001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedAsthma001(IntegratedVariable):
+    """
+    Participant asthma status containing data from multiple studies
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedAsthma001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedAsthma001"
+    class_name: ClassVar[str] = "IntegratedAsthma001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedAsthma001
+
+    id: Union[str, IntegratedAsthma001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedAsthma001Id):
+            self.id = IntegratedAsthma001Id(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -1178,16 +1375,12 @@ class HumanBodyHeightRecord006(HumanBodyHeightRecord):
     measurement_type: Union[str, URIorCURIE] = None
     age_at_measurement: Union[dict, Quantity] = None
     measurement_value: Union[dict, "HumanBodyHeightQuantity003"] = None
-    unit: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.measurement_value):
             self.MissingRequiredField("measurement_value")
         if not isinstance(self.measurement_value, HumanBodyHeightQuantity003):
             self.measurement_value = HumanBodyHeightQuantity003(**as_dict(self.measurement_value))
-
-        if self.unit is not None and not isinstance(self.unit, URIorCURIE):
-            self.unit = URIorCURIE(self.unit)
 
         super().__post_init__(**kwargs)
 
@@ -1653,6 +1846,240 @@ class HumanBasophilCountRecord002(HumanBasophilCountRecord):
 
         if self.unit is not None and not isinstance(self.unit, URIorCURIE):
             self.unit = URIorCURIE(self.unit)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AsthmaStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of asthma in the patient/participant or their
+    blood relatives
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["AsthmaStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:AsthmaStatusRecord"
+    class_name: ClassVar[str] = "AsthmaStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.AsthmaStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_condition_record: Union[dict, Quantity] = None
+    condition_status: Union[str, "HistoricalStatusEnum"] = None
+    relationship_to_participant: Union[str, "FamilyRelationshipEnum"] = None
+    condition_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.condition_type):
+            self.MissingRequiredField("condition_type")
+        if not isinstance(self.condition_type, URIorCURIE):
+            self.condition_type = URIorCURIE(self.condition_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class HeartFailureStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of congestive heart failure in the
+    patient/participant or their blood relatives
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["HeartFailureStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:HeartFailureStatusRecord"
+    class_name: ClassVar[str] = "HeartFailureStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.HeartFailureStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_condition_record: Union[dict, Quantity] = None
+    condition_status: Union[str, "HistoricalStatusEnum"] = None
+    relationship_to_participant: Union[str, "FamilyRelationshipEnum"] = None
+    condition_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.condition_type):
+            self.MissingRequiredField("condition_type")
+        if not isinstance(self.condition_type, URIorCURIE):
+            self.condition_type = URIorCURIE(self.condition_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ObesityStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of obesity in the patient/participant or their
+    blood relatives
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["ObesityStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:ObesityStatusRecord"
+    class_name: ClassVar[str] = "ObesityStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.ObesityStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_condition_record: Union[dict, Quantity] = None
+    condition_status: Union[str, "HistoricalStatusEnum"] = None
+    relationship_to_participant: Union[str, "FamilyRelationshipEnum"] = None
+    condition_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.condition_type):
+            self.MissingRequiredField("condition_type")
+        if not isinstance(self.condition_type, URIorCURIE):
+            self.condition_type = URIorCURIE(self.condition_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AspirinStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["AspirinStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:AspirinStatusRecord"
+    class_name: ClassVar[str] = "AspirinStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.AspirinStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_drug_record: Union[dict, Quantity] = None
+    drug_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.drug_type):
+            self.MissingRequiredField("drug_type")
+        if not isinstance(self.drug_type, URIorCURIE):
+            self.drug_type = URIorCURIE(self.drug_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class BetaBlockerStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["BetaBlockerStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:BetaBlockerStatusRecord"
+    class_name: ClassVar[str] = "BetaBlockerStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.BetaBlockerStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_drug_record: Union[dict, Quantity] = None
+    drug_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.drug_type):
+            self.MissingRequiredField("drug_type")
+        if not isinstance(self.drug_type, URIorCURIE):
+            self.drug_type = URIorCURIE(self.drug_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DiabetesMedicationStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["DiabetesMedicationStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:DiabetesMedicationStatusRecord"
+    class_name: ClassVar[str] = "DiabetesMedicationStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.DiabetesMedicationStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_drug_record: Union[dict, Quantity] = None
+    drug_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.drug_type):
+            self.MissingRequiredField("drug_type")
+        if not isinstance(self.drug_type, URIorCURIE):
+            self.drug_type = URIorCURIE(self.drug_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PacemakerStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a pacemaker implanted
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["PacemakerStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:PacemakerStatusRecord"
+    class_name: ClassVar[str] = "PacemakerStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.PacemakerStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_procedure_record: Union[dict, Quantity] = None
+    procedure_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.procedure_type):
+            self.MissingRequiredField("procedure_type")
+        if not isinstance(self.procedure_type, URIorCURIE):
+            self.procedure_type = URIorCURIE(self.procedure_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CoronaryAngioplastyStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a coronary angioplasty
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["CoronaryAngioplastyStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:CoronaryAngioplastyStatusRecord"
+    class_name: ClassVar[str] = "CoronaryAngioplastyStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CoronaryAngioplastyStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_procedure_record: Union[dict, Quantity] = None
+    procedure_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.procedure_type):
+            self.MissingRequiredField("procedure_type")
+        if not isinstance(self.procedure_type, URIorCURIE):
+            self.procedure_type = URIorCURIE(self.procedure_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CoronaryBypassStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a coronary artery bypass graft
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CMS["CoronaryBypassStatusRecord"]
+    class_class_curie: ClassVar[str] = "cms:CoronaryBypassStatusRecord"
+    class_name: ClassVar[str] = "CoronaryBypassStatusRecord"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CoronaryBypassStatusRecord
+
+    subject_identifier: Union[str, URIorCURIE] = None
+    age_at_procedure_record: Union[dict, Quantity] = None
+    procedure_type: Union[str, URIorCURIE] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.procedure_type):
+            self.MissingRequiredField("procedure_type")
+        if not isinstance(self.procedure_type, URIorCURIE):
+            self.procedure_type = URIorCURIE(self.procedure_type)
 
         super().__post_init__(**kwargs)
 
@@ -2204,7 +2631,7 @@ class BdchmTypeEnum(EnumDefinitionImpl):
 
 class ClinicalMicroschemaEnum(EnumDefinitionImpl):
     """
-    A list of slots describing clinical measurements in microschema
+    A list of slots describing clinical data in microschema
     """
     subject_identifier = PermissibleValue(text="subject_identifier")
     measurement_type = PermissibleValue(text="measurement_type")
@@ -2222,10 +2649,21 @@ class ClinicalMicroschemaEnum(EnumDefinitionImpl):
     age_at_measurement = PermissibleValue(text="age_at_measurement")
     study_site = PermissibleValue(text="study_site")
     absolute_time = PermissibleValue(text="absolute_time")
+    condition_type = PermissibleValue(text="condition_type")
+    associated_evidence = PermissibleValue(text="associated_evidence")
+    age_at_condition_start = PermissibleValue(text="age_at_condition_start")
+    age_at_condition_end = PermissibleValue(text="age_at_condition_end")
+    age_at_condition_record = PermissibleValue(text="age_at_condition_record")
+    condition_status = PermissibleValue(text="condition_status")
+    condition_provenance = PermissibleValue(text="condition_provenance")
+    condition_concept = PermissibleValue(text="condition_concept")
+    condition_severity = PermissibleValue(text="condition_severity")
+    relationship_to_participant = PermissibleValue(text="relationship_to_participant")
+    method_type = PermissibleValue(text="method_type")
 
     _defn = EnumDefinition(
         name="ClinicalMicroschemaEnum",
-        description="A list of slots describing clinical measurements in microschema",
+        description="A list of slots describing clinical data in microschema",
     )
 
 class ComparatorEnum(EnumDefinitionImpl):
@@ -2753,6 +3191,33 @@ class RelativeTimingEnum(EnumDefinitionImpl):
         description="Set of values describing the relative timing of an activity",
     )
 
+class DynamicAsthmaEnum(EnumDefinitionImpl):
+    """
+    Asthma and asthma-related terms from Mondo and HPO
+    """
+    _defn = EnumDefinition(
+        name="DynamicAsthmaEnum",
+        description="Asthma and asthma-related terms from Mondo and HPO",
+    )
+
+class DynamicHeartFailureEnum(EnumDefinitionImpl):
+    """
+    Heart failure and related terms from Mondo
+    """
+    _defn = EnumDefinition(
+        name="DynamicHeartFailureEnum",
+        description="Heart failure and related terms from Mondo",
+    )
+
+class DynamicObesityEnum(EnumDefinitionImpl):
+    """
+    Obesity and related terms from HPO
+    """
+    _defn = EnumDefinition(
+        name="DynamicObesityEnum",
+        description="Obesity and related terms from HPO",
+    )
+
 # Slots
 class slots:
     pass
@@ -2790,9 +3255,6 @@ slots.maximum_value = Slot(uri=BDC_VARIABLE_LIBRARY.maximum_value, name="maximum
 slots.resolution = Slot(uri=BDC_VARIABLE_LIBRARY.resolution, name="resolution", curie=BDC_VARIABLE_LIBRARY.curie('resolution'),
                    model_uri=BDC_VARIABLE_LIBRARY.resolution, domain=None, range=Optional[int])
 
-slots.coded_values = Slot(uri=BDC_VARIABLE_LIBRARY.coded_values, name="coded_values", curie=BDC_VARIABLE_LIBRARY.curie('coded_values'),
-                   model_uri=BDC_VARIABLE_LIBRARY.coded_values, domain=None, range=Optional[str])
-
 slots.missing_value = Slot(uri=BDC_VARIABLE_LIBRARY.missing_value, name="missing_value", curie=BDC_VARIABLE_LIBRARY.curie('missing_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.missing_value, domain=None, range=Optional[Union[dict[Union[str, MissingValueId], Union[dict, MissingValue]], list[Union[dict, MissingValue]]]])
 
@@ -2811,11 +3273,17 @@ slots.concept_type = Slot(uri=BDC_VARIABLE_LIBRARY.concept_type, name="concept_t
 slots.bdchm_type = Slot(uri=BDC_VARIABLE_LIBRARY.bdchm_type, name="bdchm_type", curie=BDC_VARIABLE_LIBRARY.curie('bdchm_type'),
                    model_uri=BDC_VARIABLE_LIBRARY.bdchm_type, domain=None, range=Optional[Union[str, "BdchmTypeEnum"]])
 
-slots.metadata = Slot(uri=BDC_VARIABLE_LIBRARY.metadata, name="metadata", curie=BDC_VARIABLE_LIBRARY.curie('metadata'),
-                   model_uri=BDC_VARIABLE_LIBRARY.metadata, domain=None, range=Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, MetadataVariable]], list[Union[dict, MetadataVariable]]]])
+slots.row_metadata = Slot(uri=BDC_VARIABLE_LIBRARY.row_metadata, name="row_metadata", curie=BDC_VARIABLE_LIBRARY.curie('row_metadata'),
+                   model_uri=BDC_VARIABLE_LIBRARY.row_metadata, domain=None, range=Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, MetadataVariable]], list[Union[dict, MetadataVariable]]]])
+
+slots.documentation_metadata = Slot(uri=BDC_VARIABLE_LIBRARY.documentation_metadata, name="documentation_metadata", curie=BDC_VARIABLE_LIBRARY.curie('documentation_metadata'),
+                   model_uri=BDC_VARIABLE_LIBRARY.documentation_metadata, domain=None, range=Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, DocumentationVariable]], list[Union[dict, DocumentationVariable]]]])
 
 slots.alert_value = Slot(uri=BDC_VARIABLE_LIBRARY.alert_value, name="alert_value", curie=BDC_VARIABLE_LIBRARY.curie('alert_value'),
-                   model_uri=BDC_VARIABLE_LIBRARY.alert_value, domain=None, range=Optional[Union[Union[str, AlertValueId], list[Union[str, AlertValueId]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.alert_value, domain=None, range=Optional[Union[dict[Union[str, AlertValueId], Union[dict, AlertValue]], list[Union[dict, AlertValue]]]])
+
+slots.alert_values = Slot(uri=BDC_VARIABLE_LIBRARY.alert_values, name="alert_values", curie=BDC_VARIABLE_LIBRARY.curie('alert_values'),
+                   model_uri=BDC_VARIABLE_LIBRARY.alert_values, domain=None, range=Optional[Union[dict[Union[str, AlertValueId], Union[dict, AlertValue]], list[Union[dict, AlertValue]]]])
 
 slots.indicator_char = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_char, name="indicator_char", curie=BDC_VARIABLE_LIBRARY.curie('indicator_char'),
                    model_uri=BDC_VARIABLE_LIBRARY.indicator_char, domain=None, range=Optional[str])
@@ -2823,11 +3291,20 @@ slots.indicator_char = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_char, name="indic
 slots.indicator_meaning = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_meaning, name="indicator_meaning", curie=BDC_VARIABLE_LIBRARY.curie('indicator_meaning'),
                    model_uri=BDC_VARIABLE_LIBRARY.indicator_meaning, domain=None, range=Optional[str])
 
+slots.indicator_type = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_type, name="indicator_type", curie=BDC_VARIABLE_LIBRARY.curie('indicator_type'),
+                   model_uri=BDC_VARIABLE_LIBRARY.indicator_type, domain=None, range=Optional[Union[str, URIorCURIE]])
+
 slots.microschema_slot = Slot(uri=BDC_VARIABLE_LIBRARY.microschema_slot, name="microschema_slot", curie=BDC_VARIABLE_LIBRARY.curie('microschema_slot'),
                    model_uri=BDC_VARIABLE_LIBRARY.microschema_slot, domain=None, range=Optional[Union[str, "ClinicalMicroschemaEnum"]])
 
 slots.integrates = Slot(uri=BDC_VARIABLE_LIBRARY.integrates, name="integrates", curie=BDC_VARIABLE_LIBRARY.curie('integrates'),
                    model_uri=BDC_VARIABLE_LIBRARY.integrates, domain=None, range=Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]])
+
+slots.coded_values = Slot(uri=BDC_VARIABLE_LIBRARY.coded_values, name="coded_values", curie=BDC_VARIABLE_LIBRARY.curie('coded_values'),
+                   model_uri=BDC_VARIABLE_LIBRARY.coded_values, domain=None, range=Optional[Union[dict[Union[str, EnumValueId], Union[dict, EnumValue]], list[Union[dict, EnumValue]]]])
+
+slots.contr_vocab = Slot(uri=BDC_VARIABLE_LIBRARY.contr_vocab, name="contr_vocab", curie=BDC_VARIABLE_LIBRARY.curie('contr_vocab'),
+                   model_uri=BDC_VARIABLE_LIBRARY.contr_vocab, domain=None, range=Optional[str])
 
 slots.profile_version = Slot(uri=LINKML['linkml-microschema-profile/profile_version'], name="profile_version", curie=LINKML.curie('linkml-microschema-profile/profile_version'),
                    model_uri=BDC_VARIABLE_LIBRARY.profile_version, domain=None, range=Optional[str])
@@ -3087,9 +3564,6 @@ slots.HumanBodyHeightRecord005_measurement_value = Slot(uri=CMS.measurement_valu
 slots.HumanBodyHeightRecord006_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyHeightRecord006_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord006_measurement_value, domain=HumanBodyHeightRecord006, range=Union[dict, "HumanBodyHeightQuantity003"])
 
-slots.HumanBodyHeightRecord006_unit = Slot(uri=BDCHM.unit, name="HumanBodyHeightRecord006_unit", curie=BDCHM.curie('unit'),
-                   model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightRecord006_unit, domain=HumanBodyHeightRecord006, range=Optional[Union[str, URIorCURIE]])
-
 slots.HumanBodyWeightRecord_measurement_value = Slot(uri=CMS.measurement_value, name="HumanBodyWeightRecord_measurement_value", curie=CMS.curie('measurement_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyWeightRecord_measurement_value, domain=HumanBodyWeightRecord, range=Union[dict, "HumanBodyWeightQuantity"])
 
@@ -3155,6 +3629,33 @@ slots.HumanBasophilCountRecord002_measurement_value = Slot(uri=CMS.measurement_v
 
 slots.HumanBasophilCountRecord002_unit = Slot(uri=BDCHM.unit, name="HumanBasophilCountRecord002_unit", curie=BDCHM.curie('unit'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBasophilCountRecord002_unit, domain=HumanBasophilCountRecord002, range=Optional[Union[str, URIorCURIE]])
+
+slots.AsthmaStatusRecord_condition_type = Slot(uri=BDCHM.condition_concept, name="AsthmaStatusRecord_condition_type", curie=BDCHM.curie('condition_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.AsthmaStatusRecord_condition_type, domain=AsthmaStatusRecord, range=Union[str, URIorCURIE])
+
+slots.HeartFailureStatusRecord_condition_type = Slot(uri=BDCHM.condition_concept, name="HeartFailureStatusRecord_condition_type", curie=BDCHM.curie('condition_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.HeartFailureStatusRecord_condition_type, domain=HeartFailureStatusRecord, range=Union[str, URIorCURIE])
+
+slots.ObesityStatusRecord_condition_type = Slot(uri=BDCHM.condition_concept, name="ObesityStatusRecord_condition_type", curie=BDCHM.curie('condition_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.ObesityStatusRecord_condition_type, domain=ObesityStatusRecord, range=Union[str, URIorCURIE])
+
+slots.AspirinStatusRecord_drug_type = Slot(uri=BDCHM.drug_concept, name="AspirinStatusRecord_drug_type", curie=BDCHM.curie('drug_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.AspirinStatusRecord_drug_type, domain=AspirinStatusRecord, range=Union[str, URIorCURIE])
+
+slots.BetaBlockerStatusRecord_drug_type = Slot(uri=BDCHM.drug_concept, name="BetaBlockerStatusRecord_drug_type", curie=BDCHM.curie('drug_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.BetaBlockerStatusRecord_drug_type, domain=BetaBlockerStatusRecord, range=Union[str, URIorCURIE])
+
+slots.DiabetesMedicationStatusRecord_drug_type = Slot(uri=BDCHM.drug_concept, name="DiabetesMedicationStatusRecord_drug_type", curie=BDCHM.curie('drug_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.DiabetesMedicationStatusRecord_drug_type, domain=DiabetesMedicationStatusRecord, range=Union[str, URIorCURIE])
+
+slots.PacemakerStatusRecord_procedure_type = Slot(uri=BDCHM.procedure_concept, name="PacemakerStatusRecord_procedure_type", curie=BDCHM.curie('procedure_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.PacemakerStatusRecord_procedure_type, domain=PacemakerStatusRecord, range=Union[str, URIorCURIE])
+
+slots.CoronaryAngioplastyStatusRecord_procedure_type = Slot(uri=BDCHM.procedure_concept, name="CoronaryAngioplastyStatusRecord_procedure_type", curie=BDCHM.curie('procedure_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.CoronaryAngioplastyStatusRecord_procedure_type, domain=CoronaryAngioplastyStatusRecord, range=Union[str, URIorCURIE])
+
+slots.CoronaryBypassStatusRecord_procedure_type = Slot(uri=BDCHM.procedure_concept, name="CoronaryBypassStatusRecord_procedure_type", curie=BDCHM.curie('procedure_concept'),
+                   model_uri=BDC_VARIABLE_LIBRARY.CoronaryBypassStatusRecord_procedure_type, domain=CoronaryBypassStatusRecord, range=Union[str, URIorCURIE])
 
 slots.HumanBodyHeightQuantity_quantity_value = Slot(uri=LINKML['linkml-microschema-profile/quantity_value'], name="HumanBodyHeightQuantity_quantity_value", curie=LINKML.curie('linkml-microschema-profile/quantity_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.HumanBodyHeightQuantity_quantity_value, domain=HumanBodyHeightQuantity, range=Decimal)
