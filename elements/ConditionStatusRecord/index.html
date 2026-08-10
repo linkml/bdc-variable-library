@@ -190,6 +190,15 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      
+        Inheritance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#class-properties">
 <span class="md-ellipsis">
       
@@ -292,6 +301,13 @@
 <pre class="mermaid"><code> classDiagram
     class ConditionStatusRecord
     click ConditionStatusRecord href "../ConditionStatusRecord/"
+      ConditionStatusRecord &lt;|-- AsthmaStatusRecord
+        click AsthmaStatusRecord href "../AsthmaStatusRecord/"
+      ConditionStatusRecord &lt;|-- HeartFailureStatusRecord
+        click HeartFailureStatusRecord href "../HeartFailureStatusRecord/"
+      ConditionStatusRecord &lt;|-- ObesityStatusRecord
+        click ObesityStatusRecord href "../ObesityStatusRecord/"
+
       ConditionStatusRecord : age_at_condition_end
 
 
@@ -396,7 +412,15 @@
       ConditionStatusRecord : subject_identifier
 
 </code></pre>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>ConditionStatusRecord</strong><ul>
+<li><a href="../AsthmaStatusRecord/">AsthmaStatusRecord</a></li>
+<li><a href="../HeartFailureStatusRecord/">HeartFailureStatusRecord</a></li>
+<li><a href="../ObesityStatusRecord/">ObesityStatusRecord</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="class-properties">Class Properties</h2>
 <table>
 <thead>

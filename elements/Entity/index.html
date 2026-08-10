@@ -288,6 +288,9 @@
 <h1 id="class-entity">Class: Entity</h1>
 <p><em>Any resource that has its own identifier</em></p>
 <div>
+<ul>
+<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
+</ul>
 <p>URI: <a href="http://schema.org/Thing">schema:Thing</a></p>
 <pre class="mermaid"><code> classDiagram
     class Entity
@@ -298,8 +301,12 @@
         click MissingValue href "../MissingValue/"
       Entity &lt;|-- AlertValue
         click AlertValue href "../AlertValue/"
+      Entity &lt;|-- EnumValue
+        click EnumValue href "../EnumValue/"
       Entity &lt;|-- MetadataVariable
         click MetadataVariable href "../MetadataVariable/"
+      Entity &lt;|-- DocumentationVariable
+        click DocumentationVariable href "../DocumentationVariable/"
       Entity &lt;|-- ResearchStudy
         click ResearchStudy href "../ResearchStudy/"
 
@@ -312,7 +319,9 @@
 <li><a href="../Variable/">Variable</a></li>
 <li><a href="../MissingValue/">MissingValue</a></li>
 <li><a href="../AlertValue/">AlertValue</a></li>
+<li><a href="../EnumValue/">EnumValue</a></li>
 <li><a href="../MetadataVariable/">MetadataVariable</a></li>
+<li><a href="../DocumentationVariable/">DocumentationVariable</a></li>
 <li><a href="../ResearchStudy/">ResearchStudy</a></li>
 </ul>
 </li>
@@ -382,6 +391,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any resource that has its own identifier</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">schema:Thing</span>
@@ -392,6 +402,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any resource that has its own identifier</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>

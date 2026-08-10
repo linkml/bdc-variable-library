@@ -447,7 +447,7 @@
 
 
 <h1 id="enum-clinicalmicroschemaenum">Enum: ClinicalMicroschemaEnum</h1>
-<p><em>A list of slots describing clinical measurements in microschema</em></p>
+<p><em>A list of slots describing clinical data in microschema</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/ClinicalMicroschemaEnum">bdc_variable_library:ClinicalMicroschemaEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -540,6 +540,61 @@
 <td>None</td>
 <td></td>
 </tr>
+<tr>
+<td>condition_type</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>associated_evidence</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>age_at_condition_start</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>age_at_condition_end</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>age_at_condition_record</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>condition_status</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>condition_provenance</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>condition_concept</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>condition_severity</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>relationship_to_participant</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>method_type</td>
+<td>None</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -565,7 +620,7 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMicroschemaEnum</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A list of slots describing clinical measurements in microschema</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A list of slots describing clinical data in microschema</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">permissible_values</span><span class="p">:</span>
@@ -601,6 +656,28 @@
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">study_site</span>
 <span class="w">  </span><span class="nt">absolute_time</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">absolute_time</span>
+<span class="w">  </span><span class="nt">condition_type</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_type</span>
+<span class="w">  </span><span class="nt">associated_evidence</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">associated_evidence</span>
+<span class="w">  </span><span class="nt">age_at_condition_start</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_condition_start</span>
+<span class="w">  </span><span class="nt">age_at_condition_end</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_condition_end</span>
+<span class="w">  </span><span class="nt">age_at_condition_record</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_condition_record</span>
+<span class="w">  </span><span class="nt">condition_status</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_status</span>
+<span class="w">  </span><span class="nt">condition_provenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_provenance</span>
+<span class="w">  </span><span class="nt">condition_concept</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_concept</span>
+<span class="w">  </span><span class="nt">condition_severity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_severity</span>
+<span class="w">  </span><span class="nt">relationship_to_participant</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relationship_to_participant</span>
+<span class="w">  </span><span class="nt">method_type</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method_type</span>
 </code></pre></div>
 </details>
 </div>

@@ -486,7 +486,7 @@
 
 
 <h1 id="slot-indicator_char">Slot: indicator_char</h1>
-<p><em>Sentinel value used to add information to a datum or indicate a missing datum</em></p>
+<p><em>Value used to add information to a datum, indicate a missing datum, or give  a specific answer</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/indicator_char">bdc_variable_library:indicator_char</a></p>
 <!-- no inheritance hierarchy -->
@@ -510,6 +510,11 @@
 <td>Character used to add information to a datum</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../EnumValue/">EnumValue</a></td>
+<td>One possible answer in a list of enumerated values</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -528,7 +533,7 @@
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../MissingValue/">MissingValue</a>, <a href="../AlertValue/">AlertValue</a></td>
+<td><a href="../MissingValue/">MissingValue</a>, <a href="../AlertValue/">AlertValue</a>, <a href="../EnumValue/">EnumValue</a></td>
 </tr>
 </tbody>
 </table>
@@ -574,13 +579,14 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indicator_char</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sentinel value used to add information to a datum or indicate a missing</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">datum</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Value used to add information to a datum, indicate a missing datum, or</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">give  a specific answer</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MissingValue</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AlertValue</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnumValue</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details>

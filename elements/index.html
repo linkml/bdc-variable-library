@@ -664,6 +664,18 @@
 <td>Record suggesting the presence of a disease or medical condition stated as a ...</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AsthmaStatusRecord/">AsthmaStatusRecord</a></td>
+<td>Record suggesting the current or historical presence or absence of asthma  in...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HeartFailureStatusRecord/">HeartFailureStatusRecord</a></td>
+<td>Record suggesting the current or historical presence or absence of congestive...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ObesityStatusRecord/">ObesityStatusRecord</a></td>
+<td>Record suggesting the current or historical presence or absence of obesity  i...</td>
+</tr>
+<tr>
 <td><a href="Context/">Context</a></td>
 <td>Mixin providing contextual slots that describe the activity type and relative...</td>
 </tr>
@@ -672,12 +684,32 @@
 <td>Record suggesting exposure to a medication</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AspirinStatusRecord/">AspirinStatusRecord</a></td>
+<td>Record suggesting exposure to aspirin</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BetaBlockerStatusRecord/">BetaBlockerStatusRecord</a></td>
+<td>Record suggesting exposure to aspirin</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DiabetesMedicationStatusRecord/">DiabetesMedicationStatusRecord</a></td>
+<td>Record suggesting exposure to aspirin</td>
+</tr>
+<tr>
 <td><a href="Entity/">Entity</a></td>
 <td>Any resource that has its own identifier</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AlertValue/">AlertValue</a></td>
 <td>Character used to add information to a datum</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DocumentationVariable/">DocumentationVariable</a></td>
+<td>Information derived from study documentation or text in a data dictionary tha...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnumValue/">EnumValue</a></td>
+<td>One possible answer in a list of enumerated values</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MetadataVariable/">MetadataVariable</a></td>
@@ -700,6 +732,10 @@
 <td>Represents a variable and all metadata</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CompoundAsthma001/">CompoundAsthma001</a></td>
+<td>A record of participant asthma status</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CompoundHeight001/">CompoundHeight001</a></td>
 <td>Height variable with metadata, measured in cm and collected using a wall-moun...</td>
 </tr>
@@ -712,12 +748,20 @@
 <td>Represents a variable that contains data from multiple studies</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IntegratedAsthma001/">IntegratedAsthma001</a></td>
+<td>Participant asthma status containing data from multiple studies</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IntegratedHeight001/">IntegratedHeight001</a></td>
 <td>Height variable containing data from multiple studies, normalized to cm</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SingleVariable/">SingleVariable</a></td>
-<td>Represents a single entry in a data dictionary</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SingleCategoricalVariable/">SingleCategoricalVariable</a></td>
+<td>Represents a single entry in a data dictionary of a variable with a categoric...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SingleContinuousVariable/">SingleContinuousVariable</a></td>
+<td>Represents a single entry in a data dictionary of a variable with a continuou...</td>
 </tr>
 <tr>
 <td><a href="MicroschemaDefinition/">MicroschemaDefinition</a></td>
@@ -726,6 +770,18 @@
 <tr>
 <td><a href="ProcedureStatusRecord/">ProcedureStatusRecord</a></td>
 <td>Record of activity or process ordered by or carried out by a healthcare provi...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CoronaryAngioplastyStatusRecord/">CoronaryAngioplastyStatusRecord</a></td>
+<td>Record of having a coronary angioplasty</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CoronaryBypassStatusRecord/">CoronaryBypassStatusRecord</a></td>
+<td>Record of having a coronary artery bypass graft</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PacemakerStatusRecord/">PacemakerStatusRecord</a></td>
+<td>Record of having a pacemaker implanted</td>
 </tr>
 <tr>
 <td><a href="Quantity/">Quantity</a></td>
@@ -887,6 +943,10 @@
 <td>List of values that provide extra optional information about a variable</td>
 </tr>
 <tr>
+<td><a href="alert_values/">alert_values</a></td>
+<td>List of values that provide extra optional information about a variable</td>
+</tr>
+<tr>
 <td><a href="associated_evidence/">associated_evidence</a></td>
 <td>The method used for diagnosis</td>
 </tr>
@@ -928,7 +988,7 @@
 </tr>
 <tr>
 <td><a href="coded_values/">coded_values</a></td>
-<td>Pipe-delimited string of allowable values</td>
+<td>List of allowable values</td>
 </tr>
 <tr>
 <td><a href="collected_by/">collected_by</a></td>
@@ -967,12 +1027,20 @@
 <td>The context of the measurement</td>
 </tr>
 <tr>
+<td><a href="contr_vocab/">contr_vocab</a></td>
+<td>Value from an enum</td>
+</tr>
+<tr>
 <td><a href="data_type/">data_type</a></td>
 <td>The data type of the observation</td>
 </tr>
 <tr>
 <td><a href="datetime/">datetime</a></td>
 <td>Absolute timestamp</td>
+</tr>
+<tr>
+<td><a href="documentation_metadata/">documentation_metadata</a></td>
+<td>List of metadata elements that derive from study documentation or descriptive...</td>
 </tr>
 <tr>
 <td><a href="domain_of_use/">domain_of_use</a></td>
@@ -1012,11 +1080,15 @@
 </tr>
 <tr>
 <td><a href="indicator_char/">indicator_char</a></td>
-<td>Sentinel value used to add information to a datum or indicate a missing datum</td>
+<td>Value used to add information to a datum, indicate a missing datum, or give  ...</td>
 </tr>
 <tr>
 <td><a href="indicator_meaning/">indicator_meaning</a></td>
 <td>Meaning of the indicator character verbatim from original data provider when ...</td>
+</tr>
+<tr>
+<td><a href="indicator_type/">indicator_type</a></td>
+<td>CURIE describing the meaning of the indicator</td>
 </tr>
 <tr>
 <td><a href="instrument/">instrument</a></td>
@@ -1053,10 +1125,6 @@
 <tr>
 <td><a href="measurement_value/">measurement_value</a></td>
 <td>The "value" in the observation key/value pair</td>
-</tr>
-<tr>
-<td><a href="metadata/">metadata</a></td>
-<td>List of variable identifiers providing metadata for a compound variable</td>
 </tr>
 <tr>
 <td><a href="method/">method</a></td>
@@ -1139,6 +1207,10 @@
 <td>Routes of drug administration</td>
 </tr>
 <tr>
+<td><a href="row_metadata/">row_metadata</a></td>
+<td>List of variable identifiers providing metadata for a compound variable</td>
+</tr>
+<tr>
 <td><a href="source_id/">source_id</a></td>
 <td>Identifier used by the organization providing the variable to BDC to uniquely...</td>
 </tr>
@@ -1215,7 +1287,7 @@
 </tr>
 <tr>
 <td><a href="ClinicalMicroschemaEnum/">ClinicalMicroschemaEnum</a></td>
-<td>A list of slots describing clinical measurements in microschema</td>
+<td>A list of slots describing clinical data in microschema</td>
 </tr>
 <tr>
 <td><a href="CollectedByEnum/">CollectedByEnum</a></td>
@@ -1236,6 +1308,18 @@
 <tr>
 <td><a href="DataTypeEnum/">DataTypeEnum</a></td>
 <td>The data type of an observation value</td>
+</tr>
+<tr>
+<td><a href="DynamicAsthmaEnum/">DynamicAsthmaEnum</a></td>
+<td>Asthma and asthma-related terms from Mondo and HPO</td>
+</tr>
+<tr>
+<td><a href="DynamicHeartFailureEnum/">DynamicHeartFailureEnum</a></td>
+<td>Heart failure and related terms from Mondo</td>
+</tr>
+<tr>
+<td><a href="DynamicObesityEnum/">DynamicObesityEnum</a></td>
+<td>Obesity and related terms from HPO</td>
 </tr>
 <tr>
 <td><a href="FamilyRelationshipEnum/">FamilyRelationshipEnum</a></td>

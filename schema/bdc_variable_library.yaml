@@ -7,7 +7,7 @@ id: https://w3id.org/linkml/bdc-variable-library
 imports:
 - linkml:types
 - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-- https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.2/src/clinical_microschemas/schema/clinical_microschemas
+- https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.3/src/clinical_microschemas/schema/clinical_microschemas
 license: BSD-3-Clause
 prefixes:
   bdc_variable_library:
@@ -354,7 +354,7 @@ enums:
   ClinicalMicroschemaEnum:
     name: ClinicalMicroschemaEnum
     definition_uri: https://w3id.org/linkml/bdc-variable-library/ClinicalMicroschemaEnum
-    description: A list of slots describing clinical measurements in microschema
+    description: A list of slots describing clinical data in microschema
     from_schema: https://w3id.org/linkml/bdc-variable-library
     permissible_values:
       subject_identifier:
@@ -389,6 +389,28 @@ enums:
         text: study_site
       absolute_time:
         text: absolute_time
+      condition_type:
+        text: condition_type
+      associated_evidence:
+        text: associated_evidence
+      age_at_condition_start:
+        text: age_at_condition_start
+      age_at_condition_end:
+        text: age_at_condition_end
+      age_at_condition_record:
+        text: age_at_condition_record
+      condition_status:
+        text: condition_status
+      condition_provenance:
+        text: condition_provenance
+      condition_concept:
+        text: condition_concept
+      condition_severity:
+        text: condition_severity
+      relationship_to_participant:
+        text: relationship_to_participant
+      method_type:
+        text: method_type
   ComparatorEnum:
     name: ComparatorEnum
     definition_uri: https://w3id.org/linkml/linkml-microschema-profile/ComparatorEnum
@@ -881,6 +903,46 @@ enums:
         text: before
       during:
         text: during
+  DynamicAsthmaEnum:
+    name: DynamicAsthmaEnum
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/DynamicAsthmaEnum
+    description: Asthma and asthma-related terms from Mondo and HPO
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    include:
+    - reachable_from:
+        source_ontology: obo:mondo
+        source_nodes:
+        - MONDO:0004979
+        relationship_types:
+        - rdfs:subClassOf
+    - reachable_from:
+        source_ontology: obo:hp
+        source_nodes:
+        - HP:0002099
+        relationship_types:
+        - rdfs:subClassOf
+  DynamicHeartFailureEnum:
+    name: DynamicHeartFailureEnum
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/DynamicHeartFailureEnum
+    description: Heart failure and related terms from Mondo
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    reachable_from:
+      source_ontology: obo:mondo
+      source_nodes:
+      - MONDO:0005252
+      relationship_types:
+      - rdfs:subClassOf
+  DynamicObesityEnum:
+    name: DynamicObesityEnum
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/DynamicObesityEnum
+    description: Obesity and related terms from HPO
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    reachable_from:
+      source_ontology: obo:hp
+      source_nodes:
+      - HP:0001513
+      relationship_types:
+      - rdfs:subClassOf
 slots:
   id:
     name: id
@@ -916,9 +978,10 @@ slots:
       a phv value.
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:source_id
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   file_id:
     name: file_id
@@ -928,9 +991,10 @@ slots:
       will be a pht value
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:file_id
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   file_name:
     name: file_name
@@ -938,9 +1002,10 @@ slots:
     description: Name of file containing variable data
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:file_name
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   variable_name:
     name: variable_name
@@ -949,9 +1014,10 @@ slots:
       Corresponds to the VARNAME field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:variable_name
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   variable_description:
     name: variable_description
@@ -970,9 +1036,10 @@ slots:
       Corresponds to the VARDESC field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:source_variable_description
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   minimum_value:
     name: minimum_value
@@ -981,9 +1048,9 @@ slots:
       to  the MIN field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:minimum_value
-    owner: SingleVariable
+    owner: SingleContinuousVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
     range: decimal
   maximum_value:
     name: maximum_value
@@ -992,9 +1059,9 @@ slots:
       to the MAX field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:maximum_value
-    owner: SingleVariable
+    owner: SingleContinuousVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
     range: decimal
   resolution:
     name: resolution
@@ -1003,30 +1070,20 @@ slots:
       data. Corresponds to the RESOLUTION field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:resolution
-    owner: SingleVariable
+    owner: SingleContinuousVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
     range: integer
-  coded_values:
-    name: coded_values
-    definition_uri: https://w3id.org/linkml/bdc-variable-library/coded_values
-    description: Pipe-delimited string of allowable values. Should only be used if
-      the data_type is enum. Corresponds to VALUES field in dbGAP
-    from_schema: https://w3id.org/linkml/bdc-variable-library
-    slot_uri: bdc_variable_library:coded_values
-    owner: SingleVariable
-    domain_of:
-    - SingleVariable
-    range: string
   missing_value:
     name: missing_value
     definition_uri: https://w3id.org/linkml/bdc-variable-library/missing_value
     description: Sentinel value to indicate a missing value or other data nuance
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:missing_value
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: MissingValue
     multivalued: true
     inlined: true
@@ -1038,9 +1095,10 @@ slots:
       to the  COMMENT field in dbGAP
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:comment
-    owner: SingleVariable
+    owner: SingleCategoricalVariable
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     range: string
   cde_id:
     name: cde_id
@@ -1085,16 +1143,30 @@ slots:
     - CompoundVariable
     - IntegratedVariable
     range: BdchmTypeEnum
-  metadata:
-    name: metadata
-    definition_uri: https://w3id.org/linkml/bdc-variable-library/metadata
+  row_metadata:
+    name: row_metadata
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/row_metadata
     description: List of variable identifiers providing metadata for a compound variable
     from_schema: https://w3id.org/linkml/bdc-variable-library
-    slot_uri: bdc_variable_library:metadata
+    slot_uri: bdc_variable_library:row_metadata
     owner: CompoundVariable
     domain_of:
     - CompoundVariable
     range: MetadataVariable
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  documentation_metadata:
+    name: documentation_metadata
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/documentation_metadata
+    description: List of metadata elements that derive from study documentation or
+      descriptive information in the data dictionary
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    slot_uri: bdc_variable_library:documentation_metadata
+    owner: CompoundVariable
+    domain_of:
+    - CompoundVariable
+    range: DocumentationVariable
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -1110,17 +1182,34 @@ slots:
     - CompoundVariable
     range: AlertValue
     multivalued: true
+    inlined: true
+    inlined_as_list: true
+  alert_values:
+    name: alert_values
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/alert_values
+    description: List of values that provide extra optional information about a variable.
+      Often this is used to indicate a violation of QA/QC
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    slot_uri: bdc_variable_library:alert_values
+    owner: SingleContinuousVariable
+    domain_of:
+    - SingleContinuousVariable
+    range: AlertValue
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   indicator_char:
     name: indicator_char
     definition_uri: https://w3id.org/linkml/bdc-variable-library/indicator_char
-    description: Sentinel value used to add information to a datum or indicate a missing
-      datum
+    description: Value used to add information to a datum, indicate a missing datum,
+      or give  a specific answer
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:indicator_char
-    owner: AlertValue
+    owner: EnumValue
     domain_of:
     - MissingValue
     - AlertValue
+    - EnumValue
     range: string
   indicator_meaning:
     name: indicator_meaning
@@ -1129,11 +1218,22 @@ slots:
       when possible
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:indicator_meaning
-    owner: AlertValue
+    owner: EnumValue
     domain_of:
     - MissingValue
     - AlertValue
+    - EnumValue
     range: string
+  indicator_type:
+    name: indicator_type
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/indicator_type
+    description: CURIE describing the meaning of the indicator
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    slot_uri: bdc_variable_library:indicator_type
+    owner: EnumValue
+    domain_of:
+    - EnumValue
+    range: uriorcurie
   microschema_slot:
     name: microschema_slot
     definition_uri: https://w3id.org/linkml/bdc-variable-library/microschema_slot
@@ -1141,9 +1241,10 @@ slots:
       go
     from_schema: https://w3id.org/linkml/bdc-variable-library
     slot_uri: bdc_variable_library:microschema_slot
-    owner: MetadataVariable
+    owner: DocumentationVariable
     domain_of:
     - MetadataVariable
+    - DocumentationVariable
     range: ClinicalMicroschemaEnum
   integrates:
     name: integrates
@@ -1156,6 +1257,30 @@ slots:
     - IntegratedVariable
     range: CompoundVariable
     multivalued: true
+  coded_values:
+    name: coded_values
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/coded_values
+    description: List of allowable values. Should only be used if the data_type is
+      enum. Corresponds to VALUES field in dbGAP
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    slot_uri: bdc_variable_library:coded_values
+    owner: SingleCategoricalVariable
+    domain_of:
+    - SingleCategoricalVariable
+    range: EnumValue
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  contr_vocab:
+    name: contr_vocab
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/contr_vocab
+    description: Value from an enum
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    slot_uri: bdc_variable_library:contr_vocab
+    owner: DocumentationVariable
+    domain_of:
+    - DocumentationVariable
+    range: string
   profile_version:
     name: profile_version
     definition_uri: https://w3id.org/linkml/linkml-microschema-profile/profile_version
@@ -1463,7 +1588,9 @@ slots:
     slot_uri: bdchm:unit
     owner: ClinicalMeasurementRecord
     domain_of:
-    - Variable
+    - SingleContinuousVariable
+    - CompoundVariable
+    - IntegratedVariable
     - ClinicalMeasurementRecord
     range: uriorcurie
   method:
@@ -1606,7 +1733,8 @@ slots:
     slot_uri: cms:data_type
     owner: ClinicalMeasurementRecord
     domain_of:
-    - SingleVariable
+    - SingleContinuousVariable
+    - SingleCategoricalVariable
     - ClinicalMeasurementRecord
     range: DataTypeEnum
   age_at_measurement:
@@ -2280,25 +2408,6 @@ slots:
     required: true
     inlined: true
     inlined_as_list: true
-  HumanBodyHeightRecord006_unit:
-    name: HumanBodyHeightRecord006_unit
-    id_prefixes:
-    - cm
-    definition_uri: https://w3id.org/linkml/clinical-microschemas/unit
-    description: A unit from UCUM
-    from_schema: https://w3id.org/linkml/clinical-microschemas
-    mappings:
-    - bdchm:unit
-    is_a: unit
-    domain: HumanBodyHeightRecord006
-    slot_uri: bdchm:unit
-    alias: unit
-    owner: HumanBodyHeightRecord006
-    domain_of:
-    - HumanBodyHeightRecord006
-    is_usage_slot: true
-    usage_slot_name: unit
-    range: uriorcurie
   HumanBodyWeightRecord_measurement_value:
     name: HumanBodyWeightRecord_measurement_value
     definition_uri: https://w3id.org/linkml/clinical-microschemas/measurement_value
@@ -2693,6 +2802,194 @@ slots:
     range: uriorcurie
     any_of:
     - equals_string: '{#}/uL'
+  AsthmaStatusRecord_condition_type:
+    name: AsthmaStatusRecord_condition_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/condition_type
+    description: A CURIE from MONDO or HPO
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:condition_concept
+    is_a: ConditionStatusRecord_condition_type
+    domain: AsthmaStatusRecord
+    slot_uri: bdchm:condition_concept
+    alias: condition_type
+    owner: AsthmaStatusRecord
+    domain_of:
+    - AsthmaStatusRecord
+    is_usage_slot: true
+    usage_slot_name: condition_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - range: DynamicAsthmaEnum
+    - equals_string: ICD10:J45
+    - equals_string: OMOP:764677
+  HeartFailureStatusRecord_condition_type:
+    name: HeartFailureStatusRecord_condition_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/condition_type
+    description: A CURIE from MONDO or HPO
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:condition_concept
+    is_a: ConditionStatusRecord_condition_type
+    domain: HeartFailureStatusRecord
+    slot_uri: bdchm:condition_concept
+    alias: condition_type
+    owner: HeartFailureStatusRecord
+    domain_of:
+    - HeartFailureStatusRecord
+    is_usage_slot: true
+    usage_slot_name: condition_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - range: DynamicHeartFailureEnum
+    - equals_string: ICD10:I50
+    - equals_string: OMOP:316139
+  ObesityStatusRecord_condition_type:
+    name: ObesityStatusRecord_condition_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/condition_type
+    description: A CURIE from MONDO or HPO
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:condition_concept
+    is_a: ConditionStatusRecord_condition_type
+    domain: ObesityStatusRecord
+    slot_uri: bdchm:condition_concept
+    alias: condition_type
+    owner: ObesityStatusRecord
+    domain_of:
+    - ObesityStatusRecord
+    is_usage_slot: true
+    usage_slot_name: condition_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - range: DynamicObesityEnum
+    - equals_string: OMOP:433736
+  AspirinStatusRecord_drug_type:
+    name: AspirinStatusRecord_drug_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/drug_type
+    description: A CURIE from RxNorm
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:drug_concept
+    is_a: DrugStatusRecord_drug_type
+    domain: AspirinStatusRecord
+    slot_uri: bdchm:drug_concept
+    alias: drug_type
+    owner: AspirinStatusRecord
+    domain_of:
+    - AspirinStatusRecord
+    is_usage_slot: true
+    usage_slot_name: drug_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: OMOP:1112807
+    - equals_string: RxNORM:1191
+  BetaBlockerStatusRecord_drug_type:
+    name: BetaBlockerStatusRecord_drug_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/drug_type
+    description: A CURIE from RxNorm
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:drug_concept
+    is_a: DrugStatusRecord_drug_type
+    domain: BetaBlockerStatusRecord
+    slot_uri: bdchm:drug_concept
+    alias: drug_type
+    owner: BetaBlockerStatusRecord
+    domain_of:
+    - BetaBlockerStatusRecord
+    is_usage_slot: true
+    usage_slot_name: drug_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: OMOP:21601741
+    - equals_string: ATC:C07A
+  DiabetesMedicationStatusRecord_drug_type:
+    name: DiabetesMedicationStatusRecord_drug_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/drug_type
+    description: A CURIE from RxNorm
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:drug_concept
+    is_a: DrugStatusRecord_drug_type
+    domain: DiabetesMedicationStatusRecord
+    slot_uri: bdchm:drug_concept
+    alias: drug_type
+    owner: DiabetesMedicationStatusRecord
+    domain_of:
+    - DiabetesMedicationStatusRecord
+    is_usage_slot: true
+    usage_slot_name: drug_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: ATC:A10
+  PacemakerStatusRecord_procedure_type:
+    name: PacemakerStatusRecord_procedure_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/procedure_type
+    description: A CURIE from OMOP
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:procedure_concept
+    is_a: ProcedureStatusRecord_procedure_type
+    domain: PacemakerStatusRecord
+    slot_uri: bdchm:procedure_concept
+    alias: procedure_type
+    owner: PacemakerStatusRecord
+    domain_of:
+    - PacemakerStatusRecord
+    is_usage_slot: true
+    usage_slot_name: procedure_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: OMOP:54772840
+    - equals_string: NCIT:C99998
+  CoronaryAngioplastyStatusRecord_procedure_type:
+    name: CoronaryAngioplastyStatusRecord_procedure_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/procedure_type
+    description: A CURIE from OMOP
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:procedure_concept
+    is_a: ProcedureStatusRecord_procedure_type
+    domain: CoronaryAngioplastyStatusRecord
+    slot_uri: bdchm:procedure_concept
+    alias: procedure_type
+    owner: CoronaryAngioplastyStatusRecord
+    domain_of:
+    - CoronaryAngioplastyStatusRecord
+    is_usage_slot: true
+    usage_slot_name: procedure_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: OMOP:4184832
+  CoronaryBypassStatusRecord_procedure_type:
+    name: CoronaryBypassStatusRecord_procedure_type
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/procedure_type
+    description: A CURIE from OMOP
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    mappings:
+    - bdchm:procedure_concept
+    is_a: ProcedureStatusRecord_procedure_type
+    domain: CoronaryBypassStatusRecord
+    slot_uri: bdchm:procedure_concept
+    alias: procedure_type
+    owner: CoronaryBypassStatusRecord
+    domain_of:
+    - CoronaryBypassStatusRecord
+    is_usage_slot: true
+    usage_slot_name: procedure_type
+    range: uriorcurie
+    required: true
+    any_of:
+    - equals_string: OMOP:4336464
   HumanBodyHeightQuantity_quantity_value:
     name: HumanBodyHeightQuantity_quantity_value
     definition_uri: https://w3id.org/linkml/linkml-microschema-profile/quantity_value
@@ -3040,6 +3337,7 @@ classes:
     from_schema: https://w3id.org/linkml/bdc-variable-library
     mappings:
     - schema:Thing
+    abstract: true
     slots:
     - id
     class_uri: schema:Thing
@@ -3055,12 +3353,12 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     class_uri: bdc_variable_library:Variable
-  SingleVariable:
-    name: SingleVariable
-    definition_uri: https://w3id.org/linkml/bdc-variable-library/SingleVariable
-    description: Represents a single entry in a data dictionary
+  SingleContinuousVariable:
+    name: SingleContinuousVariable
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/SingleContinuousVariable
+    description: Represents a single entry in a data dictionary of a variable with
+      a continuous value
     from_schema: https://w3id.org/linkml/bdc-variable-library
     is_a: Variable
     slots:
@@ -3069,7 +3367,6 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - source_id
     - file_id
     - file_name
@@ -3079,10 +3376,34 @@ classes:
     - minimum_value
     - maximum_value
     - resolution
-    - coded_values
     - missing_value
+    - unit
+    - alert_values
     - comment
-    class_uri: bdc_variable_library:SingleVariable
+    class_uri: bdc_variable_library:SingleContinuousVariable
+  SingleCategoricalVariable:
+    name: SingleCategoricalVariable
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/SingleCategoricalVariable
+    description: Represents a single entry in a data dictionary of a variable with
+      a categorical value
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: Variable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - source_id
+    - file_id
+    - file_name
+    - variable_name
+    - source_variable_description
+    - data_type
+    - missing_value
+    - coded_values
+    - comment
+    class_uri: bdc_variable_library:SingleCategoricalVariable
   CompoundVariable:
     name: CompoundVariable
     definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundVariable
@@ -3095,10 +3416,11 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - cde_id
     - bdchm_type
-    - metadata
+    - unit
+    - row_metadata
+    - documentation_metadata
     - alert_value
     class_uri: bdc_variable_library:CompoundVariable
   IntegratedVariable:
@@ -3115,9 +3437,9 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - cde_id
     - bdchm_type
+    - unit
     - integrates
     class_uri: bdc_variable_library:IntegratedVariable
   MissingValue:
@@ -3142,6 +3464,18 @@ classes:
     - indicator_char
     - indicator_meaning
     class_uri: bdc_variable_library:AlertValue
+  EnumValue:
+    name: EnumValue
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/EnumValue
+    description: One possible answer in a list of enumerated values
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: Entity
+    slots:
+    - id
+    - indicator_char
+    - indicator_meaning
+    - indicator_type
+    class_uri: bdc_variable_library:EnumValue
   MetadataVariable:
     name: MetadataVariable
     definition_uri: https://w3id.org/linkml/bdc-variable-library/MetadataVariable
@@ -3153,6 +3487,61 @@ classes:
     - id
     - microschema_slot
     class_uri: bdc_variable_library:MetadataVariable
+  DocumentationVariable:
+    name: DocumentationVariable
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/DocumentationVariable
+    description: Information derived from study documentation or text in a data dictionary
+      that provides essential metadata for a variable
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: Entity
+    slots:
+    - id
+    - contr_vocab
+    - microschema_slot
+    class_uri: bdc_variable_library:DocumentationVariable
+    rules:
+    - preconditions:
+        slot_conditions:
+          microschema_slot:
+            name: microschema_slot
+            equals_string: instrument
+      postconditions:
+        slot_conditions:
+          contr_vocab:
+            name: contr_vocab
+            range: InstrumentEnum
+    - preconditions:
+        slot_conditions:
+          microschema_slot:
+            name: microschema_slot
+            equals_string: method_type
+      postconditions:
+        slot_conditions:
+          contr_vocab:
+            name: contr_vocab
+            range: MethodEnum
+    - preconditions:
+        slot_conditions:
+          microschema_slot:
+            name: microschema_slot
+            equals_string: condition_concept
+      postconditions:
+        slot_conditions:
+          contr_vocab:
+            name: contr_vocab
+            any_of:
+            - pattern: ^MONDO:\d{7}$
+            - pattern: ^HP:\d{7}$
+    - preconditions:
+        slot_conditions:
+          microschema_slot:
+            name: microschema_slot
+            equals_string: condition_provenance
+      postconditions:
+        slot_conditions:
+          contr_vocab:
+            name: contr_vocab
+            range: ProvenanceEnum
   CompoundHeight002:
     name: CompoundHeight002
     definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundHeight002
@@ -3168,10 +3557,11 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - cde_id
     - bdchm_type
-    - metadata
+    - unit
+    - row_metadata
+    - documentation_metadata
     - alert_value
     class_uri: bdc_variable_library:CompoundHeight002
   CompoundHeight001:
@@ -3189,10 +3579,11 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - cde_id
     - bdchm_type
-    - metadata
+    - unit
+    - row_metadata
+    - documentation_metadata
     - alert_value
     class_uri: bdc_variable_library:CompoundHeight001
   IntegratedHeight001:
@@ -3208,11 +3599,49 @@ classes:
     - variable_description
     - concept_type
     - variable_label
-    - unit
     - cde_id
     - bdchm_type
+    - unit
     - integrates
     class_uri: bdc_variable_library:IntegratedHeight001
+  CompoundAsthma001:
+    name: CompoundAsthma001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundAsthma001
+    instantiates:
+    - AsthmaStatusRecord
+    description: A record of participant asthma status
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - row_metadata
+    - documentation_metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundAsthma001
+  IntegratedAsthma001:
+    name: IntegratedAsthma001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedAsthma001
+    description: Participant asthma status containing data from multiple studies
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: IntegratedVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - integrates
+    class_uri: bdc_variable_library:IntegratedAsthma001
   ResearchStudy:
     name: ResearchStudy
     definition_uri: https://w3id.org/linkml/bdc-variable-library/ResearchStudy
@@ -3784,6 +4213,7 @@ classes:
     slots:
     - ClinicalMeasurementRecord_subject_identifier
     - ClinicalMeasurementRecord_measurement_type
+    - unit
     - method
     - instrument
     - reagent_kit
@@ -3797,16 +4227,17 @@ classes:
     - study_site
     - absolute_time
     - HumanBodyHeightRecord006_measurement_value
-    - HumanBodyHeightRecord006_unit
     slot_usage:
       measurement_value:
         name: measurement_value
         range: HumanBodyHeightQuantity003
-      unit:
-        name: unit
-        id_prefixes:
-        - cm
     class_uri: cms:HumanBodyHeightRecord006
+    rules:
+    - postconditions:
+        slot_conditions:
+          unit:
+            name: unit
+            equals_string: cm
   HumanBodyWeightRecord:
     name: HumanBodyWeightRecord
     definition_uri: https://w3id.org/linkml/clinical-microschemas/HumanBodyWeightRecord
@@ -4602,6 +5033,212 @@ classes:
         any_of:
         - equals_string: '{#}/uL'
     class_uri: cms:HumanBasophilCountRecord002
+  AsthmaStatusRecord:
+    name: AsthmaStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/AsthmaStatusRecord
+    description: Record suggesting the current or historical presence or absence of
+      asthma  in the patient/participant or their blood relatives
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ConditionStatusRecord
+    slots:
+    - ConditionStatusRecord_subject_identifier
+    - associated_evidence
+    - instrument
+    - age_at_condition_start
+    - age_at_condition_end
+    - ConditionStatusRecord_age_at_condition_record
+    - ConditionStatusRecord_condition_status
+    - condition_provenance
+    - condition_severity
+    - ConditionStatusRecord_relationship_to_participant
+    - AsthmaStatusRecord_condition_type
+    slot_usage:
+      condition_type:
+        name: condition_type
+        any_of:
+        - range: DynamicAsthmaEnum
+        - equals_string: ICD10:J45
+        - equals_string: OMOP:764677
+    class_uri: cms:AsthmaStatusRecord
+  HeartFailureStatusRecord:
+    name: HeartFailureStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/HeartFailureStatusRecord
+    description: Record suggesting the current or historical presence or absence of
+      congestive  heart failure in the patient/participant or their blood relatives
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ConditionStatusRecord
+    slots:
+    - ConditionStatusRecord_subject_identifier
+    - associated_evidence
+    - instrument
+    - age_at_condition_start
+    - age_at_condition_end
+    - ConditionStatusRecord_age_at_condition_record
+    - ConditionStatusRecord_condition_status
+    - condition_provenance
+    - condition_severity
+    - ConditionStatusRecord_relationship_to_participant
+    - HeartFailureStatusRecord_condition_type
+    slot_usage:
+      condition_type:
+        name: condition_type
+        any_of:
+        - range: DynamicHeartFailureEnum
+        - equals_string: ICD10:I50
+        - equals_string: OMOP:316139
+    class_uri: cms:HeartFailureStatusRecord
+  ObesityStatusRecord:
+    name: ObesityStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/ObesityStatusRecord
+    description: Record suggesting the current or historical presence or absence of
+      obesity  in the patient/participant or their blood relatives
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ConditionStatusRecord
+    slots:
+    - ConditionStatusRecord_subject_identifier
+    - associated_evidence
+    - instrument
+    - age_at_condition_start
+    - age_at_condition_end
+    - ConditionStatusRecord_age_at_condition_record
+    - ConditionStatusRecord_condition_status
+    - condition_provenance
+    - condition_severity
+    - ConditionStatusRecord_relationship_to_participant
+    - ObesityStatusRecord_condition_type
+    slot_usage:
+      condition_type:
+        name: condition_type
+        any_of:
+        - range: DynamicObesityEnum
+        - equals_string: OMOP:433736
+    class_uri: cms:ObesityStatusRecord
+  AspirinStatusRecord:
+    name: AspirinStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/AspirinStatusRecord
+    description: Record suggesting exposure to aspirin
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: DrugStatusRecord
+    slots:
+    - DrugStatusRecord_subject_identifier
+    - age_at_drug_start
+    - age_at_drug_end
+    - DrugStatusRecord_age_at_drug_record
+    - route_of_administration
+    - dose
+    - frequency
+    - indication
+    - AspirinStatusRecord_drug_type
+    slot_usage:
+      drug_type:
+        name: drug_type
+        any_of:
+        - equals_string: OMOP:1112807
+        - equals_string: RxNORM:1191
+    class_uri: cms:AspirinStatusRecord
+  BetaBlockerStatusRecord:
+    name: BetaBlockerStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/BetaBlockerStatusRecord
+    description: Record suggesting exposure to aspirin
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: DrugStatusRecord
+    slots:
+    - DrugStatusRecord_subject_identifier
+    - age_at_drug_start
+    - age_at_drug_end
+    - DrugStatusRecord_age_at_drug_record
+    - route_of_administration
+    - dose
+    - frequency
+    - indication
+    - BetaBlockerStatusRecord_drug_type
+    slot_usage:
+      drug_type:
+        name: drug_type
+        any_of:
+        - equals_string: OMOP:21601741
+        - equals_string: ATC:C07A
+    class_uri: cms:BetaBlockerStatusRecord
+  DiabetesMedicationStatusRecord:
+    name: DiabetesMedicationStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/DiabetesMedicationStatusRecord
+    description: Record suggesting exposure to aspirin
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: DrugStatusRecord
+    slots:
+    - DrugStatusRecord_subject_identifier
+    - age_at_drug_start
+    - age_at_drug_end
+    - DrugStatusRecord_age_at_drug_record
+    - route_of_administration
+    - dose
+    - frequency
+    - indication
+    - DiabetesMedicationStatusRecord_drug_type
+    slot_usage:
+      drug_type:
+        name: drug_type
+        any_of:
+        - equals_string: ATC:A10
+    class_uri: cms:DiabetesMedicationStatusRecord
+  PacemakerStatusRecord:
+    name: PacemakerStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/PacemakerStatusRecord
+    description: Record of having a pacemaker implanted
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ProcedureStatusRecord
+    slots:
+    - ProcedureStatusRecord_subject_identifier
+    - collected_by
+    - age_at_procedure_start
+    - age_at_procedure_end
+    - ProcedureStatusRecord_age_at_procedure_record
+    - PacemakerStatusRecord_procedure_type
+    slot_usage:
+      procedure_type:
+        name: procedure_type
+        any_of:
+        - equals_string: OMOP:54772840
+        - equals_string: NCIT:C99998
+    class_uri: cms:PacemakerStatusRecord
+  CoronaryAngioplastyStatusRecord:
+    name: CoronaryAngioplastyStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/CoronaryAngioplastyStatusRecord
+    description: Record of having a coronary angioplasty
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ProcedureStatusRecord
+    slots:
+    - ProcedureStatusRecord_subject_identifier
+    - collected_by
+    - age_at_procedure_start
+    - age_at_procedure_end
+    - ProcedureStatusRecord_age_at_procedure_record
+    - CoronaryAngioplastyStatusRecord_procedure_type
+    slot_usage:
+      procedure_type:
+        name: procedure_type
+        any_of:
+        - equals_string: OMOP:4184832
+    class_uri: cms:CoronaryAngioplastyStatusRecord
+  CoronaryBypassStatusRecord:
+    name: CoronaryBypassStatusRecord
+    definition_uri: https://w3id.org/linkml/clinical-microschemas/CoronaryBypassStatusRecord
+    description: Record of having a coronary artery bypass graft
+    from_schema: https://w3id.org/linkml/clinical-microschemas
+    is_a: ProcedureStatusRecord
+    slots:
+    - ProcedureStatusRecord_subject_identifier
+    - collected_by
+    - age_at_procedure_start
+    - age_at_procedure_end
+    - ProcedureStatusRecord_age_at_procedure_record
+    - CoronaryBypassStatusRecord_procedure_type
+    slot_usage:
+      procedure_type:
+        name: procedure_type
+        any_of:
+        - equals_string: OMOP:4336464
+    class_uri: cms:CoronaryBypassStatusRecord
   Relativity:
     name: Relativity
     definition_uri: https://w3id.org/linkml/clinical-microschemas/Relativity
@@ -4943,7 +5580,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-08-07T14:48:56'
-source_file_size: 8552
-generation_date: '2026-08-07T14:49:39'
+source_file_date: '2026-08-10T20:20:06'
+source_file_size: 11946
+generation_date: '2026-08-10T20:20:17'
 

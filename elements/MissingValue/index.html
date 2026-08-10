@@ -323,7 +323,7 @@
 <tr>
 <td><a href="../indicator_char/">indicator_char</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Sentinel value used to add information to a datum or indicate a missing datum</td>
+<td>Value used to add information to a datum, indicate a missing datum, or give  ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -352,7 +352,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SingleVariable/">SingleVariable</a></td>
+<td><a href="../SingleContinuousVariable/">SingleContinuousVariable</a></td>
+<td><a href="../missing_value/">missing_value</a></td>
+<td>range</td>
+<td><a href="./">MissingValue</a></td>
+</tr>
+<tr>
+<td><a href="../SingleCategoricalVariable/">SingleCategoricalVariable</a></td>
 <td><a href="../missing_value/">missing_value</a></td>
 <td>range</td>
 <td><a href="./">MissingValue</a></td>
@@ -405,14 +411,15 @@
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">indicator_char</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indicator_char</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sentinel value used to add information to a datum or indicate a missing</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">datum</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Value used to add information to a datum, indicate a missing datum,</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or give  a specific answer</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MissingValue</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MissingValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AlertValue</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnumValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">indicator_meaning</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indicator_meaning</span>
@@ -424,6 +431,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MissingValue</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AlertValue</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnumValue</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
