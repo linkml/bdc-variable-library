@@ -32,11 +32,12 @@ default_range: string
 imports:
   - linkml:types
   - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.2/src/clinical_microschemas/schema/clinical_microschemas
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.3/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
   Entity:
+    abstract: true
     description: >-
       Any resource that has its own identifier
     class_uri: schema:Thing
@@ -52,12 +53,12 @@ classes:
       - variable_description
       - concept_type
       - variable_label
-      - unit
 
-  SingleVariable:
+  SingleContinuousVariable:
     is_a: Variable
     description: >-
-      Represents a single entry in a data dictionary
+      Represents a single entry in a data dictionary of a variable with a continuous
+      value
     slots:
       - source_id
       - file_id
@@ -68,8 +69,25 @@ classes:
       - minimum_value
       - maximum_value
       - resolution
-      - coded_values
       - missing_value
+      - unit
+      - alert_values
+      - comment
+
+  SingleCategoricalVariable:
+    is_a: Variable
+    description: >-
+      Represents a single entry in a data dictionary of a variable with a categorical
+      value
+    slots:
+      - source_id
+      - file_id
+      - file_name
+      - variable_name
+      - source_variable_description
+      - data_type
+      - missing_value
+      - coded_values
       - comment
 
   CompoundVariable:
@@ -79,7 +97,9 @@ classes:
     slots:
      - cde_id
      - bdchm_type
-     - metadata
+     - unit
+     - row_metadata
+     - documentation_metadata
      - alert_value
      
   IntegratedVariable:
@@ -91,6 +111,7 @@ classes:
     slots:
       - cde_id
       - bdchm_type
+      - unit
       - integrates
 
   MissingValue:
@@ -108,6 +129,15 @@ classes:
     slots:
       - indicator_char
       - indicator_meaning
+
+  EnumValue:
+    is_a: Entity
+    description: >-
+      One possible answer in a list of enumerated values
+    slots:
+      - indicator_char
+      - indicator_meaning
+      - indicator_type
       
   MetadataVariable:
     is_a: Entity
@@ -117,6 +147,50 @@ classes:
       microschema
     slots:
       - microschema_slot
+
+  DocumentationVariable:
+    is_a: Entity
+    description: >-
+      Information derived from study documentation or text in a data dictionary
+      that provides essential metadata for a variable
+    slots:
+      - contr_vocab
+      - microschema_slot
+    rules:
+      - preconditions:
+          slot_conditions:
+            microschema_slot:
+              equals_string: instrument
+        postconditions:
+          slot_conditions:
+            contr_vocab:
+              equals_string: InstrumentEnum
+      - preconditions:
+          slot_conditions:
+            microschema_slot:
+              equals_string: method_type
+        postconditions:
+          slot_conditions:
+            contr_vocab:
+              equals_string: MethodEnum
+      - preconditions:
+          slot_conditions:
+            microschema_slot:
+              equals_string: condition_concept
+        postconditions:
+          slot_conditions:
+            contr_vocab:
+              any_of:
+                - pattern: "^MONDO:\\d{7}$"
+                - pattern: "^HP:\\d{7}$"
+      - preconditions:
+          slot_conditions:
+            microschema_slot:
+              equals_string: condition_provenance
+        postconditions:
+          slot_conditions:
+            contr_vocab:
+              equals_string: ProvenanceEnum
   
   CompoundHeight002:
     is_a: CompoundVariable
@@ -138,12 +212,26 @@ classes:
     is_a: IntegratedVariable
     description: >-
       Height variable containing data from multiple studies, normalized to cm
+  
+  CompoundAsthma001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant asthma status
+    instantiates:
+     - AsthmaStatusRecord
+
+  IntegratedAsthma001:
+   is_a: IntegratedVariable
+   description: >-
+     Participant asthma status containing data from multiple studies
 
   ResearchStudy:
     is_a: Entity
     class_uri: bdchm:ResearchStudy
     description: >-
       Name of research study that produced the variable
+
+  
 
 slots:
   id:
@@ -196,11 +284,6 @@ slots:
     description: >-
       The number of decimal places a measurement is represented in the data.
       Corresponds to the RESOLUTION field in dbGAP
-  coded_values:
-    range: string
-    description: >-
-      Pipe-delimited string of allowable values. Should only be used if the data_type
-      is enum. Corresponds to VALUES field in dbGAP
   missing_value:
     range: MissingValue
     multivalued: true
@@ -230,29 +313,51 @@ slots:
     range: BdchmTypeEnum
     description: >-
       Entity type from BDCHM that defines the variable type
-  metadata: 
+  row_metadata: 
     range: MetadataVariable
     multivalued: true
     inlined: true
     inlined_as_list: true
     description: >-
       List of variable identifiers providing metadata for a compound variable
+  documentation_metadata:
+    range: DocumentationVariable
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      List of metadata elements that derive from study documentation or descriptive
+      information in the data dictionary
   alert_value:
     range: AlertValue
     multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      List of values that provide extra optional information about a variable.
+      Often this is used to indicate a violation of QA/QC
+  alert_values:
+    range: AlertValue
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
     description: >-
       List of values that provide extra optional information about a variable.
       Often this is used to indicate a violation of QA/QC
   indicator_char:
     range: string
     description: >-
-      Sentinel value used to add information to a datum or indicate a missing
-      datum
+      Value used to add information to a datum, indicate a missing datum, or give 
+      a specific answer
   indicator_meaning:
     range: string
     description: >-
       Meaning of the indicator character verbatim from original data provider
       when possible
+  indicator_type:
+    range: uriorcurie
+    description: >-
+      CURIE describing the meaning of the indicator
   microschema_slot:
     range: ClinicalMicroschemaEnum
     description: >-
@@ -262,6 +367,18 @@ slots:
     multivalued: true
     description: >-
       List of variables combined in the IntegratedVariable
+  coded_values:
+    range: EnumValue
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    description: >-
+      List of allowable values. Should only be used if the data_type is enum.
+      Corresponds to VALUES field in dbGAP
+  contr_vocab:
+    range: string
+    description: >-
+      Value from an enum
 
 enums:
 
@@ -280,7 +397,7 @@ enums:
 
   ClinicalMicroschemaEnum:
     description: >-
-      A list of slots describing clinical measurements in microschema
+      A list of slots describing clinical data in microschema
     permissible_values:
       subject_identifier:
       measurement_type:
@@ -298,3 +415,15 @@ enums:
       age_at_measurement:
       study_site:
       absolute_time:
+      condition_type:
+      associated_evidence:
+      age_at_condition_start:
+      age_at_condition_end:
+      age_at_condition_record:
+      condition_status:
+      condition_provenance:
+      condition_concept:
+      condition_severity:
+      relationship_to_participant:
+      method_type:
+

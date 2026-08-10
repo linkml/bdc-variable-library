@@ -72,7 +72,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'bdc_variable_library',
      'id': 'https://w3id.org/linkml/bdc-variable-library',
      'imports': ['linkml:types',
                  'https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile',
-                 'https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.2/src/clinical_microschemas/schema/clinical_microschemas'],
+                 'https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.3/src/clinical_microschemas/schema/clinical_microschemas'],
      'license': 'BSD-3-Clause',
      'name': 'bdc-variable-library',
      'prefixes': {'HP': {'prefix_prefix': 'HP',
@@ -646,6 +646,27 @@ class RelativeTimingEnum(str, Enum):
     during = "during"
 
 
+class DynamicAsthmaEnum(str):
+    """
+    Asthma and asthma-related terms from Mondo and HPO
+    """
+    pass
+
+
+class DynamicHeartFailureEnum(str):
+    """
+    Heart failure and related terms from Mondo
+    """
+    pass
+
+
+class DynamicObesityEnum(str):
+    """
+    Obesity and related terms from HPO
+    """
+    pass
+
+
 class BdchmTypeEnum(str, Enum):
     """
     A list of BDCHM entities used to describe variables
@@ -658,7 +679,7 @@ class BdchmTypeEnum(str, Enum):
 
 class ClinicalMicroschemaEnum(str, Enum):
     """
-    A list of slots describing clinical measurements in microschema
+    A list of slots describing clinical data in microschema
     """
     subject_identifier = "subject_identifier"
     measurement_type = "measurement_type"
@@ -676,6 +697,17 @@ class ClinicalMicroschemaEnum(str, Enum):
     age_at_measurement = "age_at_measurement"
     study_site = "study_site"
     absolute_time = "absolute_time"
+    condition_type = "condition_type"
+    associated_evidence = "associated_evidence"
+    age_at_condition_start = "age_at_condition_start"
+    age_at_condition_end = "age_at_condition_end"
+    age_at_condition_record = "age_at_condition_record"
+    condition_status = "condition_status"
+    condition_provenance = "condition_provenance"
+    condition_concept = "condition_concept"
+    condition_severity = "condition_severity"
+    relationship_to_participant = "relationship_to_participant"
+    method_type = "method_type"
 
 
 
@@ -794,7 +826,10 @@ class ClinicalMeasurementRecord(ConfiguredBaseModel):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: Quantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -804,7 +839,9 @@ class ClinicalMeasurementRecord(ConfiguredBaseModel):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -935,7 +972,10 @@ class HumanBodyHeightRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -945,7 +985,9 @@ class HumanBodyHeightRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -972,7 +1014,10 @@ class HumanBodyHeightRecord001(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity001 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -982,7 +1027,9 @@ class HumanBodyHeightRecord001(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1009,7 +1056,10 @@ class HumanBodyHeightRecord002(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity002 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1019,7 +1069,9 @@ class HumanBodyHeightRecord002(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1046,7 +1098,10 @@ class HumanBodyHeightRecord003(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity002 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1056,7 +1111,9 @@ class HumanBodyHeightRecord003(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1083,7 +1140,10 @@ class HumanBodyHeightRecord004(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity003 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1093,7 +1153,9 @@ class HumanBodyHeightRecord004(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1120,7 +1182,10 @@ class HumanBodyHeightRecord005(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity004 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1130,7 +1195,9 @@ class HumanBodyHeightRecord005(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1141,9 +1208,10 @@ class HumanBodyHeightRecord006(HumanBodyHeightRecord):
     Measurement of linear distance of a human body from the bottom of a flat foot to the top-most point of the head in cm
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'rules': [{'postconditions': {'slot_conditions': {'unit': {'equals_string': 'cm',
+                                                                    'name': 'unit'}}}}],
          'slot_usage': {'measurement_value': {'name': 'measurement_value',
-                                              'range': 'HumanBodyHeightQuantity003'},
-                        'unit': {'id_prefixes': ['cm'], 'name': 'unit'}}})
+                                              'range': 'HumanBodyHeightQuantity003'}}})
 
     subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
                        'ConditionStatusRecord',
@@ -1152,8 +1220,10 @@ class HumanBodyHeightRecord006(HumanBodyHeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyHeightQuantity003 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'id_prefixes': ['cm'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1163,7 +1233,9 @@ class HumanBodyHeightRecord006(HumanBodyHeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1202,7 +1274,10 @@ class HumanBodyWeightRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyWeightQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1212,7 +1287,9 @@ class HumanBodyWeightRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1239,7 +1316,10 @@ class HumanBodyWeightRecord001(HumanBodyWeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyWeightQuantity001 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1249,7 +1329,9 @@ class HumanBodyWeightRecord001(HumanBodyWeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1276,7 +1358,10 @@ class HumanBodyWeightRecord002(HumanBodyWeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyWeightQuantity002 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1286,7 +1371,9 @@ class HumanBodyWeightRecord002(HumanBodyWeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1313,7 +1400,10 @@ class HumanBodyWeightRecord003(HumanBodyWeightRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBodyWeightQuantity003 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1323,7 +1413,9 @@ class HumanBodyWeightRecord003(HumanBodyWeightRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1354,7 +1446,10 @@ class BodyMassIndexRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: BodyMassIndexQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1364,7 +1459,9 @@ class BodyMassIndexRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1390,7 +1487,10 @@ class BodyMassIndexRecord001(BodyMassIndexRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: BodyMassIndexQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1402,7 +1502,9 @@ class BodyMassIndexRecord001(BodyMassIndexRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1428,7 +1530,10 @@ class BodyMassIndexRecord002(BodyMassIndexRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: BodyMassIndexQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1440,7 +1545,9 @@ class BodyMassIndexRecord002(BodyMassIndexRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1478,7 +1585,10 @@ class HumanMeasuredFvcRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanMeasuredFvcQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1488,7 +1598,9 @@ class HumanMeasuredFvcRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1520,7 +1632,10 @@ class HumanMeasuredFvcRecord001(HumanMeasuredFvcRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanMeasuredFvcQuantity001 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1530,7 +1645,9 @@ class HumanMeasuredFvcRecord001(HumanMeasuredFvcRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1563,7 +1680,10 @@ class HumanPredictedFvcRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanPredictedFvcQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1573,7 +1693,9 @@ class HumanPredictedFvcRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1606,7 +1728,10 @@ class HumanPercentPredictedFvcRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanPercentPredictedFvcQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1616,7 +1741,9 @@ class HumanPercentPredictedFvcRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1654,7 +1781,10 @@ class HumanFev1Record(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanFev1Quantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1664,7 +1794,9 @@ class HumanFev1Record(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1699,7 +1831,10 @@ class HumanBasophilCountRecord(ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBasophilCountQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1709,7 +1844,9 @@ class HumanBasophilCountRecord(ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1733,7 +1870,10 @@ class HumanBasophilCountRecord001(HumanBasophilCountRecord):
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBasophilCountQuantity001 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': '10*3/uL'}],
-         'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+         'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1743,7 +1883,9 @@ class HumanBasophilCountRecord001(HumanBasophilCountRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -1767,7 +1909,10 @@ class HumanBasophilCountRecord002(HumanBasophilCountRecord):
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanBasophilCountQuantity001 = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': '{#}/uL'}],
-         'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+         'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1777,10 +1922,239 @@ class HumanBasophilCountRecord002(HumanBasophilCountRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
+
+
+class AsthmaStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of asthma  in the patient/participant or their blood relatives
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'condition_type': {'any_of': [{'range': 'DynamicAsthmaEnum'},
+                                                      {'equals_string': 'ICD10:J45'},
+                                                      {'equals_string': 'OMOP:764677'}],
+                                           'name': 'condition_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    condition_type: Union[DynamicAsthmaEnum, str] = Field(default=..., description="""A CURIE from MONDO or HPO""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'DynamicAsthmaEnum'},
+                    {'equals_string': 'ICD10:J45'},
+                    {'equals_string': 'OMOP:764677'}],
+         'domain_of': ['ConditionStatusRecord'],
+         'slot_uri': 'bdchm:condition_concept'} })
+    associated_evidence: Optional[AssociatedEvidenceEnum] = Field(default=None, description="""The method used for diagnosis""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
+    age_at_condition_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_record: Quantity = Field(default=..., description="""Age of participant when record of the condition was collected. This  slot can accommodate an \"age at encounter\" where a medical history was  collected, or a record was adjudicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_status: HistoricalStatusEnum = Field(default=..., description="""A value indicating whether the medical condition described in this record is present, absent, historically present, or unknown for this individual patient.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_provenance: Optional[ProvenanceEnum] = Field(default=None, description="""A value representing the provenance of the Condition record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_severity: Optional[ConditionSeverityEnum] = Field(default=None, description="""A subjective assessment of the severity of the condition.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    relationship_to_participant: FamilyRelationshipEnum = Field(default=..., description="""A value indicating the relationship between the Participant to which the Condition is attributed and the individual who had the reported Condition. If the Condition is affecting the participant themselves, then 'Self' is the appropriate relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+
+
+class HeartFailureStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of congestive  heart failure in the patient/participant or their blood relatives
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'condition_type': {'any_of': [{'range': 'DynamicHeartFailureEnum'},
+                                                      {'equals_string': 'ICD10:I50'},
+                                                      {'equals_string': 'OMOP:316139'}],
+                                           'name': 'condition_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    condition_type: Union[DynamicHeartFailureEnum, str] = Field(default=..., description="""A CURIE from MONDO or HPO""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'DynamicHeartFailureEnum'},
+                    {'equals_string': 'ICD10:I50'},
+                    {'equals_string': 'OMOP:316139'}],
+         'domain_of': ['ConditionStatusRecord'],
+         'slot_uri': 'bdchm:condition_concept'} })
+    associated_evidence: Optional[AssociatedEvidenceEnum] = Field(default=None, description="""The method used for diagnosis""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
+    age_at_condition_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_record: Quantity = Field(default=..., description="""Age of participant when record of the condition was collected. This  slot can accommodate an \"age at encounter\" where a medical history was  collected, or a record was adjudicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_status: HistoricalStatusEnum = Field(default=..., description="""A value indicating whether the medical condition described in this record is present, absent, historically present, or unknown for this individual patient.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_provenance: Optional[ProvenanceEnum] = Field(default=None, description="""A value representing the provenance of the Condition record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_severity: Optional[ConditionSeverityEnum] = Field(default=None, description="""A subjective assessment of the severity of the condition.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    relationship_to_participant: FamilyRelationshipEnum = Field(default=..., description="""A value indicating the relationship between the Participant to which the Condition is attributed and the individual who had the reported Condition. If the Condition is affecting the participant themselves, then 'Self' is the appropriate relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+
+
+class ObesityStatusRecord(ConditionStatusRecord):
+    """
+    Record suggesting the current or historical presence or absence of obesity  in the patient/participant or their blood relatives
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'condition_type': {'any_of': [{'range': 'DynamicObesityEnum'},
+                                                      {'equals_string': 'OMOP:433736'}],
+                                           'name': 'condition_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    condition_type: Union[DynamicObesityEnum, str] = Field(default=..., description="""A CURIE from MONDO or HPO""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'DynamicObesityEnum'}, {'equals_string': 'OMOP:433736'}],
+         'domain_of': ['ConditionStatusRecord'],
+         'slot_uri': 'bdchm:condition_concept'} })
+    associated_evidence: Optional[AssociatedEvidenceEnum] = Field(default=None, description="""The method used for diagnosis""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
+    age_at_condition_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the condition""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    age_at_condition_record: Quantity = Field(default=..., description="""Age of participant when record of the condition was collected. This  slot can accommodate an \"age at encounter\" where a medical history was  collected, or a record was adjudicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_status: HistoricalStatusEnum = Field(default=..., description="""A value indicating whether the medical condition described in this record is present, absent, historically present, or unknown for this individual patient.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_provenance: Optional[ProvenanceEnum] = Field(default=None, description="""A value representing the provenance of the Condition record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    condition_severity: Optional[ConditionSeverityEnum] = Field(default=None, description="""A subjective assessment of the severity of the condition.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+    relationship_to_participant: FamilyRelationshipEnum = Field(default=..., description="""A value indicating the relationship between the Participant to which the Condition is attributed and the individual who had the reported Condition. If the Condition is affecting the participant themselves, then 'Self' is the appropriate relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConditionStatusRecord']} })
+
+
+class AspirinStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'drug_type': {'any_of': [{'equals_string': 'OMOP:1112807'},
+                                                 {'equals_string': 'RxNORM:1191'}],
+                                      'name': 'drug_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    drug_type: str = Field(default=..., description="""A CURIE from RxNorm""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'OMOP:1112807'},
+                    {'equals_string': 'RxNORM:1191'}],
+         'domain_of': ['DrugStatusRecord'],
+         'slot_uri': 'bdchm:drug_concept'} })
+    age_at_drug_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_record: Quantity = Field(default=..., description="""Age of participant when record of the drug was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medication list. """, json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    route_of_administration: Optional[RouteAdminEnum] = Field(default=None, description="""Routes of drug administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    dose: Optional[Quantity] = Field(default=None, description="""Amount of drug per administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    frequency: Optional[Quantity] = Field(default=None, description="""How often e.g. 2 per day""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    indication: Optional[str] = Field(default=None, description="""Condition/reason for drug (SNOMED, ICD, Mondo, HPO, etc)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+
+
+class BetaBlockerStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'drug_type': {'any_of': [{'equals_string': 'OMOP:21601741'},
+                                                 {'equals_string': 'ATC:C07A'}],
+                                      'name': 'drug_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    drug_type: str = Field(default=..., description="""A CURIE from RxNorm""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'OMOP:21601741'}, {'equals_string': 'ATC:C07A'}],
+         'domain_of': ['DrugStatusRecord'],
+         'slot_uri': 'bdchm:drug_concept'} })
+    age_at_drug_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_record: Quantity = Field(default=..., description="""Age of participant when record of the drug was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medication list. """, json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    route_of_administration: Optional[RouteAdminEnum] = Field(default=None, description="""Routes of drug administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    dose: Optional[Quantity] = Field(default=None, description="""Amount of drug per administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    frequency: Optional[Quantity] = Field(default=None, description="""How often e.g. 2 per day""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    indication: Optional[str] = Field(default=None, description="""Condition/reason for drug (SNOMED, ICD, Mondo, HPO, etc)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+
+
+class DiabetesMedicationStatusRecord(DrugStatusRecord):
+    """
+    Record suggesting exposure to aspirin
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'drug_type': {'any_of': [{'equals_string': 'ATC:A10'}],
+                                      'name': 'drug_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    drug_type: str = Field(default=..., description="""A CURIE from RxNorm""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'ATC:A10'}],
+         'domain_of': ['DrugStatusRecord'],
+         'slot_uri': 'bdchm:drug_concept'} })
+    age_at_drug_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of drug exposure""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    age_at_drug_record: Quantity = Field(default=..., description="""Age of participant when record of the drug was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medication list. """, json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    route_of_administration: Optional[RouteAdminEnum] = Field(default=None, description="""Routes of drug administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    dose: Optional[Quantity] = Field(default=None, description="""Amount of drug per administration""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    frequency: Optional[Quantity] = Field(default=None, description="""How often e.g. 2 per day""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+    indication: Optional[str] = Field(default=None, description="""Condition/reason for drug (SNOMED, ICD, Mondo, HPO, etc)""", json_schema_extra = { "linkml_meta": {'domain_of': ['DrugStatusRecord']} })
+
+
+class PacemakerStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a pacemaker implanted
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'procedure_type': {'any_of': [{'equals_string': 'OMOP:54772840'},
+                                                      {'equals_string': 'NCIT:C99998'}],
+                                           'name': 'procedure_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    procedure_type: str = Field(default=..., description="""A CURIE from OMOP""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'OMOP:54772840'},
+                    {'equals_string': 'NCIT:C99998'}],
+         'domain_of': ['ProcedureStatusRecord'],
+         'slot_uri': 'bdchm:procedure_concept'} })
+    collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
+    age_at_procedure_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_record: Quantity = Field(default=..., description="""Age of participant when record of the procedure was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medical history.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+
+
+class CoronaryAngioplastyStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a coronary angioplasty
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'procedure_type': {'any_of': [{'equals_string': 'OMOP:4184832'}],
+                                           'name': 'procedure_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    procedure_type: str = Field(default=..., description="""A CURIE from OMOP""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'OMOP:4184832'}],
+         'domain_of': ['ProcedureStatusRecord'],
+         'slot_uri': 'bdchm:procedure_concept'} })
+    collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
+    age_at_procedure_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_record: Quantity = Field(default=..., description="""Age of participant when record of the procedure was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medical history.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+
+
+class CoronaryBypassStatusRecord(ProcedureStatusRecord):
+    """
+    Record of having a coronary artery bypass graft
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/clinical-microschemas',
+         'slot_usage': {'procedure_type': {'any_of': [{'equals_string': 'OMOP:4336464'}],
+                                           'name': 'procedure_type'}}})
+
+    subject_identifier: str = Field(default=..., description="""An identifier for the subject of the datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'ConditionStatusRecord',
+                       'DrugStatusRecord',
+                       'ProcedureStatusRecord']} })
+    procedure_type: str = Field(default=..., description="""A CURIE from OMOP""", json_schema_extra = { "linkml_meta": {'any_of': [{'equals_string': 'OMOP:4336464'}],
+         'domain_of': ['ProcedureStatusRecord'],
+         'slot_uri': 'bdchm:procedure_concept'} })
+    collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
+    age_at_procedure_start: Optional[Quantity] = Field(default=None, description="""Age of the subject at the start of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_end: Optional[Quantity] = Field(default=None, description="""Age of the subject at the end of the procedure""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
+    age_at_procedure_record: Quantity = Field(default=..., description="""Age of participant when record of the procedure was collected. This  slot can accommodate an \"age at encounter\" where the participant was asked for their medical history.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ProcedureStatusRecord']} })
 
 
 class Relativity(ConfiguredBaseModel):
@@ -1845,7 +2219,10 @@ class HumanFvcRecord(Context, Relativity, ClinicalMeasurementRecord):
     measurement_type: str = Field(default=..., description="""A CURIE from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'],
          'slot_uri': 'bdchm:observation_type'} })
     measurement_value: HumanFvcQuantity = Field(default=..., description="""The \"value\" in the observation key/value pair""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
     method: Optional[MethodEnum] = Field(default=None, description="""The method used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord'], 'slot_uri': 'bdchm:method_type'} })
     instrument: Optional[InstrumentEnum] = Field(default=None, description="""The instrument used for the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ConditionStatusRecord']} })
@@ -1855,7 +2232,9 @@ class HumanFvcRecord(Context, Relativity, ClinicalMeasurementRecord):
     body_position: Optional[BodyPositionEnum] = Field(default=None, description="""The body position during measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     context: Optional[ContextEnum] = Field(default=None, description="""The context of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     collected_by: Optional[CollectedByEnum] = Field(default=None, description="""Who collected the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'ProcedureStatusRecord']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
     age_at_measurement: Quantity = Field(default=..., description="""Age of the subject at the time of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     study_site: Optional[str] = Field(default=None, description="""Institution name, clinic name, or other indication of where a measurement was taken geographically""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
     absolute_time: Optional[datetime ] = Field(default=None, description="""Calendar date when a measurement was taken""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord']} })
@@ -2128,7 +2507,8 @@ class Entity(ConfiguredBaseModel):
     """
     Any resource that has its own identifier
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'schema:Thing',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'schema:Thing',
          'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
@@ -2144,35 +2524,62 @@ class Variable(Entity):
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
-class SingleVariable(Variable):
+class SingleContinuousVariable(Variable):
     """
-    Represents a single entry in a data dictionary
+    Represents a single entry in a data dictionary of a variable with a continuous value
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
-    source_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the variable in their system. In most cases this will be a phv value.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    file_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the file or data table in their system. In most cases this will be a pht value""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    file_name: Optional[str] = Field(default=None, description="""Name of file containing variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    variable_name: Optional[str] = Field(default=None, description="""The name of the variable according to the original data provider Corresponds to the VARNAME field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    source_variable_description: Optional[str] = Field(default=None, description="""Description of the variable provided by the original data provider Corresponds to the VARDESC field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'SingleVariable']} })
-    minimum_value: Optional[Decimal] = Field(default=None, description="""The lowest value present in the data for this variable. Corresponds to  the MIN field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    maximum_value: Optional[Decimal] = Field(default=None, description="""The highest value present in the data for this variable. Corresponds to the MAX field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    resolution: Optional[int] = Field(default=None, description="""The number of decimal places a measurement is represented in the data. Corresponds to the RESOLUTION field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    coded_values: Optional[str] = Field(default=None, description="""Pipe-delimited string of allowable values. Should only be used if the data_type is enum. Corresponds to VALUES field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    missing_value: Optional[list[MissingValue]] = Field(default=None, description="""Sentinel value to indicate a missing value or other data nuance""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
-    comment: Optional[str] = Field(default=None, description="""Any text comment provided by the original data provider. Corresponds to the  COMMENT field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleVariable']} })
+    source_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the variable in their system. In most cases this will be a phv value.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    file_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the file or data table in their system. In most cases this will be a pht value""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    file_name: Optional[str] = Field(default=None, description="""Name of file containing variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    variable_name: Optional[str] = Field(default=None, description="""The name of the variable according to the original data provider Corresponds to the VARNAME field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    source_variable_description: Optional[str] = Field(default=None, description="""Description of the variable provided by the original data provider Corresponds to the VARDESC field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
+    minimum_value: Optional[Decimal] = Field(default=None, description="""The lowest value present in the data for this variable. Corresponds to  the MIN field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable']} })
+    maximum_value: Optional[Decimal] = Field(default=None, description="""The highest value present in the data for this variable. Corresponds to the MAX field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable']} })
+    resolution: Optional[int] = Field(default=None, description="""The number of decimal places a measurement is represented in the data. Corresponds to the RESOLUTION field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable']} })
+    missing_value: Optional[list[MissingValue]] = Field(default=None, description="""Sentinel value to indicate a missing value or other data nuance""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    alert_values: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable']} })
+    comment: Optional[str] = Field(default=None, description="""Any text comment provided by the original data provider. Corresponds to the  COMMENT field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class SingleCategoricalVariable(Variable):
+    """
+    Represents a single entry in a data dictionary of a variable with a categorical value
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
+
+    source_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the variable in their system. In most cases this will be a phv value.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    file_id: Optional[str] = Field(default=None, description="""Identifier used by the organization providing the variable to BDC to uniquely identify the file or data table in their system. In most cases this will be a pht value""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    file_name: Optional[str] = Field(default=None, description="""Name of file containing variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    variable_name: Optional[str] = Field(default=None, description="""The name of the variable according to the original data provider Corresponds to the VARNAME field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    source_variable_description: Optional[str] = Field(default=None, description="""Description of the variable provided by the original data provider Corresponds to the VARDESC field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    data_type: Optional[DataTypeEnum] = Field(default=None, description="""The data type of the observation""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'SingleCategoricalVariable']} })
+    missing_value: Optional[list[MissingValue]] = Field(default=None, description="""Sentinel value to indicate a missing value or other data nuance""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    coded_values: Optional[list[EnumValue]] = Field(default=None, description="""List of allowable values. Should only be used if the data_type is enum. Corresponds to VALUES field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleCategoricalVariable']} })
+    comment: Optional[str] = Field(default=None, description="""Any text comment provided by the original data provider. Corresponds to the  COMMENT field in dbGAP""", json_schema_extra = { "linkml_meta": {'domain_of': ['SingleContinuousVariable', 'SingleCategoricalVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2184,14 +2591,18 @@ class CompoundVariable(Variable):
 
     cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
     bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
-    metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
-    alert_value: Optional[list[str]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2203,13 +2614,16 @@ class IntegratedVariable(Variable):
 
     cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
     bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
     integrates: Optional[list[str]] = Field(default=None, description="""List of variables combined in the IntegratedVariable""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntegratedVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2219,8 +2633,8 @@ class MissingValue(Entity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
-    indicator_char: Optional[str] = Field(default=None, description="""Sentinel value used to add information to a datum or indicate a missing datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue']} })
-    indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue']} })
+    indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
+    indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2230,8 +2644,20 @@ class AlertValue(Entity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
-    indicator_char: Optional[str] = Field(default=None, description="""Sentinel value used to add information to a datum or indicate a missing datum""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue']} })
-    indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue']} })
+    indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
+    indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class EnumValue(Entity):
+    """
+    One possible answer in a list of enumerated values
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
+
+    indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
+    indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
+    indicator_type: Optional[str] = Field(default=None, description="""CURIE describing the meaning of the indicator""", json_schema_extra = { "linkml_meta": {'domain_of': ['EnumValue']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2241,7 +2667,35 @@ class MetadataVariable(Entity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
-    microschema_slot: Optional[ClinicalMicroschemaEnum] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable']} })
+    microschema_slot: Optional[ClinicalMicroschemaEnum] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class DocumentationVariable(Entity):
+    """
+    Information derived from study documentation or text in a data dictionary that provides essential metadata for a variable
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
+         'rules': [{'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'InstrumentEnum',
+                                                                           'name': 'contr_vocab'}}},
+                    'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'instrument',
+                                                                               'name': 'microschema_slot'}}}},
+                   {'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'MethodEnum',
+                                                                           'name': 'contr_vocab'}}},
+                    'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'method_type',
+                                                                               'name': 'microschema_slot'}}}},
+                   {'postconditions': {'slot_conditions': {'contr_vocab': {'any_of': [{'pattern': '^MONDO:\\d{7}$'},
+                                                                                      {'pattern': '^HP:\\d{7}$'}],
+                                                                           'name': 'contr_vocab'}}},
+                    'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'condition_concept',
+                                                                               'name': 'microschema_slot'}}}},
+                   {'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'ProvenanceEnum',
+                                                                           'name': 'contr_vocab'}}},
+                    'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'condition_provenance',
+                                                                               'name': 'microschema_slot'}}}}]})
+
+    contr_vocab: Optional[str] = Field(default=None, description="""Value from an enum""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentationVariable']} })
+    microschema_slot: Optional[ClinicalMicroschemaEnum] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2254,14 +2708,18 @@ class CompoundHeight002(CompoundVariable):
 
     cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
     bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
-    metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
-    alert_value: Optional[list[str]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2274,14 +2732,18 @@ class CompoundHeight001(CompoundVariable):
 
     cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
     bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
-    metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
-    alert_value: Optional[list[str]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
-         'slot_uri': 'bdchm:unit'} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2293,13 +2755,61 @@ class IntegratedHeight001(IntegratedVariable):
 
     cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
     bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
     integrates: Optional[list[str]] = Field(default=None, description="""List of variables combined in the IntegratedVariable""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntegratedVariable']} })
     associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
     variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
-    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord', 'Variable'],
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class CompoundAsthma001(CompoundVariable):
+    """
+    A record of participant asthma status
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
+         'instantiates': ['AsthmaStatusRecord']})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
          'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class IntegratedAsthma001(IntegratedVariable):
+    """
+    Participant asthma status containing data from multiple studies
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    integrates: Optional[list[str]] = Field(default=None, description="""List of variables combined in the IntegratedVariable""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntegratedVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
@@ -2347,6 +2857,15 @@ HumanFev1Record.model_rebuild()
 HumanBasophilCountRecord.model_rebuild()
 HumanBasophilCountRecord001.model_rebuild()
 HumanBasophilCountRecord002.model_rebuild()
+AsthmaStatusRecord.model_rebuild()
+HeartFailureStatusRecord.model_rebuild()
+ObesityStatusRecord.model_rebuild()
+AspirinStatusRecord.model_rebuild()
+BetaBlockerStatusRecord.model_rebuild()
+DiabetesMedicationStatusRecord.model_rebuild()
+PacemakerStatusRecord.model_rebuild()
+CoronaryAngioplastyStatusRecord.model_rebuild()
+CoronaryBypassStatusRecord.model_rebuild()
 Relativity.model_rebuild()
 Context.model_rebuild()
 HumanFvcRecord.model_rebuild()
@@ -2371,13 +2890,18 @@ HumanBasophilCountQuantity001.model_rebuild()
 HumanBasophilCountQuantity002.model_rebuild()
 Entity.model_rebuild()
 Variable.model_rebuild()
-SingleVariable.model_rebuild()
+SingleContinuousVariable.model_rebuild()
+SingleCategoricalVariable.model_rebuild()
 CompoundVariable.model_rebuild()
 IntegratedVariable.model_rebuild()
 MissingValue.model_rebuild()
 AlertValue.model_rebuild()
+EnumValue.model_rebuild()
 MetadataVariable.model_rebuild()
+DocumentationVariable.model_rebuild()
 CompoundHeight002.model_rebuild()
 CompoundHeight001.model_rebuild()
 IntegratedHeight001.model_rebuild()
+CompoundAsthma001.model_rebuild()
+IntegratedAsthma001.model_rebuild()
 ResearchStudy.model_rebuild()

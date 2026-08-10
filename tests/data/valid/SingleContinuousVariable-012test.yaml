@@ -1,0 +1,23 @@
+id: FHSg3a543phv00274123s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Asthma status"
+concept_type: OMOP:40766911
+variable_label: "Asthma"
+source_id: phv00274123.v1.p16
+file_id: pht006005.v1
+file_name: e_exam_ex01_2_0813s
+variable_name: g3a543
+source_variable_description: "Asthma: If you no longer have it, at what age did it stop?"
+data_type: integer
+unit: UCUM:a
+missing_value:
+  - id: mv:002
+    indicator_char: "."
+    indicator_meaning: "Unknown"
+alert_values:
+  - id: al:003
+    indicator_char: "0"
+    indicator_meaning: "No or no asthma"
+  - id: al:004
+    indicator_char: "88"
+    indicator_meaning: "N/A (still has asthma)"

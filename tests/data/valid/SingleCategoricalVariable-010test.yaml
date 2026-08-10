@@ -1,0 +1,22 @@
+id: FHSg3a541phv00274121s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Asthma status"
+concept_type: OMOP:40766909
+variable_label: "Asthma"
+source_id: phv00274121.v1.p16
+file_id: pht006005.v1
+file_name: e_exam_ex01_2_0813s
+variable_name: g3a541
+source_variable_description: "Asthma: Was it diagnosed by a doctor or other health professional?"
+data_type: enum
+missing_value:
+  - id: mv:002
+    indicator_char: "."
+    indicator_meaning: "Unknown"
+coded_values:
+  - id: cv:005
+    indicator_char: "0"
+    indicator_meaning: "No or no asthma"
+  - id: cv:002
+    indicator_char: "1"
+    indicator_meaning: "Yes"
