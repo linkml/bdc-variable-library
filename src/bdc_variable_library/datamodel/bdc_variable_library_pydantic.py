@@ -2676,12 +2676,12 @@ class DocumentationVariable(Entity):
     Information derived from study documentation or text in a data dictionary that provides essential metadata for a variable
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
-         'rules': [{'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'InstrumentEnum',
-                                                                           'name': 'contr_vocab'}}},
+         'rules': [{'postconditions': {'slot_conditions': {'contr_vocab': {'name': 'contr_vocab',
+                                                                           'range': 'InstrumentEnum'}}},
                     'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'instrument',
                                                                                'name': 'microschema_slot'}}}},
-                   {'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'MethodEnum',
-                                                                           'name': 'contr_vocab'}}},
+                   {'postconditions': {'slot_conditions': {'contr_vocab': {'name': 'contr_vocab',
+                                                                           'range': 'MethodEnum'}}},
                     'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'method_type',
                                                                                'name': 'microschema_slot'}}}},
                    {'postconditions': {'slot_conditions': {'contr_vocab': {'any_of': [{'pattern': '^MONDO:\\d{7}$'},
@@ -2689,8 +2689,8 @@ class DocumentationVariable(Entity):
                                                                            'name': 'contr_vocab'}}},
                     'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'condition_concept',
                                                                                'name': 'microschema_slot'}}}},
-                   {'postconditions': {'slot_conditions': {'contr_vocab': {'equals_string': 'ProvenanceEnum',
-                                                                           'name': 'contr_vocab'}}},
+                   {'postconditions': {'slot_conditions': {'contr_vocab': {'name': 'contr_vocab',
+                                                                           'range': 'ProvenanceEnum'}}},
                     'preconditions': {'slot_conditions': {'microschema_slot': {'equals_string': 'condition_provenance',
                                                                                'name': 'microschema_slot'}}}}]})
 

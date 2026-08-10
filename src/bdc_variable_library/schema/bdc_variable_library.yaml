@@ -164,7 +164,7 @@ classes:
         postconditions:
           slot_conditions:
             contr_vocab:
-              equals_string: InstrumentEnum
+              range: InstrumentEnum
       - preconditions:
           slot_conditions:
             microschema_slot:
@@ -172,7 +172,7 @@ classes:
         postconditions:
           slot_conditions:
             contr_vocab:
-              equals_string: MethodEnum
+              range: MethodEnum
       - preconditions:
           slot_conditions:
             microschema_slot:
@@ -190,7 +190,7 @@ classes:
         postconditions:
           slot_conditions:
             contr_vocab:
-              equals_string: ProvenanceEnum
+              range: ProvenanceEnum
   
   CompoundHeight002:
     is_a: CompoundVariable

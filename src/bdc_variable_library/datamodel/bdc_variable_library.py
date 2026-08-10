@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-10T14:24:04
+# Generation date: 2026-08-10T14:50:48
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
