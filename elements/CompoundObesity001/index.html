@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://linkml.github.io/bdc-variable-library/elements/IntegratedVariable/" rel="canonical"/>
+<link href="https://linkml.github.io/bdc-variable-library/elements/CompoundObesity001/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
-<title>Class: IntegratedVariable - bdc-variable-library</title>
+<title>Class: CompoundObesity001 - bdc-variable-library</title>
 <link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <script src="../../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
 <script src="../../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
@@ -26,7 +26,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-integratedvariable">
+<a class="md-skip" href="#class-compoundobesity001">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: IntegratedVariable
+              Class: CompoundObesity001
             
           </span>
 </div>
@@ -276,82 +276,90 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-integratedvariable">Class: IntegratedVariable</h1>
-<p><em>Represents a variable that contains data from multiple studies. Typically, some or all of the data must undergo a transformation in order to be successfully integrated</em></p>
+<h1 id="class-compoundobesity001">Class: CompoundObesity001</h1>
+<p><em>A record of a participant obesity status</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/IntegratedVariable">bdc_variable_library:IntegratedVariable</a></p>
+<p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/CompoundObesity001">bdc_variable_library:CompoundObesity001</a></p>
 <pre class="mermaid"><code> classDiagram
-    class IntegratedVariable
-    click IntegratedVariable href "../IntegratedVariable/"
-      Variable &lt;|-- IntegratedVariable
-        click Variable href "../Variable/"
+    class CompoundObesity001
+    click CompoundObesity001 href "../CompoundObesity001/"
+      CompoundVariable &lt;|-- CompoundObesity001
+        click CompoundVariable href "../CompoundVariable/"
 
-
-      IntegratedVariable &lt;|-- IntegratedHeight001
-        click IntegratedHeight001 href "../IntegratedHeight001/"
-      IntegratedVariable &lt;|-- IntegratedAsthma001
-        click IntegratedAsthma001 href "../IntegratedAsthma001/"
-      IntegratedVariable &lt;|-- IntegratedHeartFailure001
-        click IntegratedHeartFailure001 href "../IntegratedHeartFailure001/"
-      IntegratedVariable &lt;|-- IntegratedObesity001
-        click IntegratedObesity001 href "../IntegratedObesity001/"
-
-
-      IntegratedVariable : associated_study
+      CompoundObesity001 : alert_value
 
 
 
 
 
-        IntegratedVariable --&gt; "0..1" ResearchStudy : associated_study
+        CompoundObesity001 --&gt; "*" AlertValue : alert_value
+        click AlertValue href "../AlertValue/"
+
+
+
+      CompoundObesity001 : associated_study
+
+
+
+
+
+        CompoundObesity001 --&gt; "0..1" ResearchStudy : associated_study
         click ResearchStudy href "../ResearchStudy/"
 
 
 
-      IntegratedVariable : bdchm_type
+      CompoundObesity001 : bdchm_type
 
 
 
 
 
-        IntegratedVariable --&gt; "0..1" BdchmTypeEnum : bdchm_type
+        CompoundObesity001 --&gt; "0..1" BdchmTypeEnum : bdchm_type
         click BdchmTypeEnum href "../BdchmTypeEnum/"
 
 
 
-      IntegratedVariable : cde_id
+      CompoundObesity001 : cde_id
 
-      IntegratedVariable : concept_type
+      CompoundObesity001 : concept_type
 
-      IntegratedVariable : id
-
-      IntegratedVariable : integrates
+      CompoundObesity001 : documentation_metadata
 
 
 
 
 
-        IntegratedVariable --&gt; "*" CompoundVariable : integrates
-        click CompoundVariable href "../CompoundVariable/"
+        CompoundObesity001 --&gt; "*" DocumentationVariable : documentation_metadata
+        click DocumentationVariable href "../DocumentationVariable/"
 
 
 
-      IntegratedVariable : unit
+      CompoundObesity001 : id
 
-      IntegratedVariable : variable_description
+      CompoundObesity001 : row_metadata
 
-      IntegratedVariable : variable_label
+
+
+
+
+        CompoundObesity001 --&gt; "*" MetadataVariable : row_metadata
+        click MetadataVariable href "../MetadataVariable/"
+
+
+
+      CompoundObesity001 : unit
+
+      CompoundObesity001 : variable_description
+
+      CompoundObesity001 : variable_label
 
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Variable/">Variable</a><ul>
-<li><strong>IntegratedVariable</strong><ul>
-<li><a href="../IntegratedHeight001/">IntegratedHeight001</a></li>
-<li><a href="../IntegratedAsthma001/">IntegratedAsthma001</a></li>
-<li><a href="../IntegratedHeartFailure001/">IntegratedHeartFailure001</a></li>
-<li><a href="../IntegratedObesity001/">IntegratedObesity001</a></li>
+<li><a href="../CompoundVariable/">CompoundVariable</a><ul>
+<li><strong>CompoundObesity001</strong></li>
 </ul>
 </li>
 </ul>
@@ -374,25 +382,37 @@
 <td><a href="../cde_id/">cde_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>CURIE from Condor</td>
-<td>direct</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
 </tr>
 <tr>
 <td><a href="../bdchm_type/">bdchm_type</a></td>
 <td>0..1 <br/> <a href="../BdchmTypeEnum/">BdchmTypeEnum</a></td>
 <td>Entity type from BDCHM that defines the variable type</td>
-<td>direct</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unit from UCUM</td>
-<td>direct</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
 </tr>
 <tr>
-<td><a href="../integrates/">integrates</a></td>
-<td>* <br/> <a href="../CompoundVariable/">CompoundVariable</a></td>
-<td>List of variables combined in the IntegratedVariable</td>
-<td>direct</td>
+<td><a href="../row_metadata/">row_metadata</a></td>
+<td>* <br/> <a href="../MetadataVariable/">MetadataVariable</a></td>
+<td>List of variable identifiers providing metadata for a compound variable</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
+</tr>
+<tr>
+<td><a href="../documentation_metadata/">documentation_metadata</a></td>
+<td>* <br/> <a href="../DocumentationVariable/">DocumentationVariable</a></td>
+<td>List of metadata elements that derive from study documentation or descriptive...</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
+</tr>
+<tr>
+<td><a href="../alert_value/">alert_value</a></td>
+<td>* <br/> <a href="../AlertValue/">AlertValue</a></td>
+<td>List of values that provide extra optional information about a variable</td>
+<td><a href="../CompoundVariable/">CompoundVariable</a></td>
 </tr>
 <tr>
 <td><a href="../associated_study/">associated_study</a></td>
@@ -442,11 +462,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>bdc_variable_library:IntegratedVariable</td>
+<td>bdc_variable_library:CompoundObesity001</td>
 </tr>
 <tr>
 <td>native</td>
-<td>bdc_variable_library:IntegratedVariable</td>
+<td>bdc_variable_library:CompoundObesity001</td>
 </tr>
 </tbody>
 </table>
@@ -454,34 +474,29 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Represents a variable that contains data from multiple studies. Typically,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">some or all of the data must undergo a transformation in order to be successfully</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrated</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
+<span class="nt">instantiates</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObesityStatusRecord</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A record of a participant obesity status</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
-<span class="nt">slots</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cde_id</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm_type</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integrates</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Represents a variable that contains data from multiple studies. Typically,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">some or all of the data must undergo a transformation in order to be successfully</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrated</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
+<span class="nt">instantiates</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObesityStatusRecord</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A record of a participant obesity status</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cde_id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cde_id</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CURIE from Condor</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
@@ -491,7 +506,7 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity type from BDCHM that defines the variable type</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
@@ -502,30 +517,58 @@
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:unit</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleContinuousVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
-<span class="w">  </span><span class="nt">integrates</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integrates</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of variables combined in the IntegratedVariable</span>
+<span class="w">  </span><span class="nt">row_metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">row_metadata</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of variable identifiers providing metadata for a compound variable</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetadataVariable</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">documentation_metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">documentation_metadata</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of metadata elements that derive from study documentation or</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">descriptive information in the data dictionary</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DocumentationVariable</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">alert_value</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alert_value</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of values that provide extra optional information about a variable.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Often this is used to indicate a violation of QA/QC</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AlertValue</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">associated_study</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">associated_study</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The study that produced the variable data</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:ResearchStudy</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResearchStudy</span>
@@ -534,7 +577,7 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Human readable description of the variable.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -544,7 +587,7 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">OBA, OMOP, or LOINC</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
@@ -553,7 +596,7 @@
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Human readable label describing the variable</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Variable</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -564,7 +607,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">schema:identifier</span>
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundObesity001</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>

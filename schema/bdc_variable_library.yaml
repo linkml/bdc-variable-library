@@ -3447,9 +3447,7 @@ classes:
     definition_uri: https://w3id.org/linkml/bdc-variable-library/MissingValue
     description: Character used to indicate a missing value in a data set
     from_schema: https://w3id.org/linkml/bdc-variable-library
-    is_a: Entity
     slots:
-    - id
     - indicator_char
     - indicator_meaning
     class_uri: bdc_variable_library:MissingValue
@@ -3458,9 +3456,7 @@ classes:
     definition_uri: https://w3id.org/linkml/bdc-variable-library/AlertValue
     description: Character used to add information to a datum
     from_schema: https://w3id.org/linkml/bdc-variable-library
-    is_a: Entity
     slots:
-    - id
     - indicator_char
     - indicator_meaning
     class_uri: bdc_variable_library:AlertValue
@@ -3469,9 +3465,7 @@ classes:
     definition_uri: https://w3id.org/linkml/bdc-variable-library/EnumValue
     description: One possible answer in a list of enumerated values
     from_schema: https://w3id.org/linkml/bdc-variable-library
-    is_a: Entity
     slots:
-    - id
     - indicator_char
     - indicator_meaning
     - indicator_type
@@ -3642,6 +3636,82 @@ classes:
     - unit
     - integrates
     class_uri: bdc_variable_library:IntegratedAsthma001
+  CompoundHeartFailure001:
+    name: CompoundHeartFailure001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundHeartFailure001
+    instantiates:
+    - HeartFailureStatusRecord
+    description: A record of a participant heart failure status
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - row_metadata
+    - documentation_metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundHeartFailure001
+  IntegratedHeartFailure001:
+    name: IntegratedHeartFailure001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedHeartFailure001
+    description: Participant heart failure status containing data from multiple studies
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: IntegratedVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - integrates
+    class_uri: bdc_variable_library:IntegratedHeartFailure001
+  CompoundObesity001:
+    name: CompoundObesity001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundObesity001
+    instantiates:
+    - ObesityStatusRecord
+    description: A record of a participant obesity status
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - row_metadata
+    - documentation_metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundObesity001
+  IntegratedObesity001:
+    name: IntegratedObesity001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedObesity001
+    description: Participant obesity status containing data from multiple studies
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: IntegratedVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - integrates
+    class_uri: bdc_variable_library:IntegratedObesity001
   ResearchStudy:
     name: ResearchStudy
     definition_uri: https://w3id.org/linkml/bdc-variable-library/ResearchStudy
@@ -5580,7 +5650,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-08-10T20:20:06'
-source_file_size: 11946
-generation_date: '2026-08-10T20:20:17'
+source_file_date: '2026-08-11T18:55:40'
+source_file_size: 12535
+generation_date: '2026-08-11T18:55:50'
 
