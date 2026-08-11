@@ -10,13 +10,10 @@ variable_name: g3a541
 source_variable_description: "Asthma: Was it diagnosed by a doctor or other health professional?"
 data_type: enum
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 coded_values:
-  - id: cv:005
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No or no asthma"
-  - id: cv:002
-    indicator_char: "1"
+  - indicator_char: "1"
     indicator_meaning: "Yes"

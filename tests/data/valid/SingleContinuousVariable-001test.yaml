@@ -13,8 +13,7 @@ unit: https://units-of-measurement.org/%5Bin_i%5D
 minimum_value: 53.75
 maximum_value: 78.5
 missing_value:
-  - id: mv:001
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Not done or unknown"
 comment: >-
   G3B0483-G3B0484 are related variables. See annotated form for relationship between

@@ -115,7 +115,6 @@ classes:
       - integrates
 
   MissingValue:
-    is_a: Entity
     description: >-
       Character used to indicate a missing value in a data set
     slots:
@@ -123,7 +122,6 @@ classes:
       - indicator_meaning
 
   AlertValue:
-    is_a: Entity
     description: >-
       Character used to add information to a datum
     slots:
@@ -131,7 +129,6 @@ classes:
       - indicator_meaning
 
   EnumValue:
-    is_a: Entity
     description: >-
       One possible answer in a list of enumerated values
     slots:
@@ -225,13 +222,36 @@ classes:
    description: >-
      Participant asthma status containing data from multiple studies
 
+  CompoundHeartFailure001:
+    is_a: CompoundVariable
+    description: >-
+      A record of a participant heart failure status
+    instantiates:
+      - HeartFailureStatusRecord
+
+  IntegratedHeartFailure001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant heart failure status containing data from multiple studies
+
+  CompoundObesity001:
+    is_a: CompoundVariable
+    description: >-
+      A record of a participant obesity status
+    instantiates:
+      - ObesityStatusRecord
+
+  IntegratedObesity001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant obesity status containing data from multiple studies
+
   ResearchStudy:
     is_a: Entity
     class_uri: bdchm:ResearchStudy
     description: >-
       Name of research study that produced the variable
 
-  
 
 slots:
   id:

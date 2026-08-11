@@ -10,13 +10,10 @@ variable_name: g3a540
 source_variable_description: "Asthma: Do you still have it?"
 data_type: enum
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 coded_values:
-  - id: cv:004
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No or never had it"
-  - id: cv:002
-    indicator_char: "1"
+  - indicator_char: "1"
     indicator_meaning: "Yes"

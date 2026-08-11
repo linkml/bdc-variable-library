@@ -11,13 +11,10 @@ source_variable_description: "Asthma: At what age did it start?"
 data_type: integer
 unit: UCUM:a
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 alert_values:
-  - id: al:001
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No asthma"
-  - id: al:002
-    indicator_char: "1"
+  - indicator_char: "1"
     indicator_meaning: "1 year or less"

@@ -11,13 +11,10 @@ source_variable_description: "Asthma: If you no longer have it, at what age did 
 data_type: integer
 unit: UCUM:a
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 alert_values:
-  - id: al:003
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No or no asthma"
-  - id: al:004
-    indicator_char: "88"
+  - indicator_char: "88"
     indicator_meaning: "N/A (still has asthma)"

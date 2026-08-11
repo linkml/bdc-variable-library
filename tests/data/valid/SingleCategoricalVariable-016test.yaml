@@ -1,0 +1,21 @@
+id: CHSHRTFLR07phv00099017s
+associated_study: CHS000287
+variable_description: "Heart failure status"
+concept_type: MONDO:0005009
+variable_label: "heart failure"
+source_id: phv0099017.v1.p1
+file_id: pht001450.v1
+file_name: BASE1
+variable_name: HRTFLR07
+source_variable_description: "CONGESTIVE HEART FAILURE"
+data_type: enum
+missing_value:
+  - indicator_char: ""
+    indicator_meaning: NULL
+coded_values:
+  - indicator_char: "0"
+    indicator_meaning: "No"
+  - indicator_char: "1"
+    indicator_meaning: "Yes"
+  - indicator_char: "9"
+    indicator_meaning: "DON'T KNOW"

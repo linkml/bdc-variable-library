@@ -10,17 +10,13 @@ variable_name: g3b0431
 source_variable_description: "Clinical Diagnostic Impression: Asthma"
 data_type: enum
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 coded_values:
-  - id: cv:001
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No"
-  - id: cv:002
-    indicator_char: "1"
+  - indicator_char: "1"
     indicator_meaning: "Yes"
-  - id: cv:003
-    indicator_char: "2"
+  - indicator_char: "2"
     indicator_meaning: "Maybe"
 comment: "Clinical Diagnostic Impression ONLY. Not hard data. Use with caution. Not verified"

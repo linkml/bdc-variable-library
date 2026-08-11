@@ -1,0 +1,22 @@
+id: FHSg3b0147phv00177351s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Heart failure status"
+concept_type: MONDO:0005252
+variable_label: "heart failure"
+source_id: phv00177351.v7.p16
+file_id: pht003094.v9
+file_name: e_exam_ex02_3b_0017s
+variable_name: g3b0431
+source_variable_description: "Medical History-Respiratory Symptoms: Have you been hospitalized for heart failure?"
+data_type: enum
+missing_value:
+  - id: mv:002
+    indicator_char: "."
+    indicator_meaning: "Unknown"
+coded_values:
+  - id: cv:001
+    indicator_char: "0"
+    indicator_meaning: "No"
+  - id: cv:002
+    indicator_char: "1"
+    indicator_meaning: "Yes"

@@ -2627,7 +2627,7 @@ class IntegratedVariable(Variable):
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
-class MissingValue(Entity):
+class MissingValue(ConfiguredBaseModel):
     """
     Character used to indicate a missing value in a data set
     """
@@ -2635,10 +2635,9 @@ class MissingValue(Entity):
 
     indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
     indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
-    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
-class AlertValue(Entity):
+class AlertValue(ConfiguredBaseModel):
     """
     Character used to add information to a datum
     """
@@ -2646,10 +2645,9 @@ class AlertValue(Entity):
 
     indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
     indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
-    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
-class EnumValue(Entity):
+class EnumValue(ConfiguredBaseModel):
     """
     One possible answer in a list of enumerated values
     """
@@ -2658,7 +2656,6 @@ class EnumValue(Entity):
     indicator_char: Optional[str] = Field(default=None, description="""Value used to add information to a datum, indicate a missing datum, or give  a specific answer""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
     indicator_meaning: Optional[str] = Field(default=None, description="""Meaning of the indicator character verbatim from original data provider when possible""", json_schema_extra = { "linkml_meta": {'domain_of': ['MissingValue', 'AlertValue', 'EnumValue']} })
     indicator_type: Optional[str] = Field(default=None, description="""CURIE describing the meaning of the indicator""", json_schema_extra = { "linkml_meta": {'domain_of': ['EnumValue']} })
-    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
 class MetadataVariable(Entity):
@@ -2813,6 +2810,96 @@ class IntegratedAsthma001(IntegratedVariable):
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
+class CompoundHeartFailure001(CompoundVariable):
+    """
+    A record of a participant heart failure status
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
+         'instantiates': ['HeartFailureStatusRecord']})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class IntegratedHeartFailure001(IntegratedVariable):
+    """
+    Participant heart failure status containing data from multiple studies
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    integrates: Optional[list[str]] = Field(default=None, description="""List of variables combined in the IntegratedVariable""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntegratedVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class CompoundObesity001(CompoundVariable):
+    """
+    A record of a participant obesity status
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library',
+         'instantiates': ['ObesityStatusRecord']})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    row_metadata: Optional[list[MetadataVariable]] = Field(default=None, description="""List of variable identifiers providing metadata for a compound variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    documentation_metadata: Optional[list[DocumentationVariable]] = Field(default=None, description="""List of metadata elements that derive from study documentation or descriptive information in the data dictionary""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    alert_value: Optional[list[AlertValue]] = Field(default=None, description="""List of values that provide extra optional information about a variable. Often this is used to indicate a violation of QA/QC""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
+class IntegratedObesity001(IntegratedVariable):
+    """
+    Participant obesity status containing data from multiple studies
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
+
+    cde_id: Optional[str] = Field(default=None, description="""CURIE from Condor""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    bdchm_type: Optional[BdchmTypeEnum] = Field(default=None, description="""Entity type from BDCHM that defines the variable type""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompoundVariable', 'IntegratedVariable']} })
+    unit: Optional[str] = Field(default=None, description="""A unit from UCUM""", json_schema_extra = { "linkml_meta": {'domain_of': ['ClinicalMeasurementRecord',
+                       'SingleContinuousVariable',
+                       'CompoundVariable',
+                       'IntegratedVariable'],
+         'slot_uri': 'bdchm:unit'} })
+    integrates: Optional[list[str]] = Field(default=None, description="""List of variables combined in the IntegratedVariable""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntegratedVariable']} })
+    associated_study: Optional[str] = Field(default=None, description="""The study that produced the variable data""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable'], 'slot_uri': 'bdchm:ResearchStudy'} })
+    variable_description: Optional[str] = Field(default=None, description="""Human readable description of the variable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    concept_type: Optional[str] = Field(default=None, description="""CURIE describing the main content of the variable. This can be from OBA, OMOP, or LOINC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    variable_label: Optional[str] = Field(default=None, description="""Human readable label describing the variable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Variable']} })
+    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+
+
 class ResearchStudy(Entity):
     """
     Name of research study that produced the variable
@@ -2904,4 +2991,8 @@ CompoundHeight001.model_rebuild()
 IntegratedHeight001.model_rebuild()
 CompoundAsthma001.model_rebuild()
 IntegratedAsthma001.model_rebuild()
+CompoundHeartFailure001.model_rebuild()
+IntegratedHeartFailure001.model_rebuild()
+CompoundObesity001.model_rebuild()
+IntegratedObesity001.model_rebuild()
 ResearchStudy.model_rebuild()

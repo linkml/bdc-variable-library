@@ -1,0 +1,10 @@
+id: DMCharmonizationPilotHeight
+associated_study: DMCPilotv1
+variable_description: "Asthma status"
+concept_type: MONDO:0004979
+variable_label: "Asthma"
+cde_id: CONDOR:00004
+bdchm_type: condition
+integrates:
+  - FHSg3b0431phv00177516c
+  - FHSg3a539phv00274119c

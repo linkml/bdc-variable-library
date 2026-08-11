@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-10T14:50:48
+# Generation date: 2026-08-11T14:54:02
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -111,18 +111,6 @@ class IntegratedVariableId(VariableId):
     pass
 
 
-class MissingValueId(EntityId):
-    pass
-
-
-class AlertValueId(EntityId):
-    pass
-
-
-class EnumValueId(EntityId):
-    pass
-
-
 class MetadataVariableId(EntityId):
     pass
 
@@ -148,6 +136,22 @@ class CompoundAsthma001Id(CompoundVariableId):
 
 
 class IntegratedAsthma001Id(IntegratedVariableId):
+    pass
+
+
+class CompoundHeartFailure001Id(CompoundVariableId):
+    pass
+
+
+class IntegratedHeartFailure001Id(IntegratedVariableId):
+    pass
+
+
+class CompoundObesity001Id(CompoundVariableId):
+    pass
+
+
+class IntegratedObesity001Id(IntegratedVariableId):
     pass
 
 
@@ -239,9 +243,9 @@ class SingleContinuousVariable(Variable):
     minimum_value: Optional[Decimal] = None
     maximum_value: Optional[Decimal] = None
     resolution: Optional[int] = None
-    missing_value: Optional[Union[dict[Union[str, MissingValueId], Union[dict, "MissingValue"]], list[Union[dict, "MissingValue"]]]] = empty_dict()
+    missing_value: Optional[Union[Union[dict, "MissingValue"], list[Union[dict, "MissingValue"]]]] = empty_list()
     unit: Optional[Union[str, URIorCURIE]] = None
-    alert_values: Optional[Union[dict[Union[str, AlertValueId], Union[dict, "AlertValue"]], list[Union[dict, "AlertValue"]]]] = empty_dict()
+    alert_values: Optional[Union[Union[dict, "AlertValue"], list[Union[dict, "AlertValue"]]]] = empty_list()
     comment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -277,12 +281,16 @@ class SingleContinuousVariable(Variable):
         if self.resolution is not None and not isinstance(self.resolution, int):
             self.resolution = int(self.resolution)
 
-        self._normalize_inlined_as_list(slot_name="missing_value", slot_type=MissingValue, key_name="id", keyed=True)
+        if not isinstance(self.missing_value, list):
+            self.missing_value = [self.missing_value] if self.missing_value is not None else []
+        self.missing_value = [v if isinstance(v, MissingValue) else MissingValue(**as_dict(v)) for v in self.missing_value]
 
         if self.unit is not None and not isinstance(self.unit, URIorCURIE):
             self.unit = URIorCURIE(self.unit)
 
-        self._normalize_inlined_as_list(slot_name="alert_values", slot_type=AlertValue, key_name="id", keyed=True)
+        if not isinstance(self.alert_values, list):
+            self.alert_values = [self.alert_values] if self.alert_values is not None else []
+        self.alert_values = [v if isinstance(v, AlertValue) else AlertValue(**as_dict(v)) for v in self.alert_values]
 
         if self.comment is not None and not isinstance(self.comment, str):
             self.comment = str(self.comment)
@@ -309,8 +317,8 @@ class SingleCategoricalVariable(Variable):
     variable_name: Optional[str] = None
     source_variable_description: Optional[str] = None
     data_type: Optional[Union[str, "DataTypeEnum"]] = None
-    missing_value: Optional[Union[dict[Union[str, MissingValueId], Union[dict, "MissingValue"]], list[Union[dict, "MissingValue"]]]] = empty_dict()
-    coded_values: Optional[Union[dict[Union[str, EnumValueId], Union[dict, "EnumValue"]], list[Union[dict, "EnumValue"]]]] = empty_dict()
+    missing_value: Optional[Union[Union[dict, "MissingValue"], list[Union[dict, "MissingValue"]]]] = empty_list()
+    coded_values: Optional[Union[Union[dict, "EnumValue"], list[Union[dict, "EnumValue"]]]] = empty_list()
     comment: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -337,9 +345,13 @@ class SingleCategoricalVariable(Variable):
         if self.data_type is not None and not isinstance(self.data_type, DataTypeEnum):
             self.data_type = DataTypeEnum(self.data_type)
 
-        self._normalize_inlined_as_list(slot_name="missing_value", slot_type=MissingValue, key_name="id", keyed=True)
+        if not isinstance(self.missing_value, list):
+            self.missing_value = [self.missing_value] if self.missing_value is not None else []
+        self.missing_value = [v if isinstance(v, MissingValue) else MissingValue(**as_dict(v)) for v in self.missing_value]
 
-        self._normalize_inlined_as_list(slot_name="coded_values", slot_type=EnumValue, key_name="id", keyed=True)
+        if not isinstance(self.coded_values, list):
+            self.coded_values = [self.coded_values] if self.coded_values is not None else []
+        self.coded_values = [v if isinstance(v, EnumValue) else EnumValue(**as_dict(v)) for v in self.coded_values]
 
         if self.comment is not None and not isinstance(self.comment, str):
             self.comment = str(self.comment)
@@ -365,7 +377,7 @@ class CompoundVariable(Variable):
     unit: Optional[Union[str, URIorCURIE]] = None
     row_metadata: Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, "MetadataVariable"]], list[Union[dict, "MetadataVariable"]]]] = empty_dict()
     documentation_metadata: Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, "DocumentationVariable"]], list[Union[dict, "DocumentationVariable"]]]] = empty_dict()
-    alert_value: Optional[Union[dict[Union[str, AlertValueId], Union[dict, "AlertValue"]], list[Union[dict, "AlertValue"]]]] = empty_dict()
+    alert_value: Optional[Union[Union[dict, "AlertValue"], list[Union[dict, "AlertValue"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -386,7 +398,9 @@ class CompoundVariable(Variable):
 
         self._normalize_inlined_as_list(slot_name="documentation_metadata", slot_type=DocumentationVariable, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="alert_value", slot_type=AlertValue, key_name="id", keyed=True)
+        if not isinstance(self.alert_value, list):
+            self.alert_value = [self.alert_value] if self.alert_value is not None else []
+        self.alert_value = [v if isinstance(v, AlertValue) else AlertValue(**as_dict(v)) for v in self.alert_value]
 
         super().__post_init__(**kwargs)
 
@@ -433,7 +447,7 @@ class IntegratedVariable(Variable):
 
 
 @dataclass(repr=False)
-class MissingValue(Entity):
+class MissingValue(YAMLRoot):
     """
     Character used to indicate a missing value in a data set
     """
@@ -444,16 +458,10 @@ class MissingValue(Entity):
     class_name: ClassVar[str] = "MissingValue"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.MissingValue
 
-    id: Union[str, MissingValueId] = None
     indicator_char: Optional[str] = None
     indicator_meaning: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MissingValueId):
-            self.id = MissingValueId(self.id)
-
         if self.indicator_char is not None and not isinstance(self.indicator_char, str):
             self.indicator_char = str(self.indicator_char)
 
@@ -464,7 +472,7 @@ class MissingValue(Entity):
 
 
 @dataclass(repr=False)
-class AlertValue(Entity):
+class AlertValue(YAMLRoot):
     """
     Character used to add information to a datum
     """
@@ -475,16 +483,10 @@ class AlertValue(Entity):
     class_name: ClassVar[str] = "AlertValue"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.AlertValue
 
-    id: Union[str, AlertValueId] = None
     indicator_char: Optional[str] = None
     indicator_meaning: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AlertValueId):
-            self.id = AlertValueId(self.id)
-
         if self.indicator_char is not None and not isinstance(self.indicator_char, str):
             self.indicator_char = str(self.indicator_char)
 
@@ -495,7 +497,7 @@ class AlertValue(Entity):
 
 
 @dataclass(repr=False)
-class EnumValue(Entity):
+class EnumValue(YAMLRoot):
     """
     One possible answer in a list of enumerated values
     """
@@ -506,17 +508,11 @@ class EnumValue(Entity):
     class_name: ClassVar[str] = "EnumValue"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.EnumValue
 
-    id: Union[str, EnumValueId] = None
     indicator_char: Optional[str] = None
     indicator_meaning: Optional[str] = None
     indicator_type: Optional[Union[str, URIorCURIE]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, EnumValueId):
-            self.id = EnumValueId(self.id)
-
         if self.indicator_char is not None and not isinstance(self.indicator_char, str):
             self.indicator_char = str(self.indicator_char)
 
@@ -700,6 +696,98 @@ class IntegratedAsthma001(IntegratedVariable):
             self.MissingRequiredField("id")
         if not isinstance(self.id, IntegratedAsthma001Id):
             self.id = IntegratedAsthma001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundHeartFailure001(CompoundVariable):
+    """
+    A record of a participant heart failure status
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundHeartFailure001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundHeartFailure001"
+    class_name: ClassVar[str] = "CompoundHeartFailure001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundHeartFailure001
+
+    id: Union[str, CompoundHeartFailure001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundHeartFailure001Id):
+            self.id = CompoundHeartFailure001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedHeartFailure001(IntegratedVariable):
+    """
+    Participant heart failure status containing data from multiple studies
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedHeartFailure001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedHeartFailure001"
+    class_name: ClassVar[str] = "IntegratedHeartFailure001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedHeartFailure001
+
+    id: Union[str, IntegratedHeartFailure001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedHeartFailure001Id):
+            self.id = IntegratedHeartFailure001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundObesity001(CompoundVariable):
+    """
+    A record of a participant obesity status
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundObesity001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundObesity001"
+    class_name: ClassVar[str] = "CompoundObesity001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundObesity001
+
+    id: Union[str, CompoundObesity001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundObesity001Id):
+            self.id = CompoundObesity001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedObesity001(IntegratedVariable):
+    """
+    Participant obesity status containing data from multiple studies
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedObesity001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedObesity001"
+    class_name: ClassVar[str] = "IntegratedObesity001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedObesity001
+
+    id: Union[str, IntegratedObesity001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedObesity001Id):
+            self.id = IntegratedObesity001Id(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -3256,7 +3344,7 @@ slots.resolution = Slot(uri=BDC_VARIABLE_LIBRARY.resolution, name="resolution", 
                    model_uri=BDC_VARIABLE_LIBRARY.resolution, domain=None, range=Optional[int])
 
 slots.missing_value = Slot(uri=BDC_VARIABLE_LIBRARY.missing_value, name="missing_value", curie=BDC_VARIABLE_LIBRARY.curie('missing_value'),
-                   model_uri=BDC_VARIABLE_LIBRARY.missing_value, domain=None, range=Optional[Union[dict[Union[str, MissingValueId], Union[dict, MissingValue]], list[Union[dict, MissingValue]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.missing_value, domain=None, range=Optional[Union[Union[dict, MissingValue], list[Union[dict, MissingValue]]]])
 
 slots.comment = Slot(uri=BDC_VARIABLE_LIBRARY.comment, name="comment", curie=BDC_VARIABLE_LIBRARY.curie('comment'),
                    model_uri=BDC_VARIABLE_LIBRARY.comment, domain=None, range=Optional[str])
@@ -3280,10 +3368,10 @@ slots.documentation_metadata = Slot(uri=BDC_VARIABLE_LIBRARY.documentation_metad
                    model_uri=BDC_VARIABLE_LIBRARY.documentation_metadata, domain=None, range=Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, DocumentationVariable]], list[Union[dict, DocumentationVariable]]]])
 
 slots.alert_value = Slot(uri=BDC_VARIABLE_LIBRARY.alert_value, name="alert_value", curie=BDC_VARIABLE_LIBRARY.curie('alert_value'),
-                   model_uri=BDC_VARIABLE_LIBRARY.alert_value, domain=None, range=Optional[Union[dict[Union[str, AlertValueId], Union[dict, AlertValue]], list[Union[dict, AlertValue]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.alert_value, domain=None, range=Optional[Union[Union[dict, AlertValue], list[Union[dict, AlertValue]]]])
 
 slots.alert_values = Slot(uri=BDC_VARIABLE_LIBRARY.alert_values, name="alert_values", curie=BDC_VARIABLE_LIBRARY.curie('alert_values'),
-                   model_uri=BDC_VARIABLE_LIBRARY.alert_values, domain=None, range=Optional[Union[dict[Union[str, AlertValueId], Union[dict, AlertValue]], list[Union[dict, AlertValue]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.alert_values, domain=None, range=Optional[Union[Union[dict, AlertValue], list[Union[dict, AlertValue]]]])
 
 slots.indicator_char = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_char, name="indicator_char", curie=BDC_VARIABLE_LIBRARY.curie('indicator_char'),
                    model_uri=BDC_VARIABLE_LIBRARY.indicator_char, domain=None, range=Optional[str])
@@ -3301,7 +3389,7 @@ slots.integrates = Slot(uri=BDC_VARIABLE_LIBRARY.integrates, name="integrates", 
                    model_uri=BDC_VARIABLE_LIBRARY.integrates, domain=None, range=Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]])
 
 slots.coded_values = Slot(uri=BDC_VARIABLE_LIBRARY.coded_values, name="coded_values", curie=BDC_VARIABLE_LIBRARY.curie('coded_values'),
-                   model_uri=BDC_VARIABLE_LIBRARY.coded_values, domain=None, range=Optional[Union[dict[Union[str, EnumValueId], Union[dict, EnumValue]], list[Union[dict, EnumValue]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.coded_values, domain=None, range=Optional[Union[Union[dict, EnumValue], list[Union[dict, EnumValue]]]])
 
 slots.contr_vocab = Slot(uri=BDC_VARIABLE_LIBRARY.contr_vocab, name="contr_vocab", curie=BDC_VARIABLE_LIBRARY.curie('contr_vocab'),
                    model_uri=BDC_VARIABLE_LIBRARY.contr_vocab, domain=None, range=Optional[str])
