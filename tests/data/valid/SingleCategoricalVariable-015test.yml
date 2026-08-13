@@ -10,13 +10,10 @@ variable_name: g3b0431
 source_variable_description: "Medical History-Respiratory Symptoms: Have you been hospitalized for heart failure?"
 data_type: enum
 missing_value:
-  - id: mv:002
-    indicator_char: "."
+  - indicator_char: "."
     indicator_meaning: "Unknown"
 coded_values:
-  - id: cv:001
-    indicator_char: "0"
+  - indicator_char: "0"
     indicator_meaning: "No"
-  - id: cv:002
-    indicator_char: "1"
+  - indicator_char: "1"
     indicator_meaning: "Yes"
