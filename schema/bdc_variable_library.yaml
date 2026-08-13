@@ -351,6 +351,9 @@ enums:
       exposure:
         text: exposure
         meaning: bdchm:Exposure
+      drugexposure:
+        text: drugexposure
+        meaning: bdchm:DrugExposure
   ClinicalMicroschemaEnum:
     name: ClinicalMicroschemaEnum
     definition_uri: https://w3id.org/linkml/bdc-variable-library/ClinicalMicroschemaEnum
@@ -411,6 +414,14 @@ enums:
         text: relationship_to_participant
       method_type:
         text: method_type
+      drug_concept:
+        text: drug_concept
+      exposure_status:
+        text: exposure_status
+      exposure_provenance:
+        text: exposure_provenance
+      age_at_exposure_record:
+        text: age_at_exposure_record
   ComparatorEnum:
     name: ComparatorEnum
     definition_uri: https://w3id.org/linkml/linkml-microschema-profile/ComparatorEnum
@@ -3711,6 +3722,82 @@ classes:
     - unit
     - integrates
     class_uri: bdc_variable_library:IntegratedObesity001
+  CompoundAspirin001:
+    name: CompoundAspirin001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundAspirin001
+    instantiates:
+    - AspirinStatusRecord
+    description: A record of participant aspirin usage status
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - row_metadata
+    - documentation_metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundAspirin001
+  IntegratedAspirin001:
+    name: IntegratedAspirin001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedAspirin001
+    description: Participant aspirin status containing data from multiple studies
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: IntegratedVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - integrates
+    class_uri: bdc_variable_library:IntegratedAspirin001
+  CompoundPacemaker001:
+    name: CompoundPacemaker001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/CompoundPacemaker001
+    instantiates:
+    - PacemakerStatusRecord
+    description: A record of participant pacemaker status
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: CompoundVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - row_metadata
+    - documentation_metadata
+    - alert_value
+    class_uri: bdc_variable_library:CompoundPacemaker001
+  IntegratedPacemaker001:
+    name: IntegratedPacemaker001
+    definition_uri: https://w3id.org/linkml/bdc-variable-library/IntegratedPacemaker001
+    description: Participant pacemaker status containing data from multiple studies
+    from_schema: https://w3id.org/linkml/bdc-variable-library
+    is_a: IntegratedVariable
+    slots:
+    - id
+    - associated_study
+    - variable_description
+    - concept_type
+    - variable_label
+    - cde_id
+    - bdchm_type
+    - unit
+    - integrates
+    class_uri: bdc_variable_library:IntegratedPacemaker001
   ResearchStudy:
     name: ResearchStudy
     definition_uri: https://w3id.org/linkml/bdc-variable-library/ResearchStudy
@@ -5649,7 +5736,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-08-13T19:56:37'
-source_file_size: 12540
-generation_date: '2026-08-13T19:56:46'
+source_file_date: '2026-08-13T21:10:50'
+source_file_size: 13336
+generation_date: '2026-08-13T21:11:00'
 
