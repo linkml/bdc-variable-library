@@ -245,6 +245,30 @@ classes:
     description: >-
       Participant obesity status containing data from multiple studies
 
+  CompoundAspirin001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant aspirin usage status
+    instantiates:
+      - AspirinStatusRecord
+
+  IntegratedAspirin001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant aspirin status containing data from multiple studies
+      
+  CompoundPacemaker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant pacemaker status
+    instantiates:
+      - PacemakerStatusRecord
+      
+  IntegratedPacemaker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant pacemaker status containing data from multiple studies
+
   ResearchStudy:
     is_a: Entity
     class_uri: bdchm:ResearchStudy
@@ -414,6 +438,8 @@ enums:
         meaning: bdchm:Procedure
       exposure:
         meaning: bdchm:Exposure
+      drugexposure:
+        meaning: bdchm:DrugExposure
 
   ClinicalMicroschemaEnum:
     description: >-
@@ -446,4 +472,8 @@ enums:
       condition_severity:
       relationship_to_participant:
       method_type:
+      drug_concept:
+      exposure_status:
+      exposure_provenance:
+      age_at_exposure_record:
 

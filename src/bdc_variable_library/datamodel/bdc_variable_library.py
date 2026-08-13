@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-13T15:54:28
+# Generation date: 2026-08-13T16:51:34
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -148,6 +148,22 @@ class CompoundObesity001Id(CompoundVariableId):
 
 
 class IntegratedObesity001Id(IntegratedVariableId):
+    pass
+
+
+class CompoundAspirin001Id(CompoundVariableId):
+    pass
+
+
+class IntegratedAspirin001Id(IntegratedVariableId):
+    pass
+
+
+class CompoundPacemaker001Id(CompoundVariableId):
+    pass
+
+
+class IntegratedPacemaker001Id(IntegratedVariableId):
     pass
 
 
@@ -782,6 +798,98 @@ class IntegratedObesity001(IntegratedVariable):
             self.MissingRequiredField("id")
         if not isinstance(self.id, IntegratedObesity001Id):
             self.id = IntegratedObesity001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundAspirin001(CompoundVariable):
+    """
+    A record of participant aspirin usage status
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundAspirin001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundAspirin001"
+    class_name: ClassVar[str] = "CompoundAspirin001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundAspirin001
+
+    id: Union[str, CompoundAspirin001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundAspirin001Id):
+            self.id = CompoundAspirin001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedAspirin001(IntegratedVariable):
+    """
+    Participant aspirin status containing data from multiple studies
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedAspirin001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedAspirin001"
+    class_name: ClassVar[str] = "IntegratedAspirin001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedAspirin001
+
+    id: Union[str, IntegratedAspirin001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedAspirin001Id):
+            self.id = IntegratedAspirin001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CompoundPacemaker001(CompoundVariable):
+    """
+    A record of participant pacemaker status
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["CompoundPacemaker001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:CompoundPacemaker001"
+    class_name: ClassVar[str] = "CompoundPacemaker001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.CompoundPacemaker001
+
+    id: Union[str, CompoundPacemaker001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, CompoundPacemaker001Id):
+            self.id = CompoundPacemaker001Id(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IntegratedPacemaker001(IntegratedVariable):
+    """
+    Participant pacemaker status containing data from multiple studies
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY["IntegratedPacemaker001"]
+    class_class_curie: ClassVar[str] = "bdc_variable_library:IntegratedPacemaker001"
+    class_name: ClassVar[str] = "IntegratedPacemaker001"
+    class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.IntegratedPacemaker001
+
+    id: Union[str, IntegratedPacemaker001Id] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, IntegratedPacemaker001Id):
+            self.id = IntegratedPacemaker001Id(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -2705,6 +2813,9 @@ class BdchmTypeEnum(EnumDefinitionImpl):
     exposure = PermissibleValue(
         text="exposure",
         meaning=BDCHM["Exposure"])
+    drugexposure = PermissibleValue(
+        text="drugexposure",
+        meaning=BDCHM["DrugExposure"])
 
     _defn = EnumDefinition(
         name="BdchmTypeEnum",
@@ -2742,6 +2853,10 @@ class ClinicalMicroschemaEnum(EnumDefinitionImpl):
     condition_severity = PermissibleValue(text="condition_severity")
     relationship_to_participant = PermissibleValue(text="relationship_to_participant")
     method_type = PermissibleValue(text="method_type")
+    drug_concept = PermissibleValue(text="drug_concept")
+    exposure_status = PermissibleValue(text="exposure_status")
+    exposure_provenance = PermissibleValue(text="exposure_provenance")
+    age_at_exposure_record = PermissibleValue(text="age_at_exposure_record")
 
     _defn = EnumDefinition(
         name="ClinicalMicroschemaEnum",

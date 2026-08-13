@@ -1,0 +1,19 @@
+id: HCHSSOLASPR06phv00226329s
+associated_study: HCHSSOL000810
+variable_description: "Aspirin status"
+concept_type: RxCUI:1191
+variable_label: "Aspirin"
+source_id: phv00226329.v2.p2
+file_id: pht004715.v2.p2
+file_name: HCHS_SOL_Cohort_Subject_Phenotypes
+variable_name: MED_ASPIRIN
+source_variable_description: "Aspirin-containing analgesics"
+data_type: enum
+missing_value:
+  - indicator_char: ""
+    indicator_meaning: NULL
+coded_values:
+  - indicator_char: "0"
+    indicator_meaning: "No"
+  - indicator_char: "1"
+    indicator_meaning: "Yes"

@@ -1,0 +1,11 @@
+id: HCHSSOLSUBJECT_IDphv00226250s
+associated_study: CHSSOL000810
+variable_description: "Participant Identifier"
+variable_label: "Participant Identifier"
+source_id: phv00226250v2p2
+concept_type: OMOP:42528934
+file_id: pht004715v2p2
+file_name: HCHS_SOL_Cohort_Subject_Phenotypes
+variable_name: SUBJECT_ID
+source_variable_description: "De-identified subject ID"
+data_type: string

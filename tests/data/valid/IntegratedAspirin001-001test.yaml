@@ -1,0 +1,9 @@
+id: DMCharmonizationPilotObesity
+associated_study: DMCPilotv1
+variable_description: "Aspirin status"
+concept_type: RxCUI:1191
+variable_label: "Aspirin"
+bdchm_type: drugexposure
+integrates:
+  - CHSASPR06phv00099556c
+  - HCHSSOLASPR06phv00226329c

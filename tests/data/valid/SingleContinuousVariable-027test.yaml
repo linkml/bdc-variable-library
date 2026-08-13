@@ -1,0 +1,14 @@
+id: HCHSSOLAGEphv00226251s
+associated_study: CHSSOL000810
+variable_description: "Participant age at exam"
+variable_label: "Participant Age"
+source_id: phv00226251v2p2
+concept_type: OMOP:4265453
+file_id: pht004715v2p2
+file_name: HCHS_SOL_Cohort_Subject_Phenotypes
+variable_name: AGE
+source_variable_description: "Age"
+data_type: integer
+unit: UCUM:a
+minimum_value: 18
+maximum_value: 76

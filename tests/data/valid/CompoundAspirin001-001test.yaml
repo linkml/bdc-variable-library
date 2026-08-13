@@ -1,0 +1,23 @@
+id: CHSASPR06phv00099556c
+associated_study: CHS000287
+variable_description: "Aspirin status"
+concept_type: RxCUI:1191
+variable_label: "Aspirin"
+bdchm_type: drugexposure
+documentation_metadata:
+  - contr_vocab: RxCUI:1191
+    microschema_slot:
+      - drug_concept
+  - contr_vocab: patient_self_reported_medication
+    microschema_slot:
+      - exposure_provenance
+row_metadata:
+  - id: CHSASPR06phv00099556s
+    microschema_slot:
+      - exposure_status
+  - id: CHSAGE01phv000987992s
+    microschema_slot:
+      - age_at_exposure_record
+  - id: CHSIndividual_IDphv00098771s
+    microschema_slot:
+      - subject_identifier
