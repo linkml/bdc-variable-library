@@ -303,7 +303,7 @@
 
 
 
-        MetadataVariable --&gt; "0..1" ClinicalMicroschemaEnum : microschema_slot
+        MetadataVariable --&gt; "*" ClinicalMicroschemaEnum : microschema_slot
         click ClinicalMicroschemaEnum href "../ClinicalMicroschemaEnum/"
 
 
@@ -329,7 +329,7 @@
 <tbody>
 <tr>
 <td><a href="../microschema_slot/">microschema_slot</a></td>
-<td>0..1 <br/> <a href="../ClinicalMicroschemaEnum/">ClinicalMicroschemaEnum</a></td>
+<td>* <br/> <a href="../ClinicalMicroschemaEnum/">ClinicalMicroschemaEnum</a></td>
 <td>The slot that the variable identified in the variable path should go</td>
 <td>direct</td>
 </tr>
@@ -446,6 +446,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetadataVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DocumentationVariable</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMicroschemaEnum</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A unique identifier for a variable within BDC</span>

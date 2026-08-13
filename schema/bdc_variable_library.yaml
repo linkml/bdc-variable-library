@@ -1246,6 +1246,7 @@ slots:
     - MetadataVariable
     - DocumentationVariable
     range: ClinicalMicroschemaEnum
+    multivalued: true
   integrates:
     name: integrates
     definition_uri: https://w3id.org/linkml/bdc-variable-library/integrates
@@ -3487,9 +3488,7 @@ classes:
     description: Information derived from study documentation or text in a data dictionary
       that provides essential metadata for a variable
     from_schema: https://w3id.org/linkml/bdc-variable-library
-    is_a: Entity
     slots:
-    - id
     - contr_vocab
     - microschema_slot
     class_uri: bdc_variable_library:DocumentationVariable
@@ -5650,7 +5649,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-08-11T18:55:40'
-source_file_size: 12535
-generation_date: '2026-08-11T18:55:50'
+source_file_date: '2026-08-13T19:56:37'
+source_file_size: 12540
+generation_date: '2026-08-13T19:56:46'
 
