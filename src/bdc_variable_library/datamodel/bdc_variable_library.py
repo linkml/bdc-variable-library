@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-11T14:54:02
+# Generation date: 2026-08-13T15:54:28
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -112,10 +112,6 @@ class IntegratedVariableId(VariableId):
 
 
 class MetadataVariableId(EntityId):
-    pass
-
-
-class DocumentationVariableId(EntityId):
     pass
 
 
@@ -376,7 +372,7 @@ class CompoundVariable(Variable):
     bdchm_type: Optional[Union[str, "BdchmTypeEnum"]] = None
     unit: Optional[Union[str, URIorCURIE]] = None
     row_metadata: Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, "MetadataVariable"]], list[Union[dict, "MetadataVariable"]]]] = empty_dict()
-    documentation_metadata: Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, "DocumentationVariable"]], list[Union[dict, "DocumentationVariable"]]]] = empty_dict()
+    documentation_metadata: Optional[Union[Union[dict, "DocumentationVariable"], list[Union[dict, "DocumentationVariable"]]]] = empty_list()
     alert_value: Optional[Union[Union[dict, "AlertValue"], list[Union[dict, "AlertValue"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -396,7 +392,9 @@ class CompoundVariable(Variable):
 
         self._normalize_inlined_as_list(slot_name="row_metadata", slot_type=MetadataVariable, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="documentation_metadata", slot_type=DocumentationVariable, key_name="id", keyed=True)
+        if not isinstance(self.documentation_metadata, list):
+            self.documentation_metadata = [self.documentation_metadata] if self.documentation_metadata is not None else []
+        self.documentation_metadata = [v if isinstance(v, DocumentationVariable) else DocumentationVariable(**as_dict(v)) for v in self.documentation_metadata]
 
         if not isinstance(self.alert_value, list):
             self.alert_value = [self.alert_value] if self.alert_value is not None else []
@@ -539,7 +537,7 @@ class MetadataVariable(Entity):
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.MetadataVariable
 
     id: Union[str, MetadataVariableId] = None
-    microschema_slot: Optional[Union[str, "ClinicalMicroschemaEnum"]] = None
+    microschema_slot: Optional[Union[Union[str, "ClinicalMicroschemaEnum"], list[Union[str, "ClinicalMicroschemaEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -547,14 +545,15 @@ class MetadataVariable(Entity):
         if not isinstance(self.id, MetadataVariableId):
             self.id = MetadataVariableId(self.id)
 
-        if self.microschema_slot is not None and not isinstance(self.microschema_slot, ClinicalMicroschemaEnum):
-            self.microschema_slot = ClinicalMicroschemaEnum(self.microschema_slot)
+        if not isinstance(self.microschema_slot, list):
+            self.microschema_slot = [self.microschema_slot] if self.microschema_slot is not None else []
+        self.microschema_slot = [v if isinstance(v, ClinicalMicroschemaEnum) else ClinicalMicroschemaEnum(v) for v in self.microschema_slot]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class DocumentationVariable(Entity):
+class DocumentationVariable(YAMLRoot):
     """
     Information derived from study documentation or text in a data dictionary that provides essential metadata for a
     variable
@@ -566,21 +565,16 @@ class DocumentationVariable(Entity):
     class_name: ClassVar[str] = "DocumentationVariable"
     class_model_uri: ClassVar[URIRef] = BDC_VARIABLE_LIBRARY.DocumentationVariable
 
-    id: Union[str, DocumentationVariableId] = None
     contr_vocab: Optional[str] = None
-    microschema_slot: Optional[Union[str, "ClinicalMicroschemaEnum"]] = None
+    microschema_slot: Optional[Union[Union[str, "ClinicalMicroschemaEnum"], list[Union[str, "ClinicalMicroschemaEnum"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DocumentationVariableId):
-            self.id = DocumentationVariableId(self.id)
-
         if self.contr_vocab is not None and not isinstance(self.contr_vocab, str):
             self.contr_vocab = str(self.contr_vocab)
 
-        if self.microschema_slot is not None and not isinstance(self.microschema_slot, ClinicalMicroschemaEnum):
-            self.microschema_slot = ClinicalMicroschemaEnum(self.microschema_slot)
+        if not isinstance(self.microschema_slot, list):
+            self.microschema_slot = [self.microschema_slot] if self.microschema_slot is not None else []
+        self.microschema_slot = [v if isinstance(v, ClinicalMicroschemaEnum) else ClinicalMicroschemaEnum(v) for v in self.microschema_slot]
 
         super().__post_init__(**kwargs)
 
@@ -3365,7 +3359,7 @@ slots.row_metadata = Slot(uri=BDC_VARIABLE_LIBRARY.row_metadata, name="row_metad
                    model_uri=BDC_VARIABLE_LIBRARY.row_metadata, domain=None, range=Optional[Union[dict[Union[str, MetadataVariableId], Union[dict, MetadataVariable]], list[Union[dict, MetadataVariable]]]])
 
 slots.documentation_metadata = Slot(uri=BDC_VARIABLE_LIBRARY.documentation_metadata, name="documentation_metadata", curie=BDC_VARIABLE_LIBRARY.curie('documentation_metadata'),
-                   model_uri=BDC_VARIABLE_LIBRARY.documentation_metadata, domain=None, range=Optional[Union[dict[Union[str, DocumentationVariableId], Union[dict, DocumentationVariable]], list[Union[dict, DocumentationVariable]]]])
+                   model_uri=BDC_VARIABLE_LIBRARY.documentation_metadata, domain=None, range=Optional[Union[Union[dict, DocumentationVariable], list[Union[dict, DocumentationVariable]]]])
 
 slots.alert_value = Slot(uri=BDC_VARIABLE_LIBRARY.alert_value, name="alert_value", curie=BDC_VARIABLE_LIBRARY.curie('alert_value'),
                    model_uri=BDC_VARIABLE_LIBRARY.alert_value, domain=None, range=Optional[Union[Union[dict, AlertValue], list[Union[dict, AlertValue]]]])
@@ -3383,7 +3377,7 @@ slots.indicator_type = Slot(uri=BDC_VARIABLE_LIBRARY.indicator_type, name="indic
                    model_uri=BDC_VARIABLE_LIBRARY.indicator_type, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.microschema_slot = Slot(uri=BDC_VARIABLE_LIBRARY.microschema_slot, name="microschema_slot", curie=BDC_VARIABLE_LIBRARY.curie('microschema_slot'),
-                   model_uri=BDC_VARIABLE_LIBRARY.microschema_slot, domain=None, range=Optional[Union[str, "ClinicalMicroschemaEnum"]])
+                   model_uri=BDC_VARIABLE_LIBRARY.microschema_slot, domain=None, range=Optional[Union[Union[str, "ClinicalMicroschemaEnum"], list[Union[str, "ClinicalMicroschemaEnum"]]]])
 
 slots.integrates = Slot(uri=BDC_VARIABLE_LIBRARY.integrates, name="integrates", curie=BDC_VARIABLE_LIBRARY.curie('integrates'),
                    model_uri=BDC_VARIABLE_LIBRARY.integrates, domain=None, range=Optional[Union[Union[str, CompoundVariableId], list[Union[str, CompoundVariableId]]]])

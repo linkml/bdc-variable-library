@@ -1,0 +1,11 @@
+id: CHSIndividual_IDphv00098771s
+associated_study: CHS000287
+variable_description: "Participant Identifier"
+concept_type: OMOP:42528934
+variable_label: "Participant Identifier"
+source_id: phv00098771v1p1
+file_id: pht001450v1.p1
+file_name: BASE1
+variable_name: Individual_ID
+source_variable_description: "Subject Identifier"
+data_type: uriorcurie

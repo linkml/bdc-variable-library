@@ -1,0 +1,14 @@
+id: FHSage10phv00177954s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Participant age at exam 13"
+variable_label: "Participant Age"
+source_id: phv00177954v10p16
+concept_type: OMOP:4265453
+file_id: pht003099v10p16
+file_name: vr_dates_2022_a_1487s
+variable_name: age13
+source_variable_description: "Age at Exam 13"
+data_type: integer
+unit: UCUM:a
+minimum_value: 52
+maximum_value: 85

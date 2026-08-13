@@ -1,4 +1,4 @@
-id: ARICABI5phv00294492c
+id: ARICPWV1phv00297646c
 associated_study: ARIC000280
 variable_description: "Height"
 concept_type: OBA:VT0001253
@@ -7,16 +7,19 @@ cde_id: CONDOR:00003
 bdchm_type: observation
 unit: https://units-of-measurement.org/cm
 row_metadata:
-  - id: ARICABI5phv00294492s
-    microschema_slot: measurement_value
-  - id: ARICABI4phv00294491s
-    microschema_slot: age_at_measurement
-  - id: ARICSUBJECT_IDphv00294489s
-    microschema_slot: subject_identifier
+  - id: ARICPWV1phv00297646s
+    microschema_slot:
+      - measurement_value
+  - id: ARICABI4phv00294561s
+    microschema_slot:
+      - age_at_measurement
+  - id: ARICSUBJECT_IDphv00297645s
+    microschema_slot:
+      - subject_identifier
 documentation_metadata:
-  - id: dm:001
-    contr_vocab: wall_mounted_stadiometer
-    microschema_slot: instrument
-  - id: dm:002
-    contr_vocab: anthropometry
-    microschema_slot: method_type
+  - contr_vocab: wall_mounted_stadiometer
+    microschema_slot:
+      - instrument
+  - contr_vocab: anthropometry
+    microschema_slot:
+      - method_type

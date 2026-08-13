@@ -1,8 +1,8 @@
 id: CHSHRTFLR07phv00099017s
 associated_study: CHS000287
-variable_description: "Heart failure status"
+variable_description: "Congestive heart failure status"
 concept_type: MONDO:0005009
-variable_label: "heart failure"
+variable_label: "congestive heart failure"
 source_id: phv0099017.v1.p1
 file_id: pht001450.v1
 file_name: BASE1

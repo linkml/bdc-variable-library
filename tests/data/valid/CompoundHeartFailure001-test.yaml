@@ -1,22 +1,19 @@
-id: FHSg3b0431phv00177516c
+id: FHSg3b0147phv00177351c
 associated_study: FraminghamHeartStudy000007
-variable_description: "Asthma status"
-concept_type: OMOP:317009
-variable_label: "Asthma"
+variable_description: "Heart failure status"
+concept_type: MONDO:0005252
+variable_label: "Heart failure"
 cde_id: CONDOR:00004
 bdchm_type: condition
 documentation_metadata:
-  - contr_vocab: MONDO:0004979
+  - contr_vocab: MONDO:0005252
     microschema_slot:
       - condition_concept
-  - contr_vocab: working_diagnosis
+  - contr_vocab: health_record
     microschema_slot:
       - condition_provenance
-  - contr_vocab: oneself
-    microschema_slot:
-      - relationship_to_participant
 row_metadata:
-  - id: FHSg3b0431phv00177516s
+  - id: FHSg3b0147phv00177351s
     microschema_slot:
       - condition_status
   - id: FHSage2phv00177932s

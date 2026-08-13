@@ -1,0 +1,18 @@
+id: FHSFF282phv00002201s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Obesity status"
+concept_type: MONDO:0005139
+variable_label: "Obesity"
+source_id: phv00002201v1p16
+file_id: pht000015v3p16
+file_name: ex0_13s
+variable_name: FF282
+source_variable_description: "CLINICAL DIAGNOSTIC IMPRESSION: NON-CVD, OBESITY"
+data_type: enum
+coded_values:
+  - indicator_char: "0"
+    indicator_meaning: "NO"
+  - indicator_char: "1"
+    indicator_meaning: "YES"
+  - indicator_char: "2"
+    indicator_meaning: "MAYBE"

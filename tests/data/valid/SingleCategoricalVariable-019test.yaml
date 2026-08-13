@@ -1,0 +1,23 @@
+id: FHSFC141phv00001479s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Obesity status"
+concept_type: MONDO:0005139
+variable_label: "Obesity"
+source_id: phv00001479v1p16
+file_id: pht000012v3p16
+file_name: ex0_10s
+variable_name: FC141
+source_variable_description: "BODY EXAMINATION: DEGREE OF OBESITY"
+data_type: enum
+missing_value:
+  - indicator_char: "9"
+    indicator_meaning: "UNKNOWN"
+coded_values:
+  - indicator_char: "0"
+    indicator_meaning: "NONE"
+  - indicator_char: "1"
+    indicator_meaning: "SLIGHT"
+  - indicator_char: "2"
+    indicator_meaning: "MODERATE"
+  - indicator_char: "3"
+    indicator_meaning: "MARKED"

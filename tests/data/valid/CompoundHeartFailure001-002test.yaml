@@ -1,0 +1,24 @@
+id: CHSHRTFLR07phv00099017c
+associated_study: CHS000287
+variable_description: "Congestive heart failure status"
+concept_type: MONDO:0005009
+variable_label: "Congestive heart failure"
+cde_id: CONDOR:00004
+bdchm_type: condition
+documentation_metadata:
+  - contr_vocab: MONDO:0005009
+    microschema_slot:
+      - condition_concept
+  - contr_vocab: patient_self_report
+    microschema_slot:
+      - condition_provenance
+row_metadata:
+  - id: CHSHRTFLR07phv00099017s
+    microschema_slot:
+      - condition_status
+  - id: CHSAGE01phv000987992s
+    microschema_slot:
+      - age_at_condition_record
+  - id: CHSIndividual_IDphv00098771s
+    microschema_slot:
+      - subject_identifier

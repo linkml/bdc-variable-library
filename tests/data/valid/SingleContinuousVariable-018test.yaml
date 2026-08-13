@@ -1,0 +1,14 @@
+id: CHSAGE01phv000987992s
+associated_study: CHS000287
+variable_description: "Participant age at baseline"
+variable_label: "Participant Age"
+source_id: phv000987992v1p1
+concept_type: OMOP:4265453
+file_id: pht001450v1p1
+file_name: BASE1
+variable_name: AGE01
+source_variable_description: "SELF-REPORTED AGE AT BASELINE"
+data_type: integer
+unit: UCUM:a
+minimum_value: 64
+maximum_value: 100

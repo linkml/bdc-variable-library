@@ -1,12 +1,11 @@
-id: FHSg3b0431phv00177516c
+id: FHSFF282phv00002201c
 associated_study: FraminghamHeartStudy000007
-variable_description: "Asthma status"
-concept_type: OMOP:317009
-variable_label: "Asthma"
-cde_id: CONDOR:00004
+variable_description: "Obesity status"
+concept_type: MONDO:0005139
+variable_label: "Obesity"
 bdchm_type: condition
 documentation_metadata:
-  - contr_vocab: MONDO:0004979
+  - contr_vocab: MONDO:0005139
     microschema_slot:
       - condition_concept
   - contr_vocab: working_diagnosis
@@ -16,12 +15,12 @@ documentation_metadata:
     microschema_slot:
       - relationship_to_participant
 row_metadata:
-  - id: FHSg3b0431phv00177516s
+  - id: FHSFF282phv00002201s
     microschema_slot:
       - condition_status
-  - id: FHSage2phv00177932s
+  - id: FHSage10phv00177954s
     microschema_slot:
       - age_at_condition_record
-  - id: FHSshareidphv00177237s
+  - id: FHSshareidphv00002204s
     microschema_slot:
       - subject_identifier

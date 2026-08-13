@@ -1,12 +1,12 @@
-id: ARICABI4phv00294491s
+id: ARICABI4phv00294561s
 associated_study: ARIC000280
 variable_description: "Participant age at visit 5"
 variable_label: "Participant Age"
 concept_type: OMOP:4265453
-source_id: phv00294491v3p3
-file_id: pht006414v3p3
-file_name: ABI
+source_id: phv00294561v3p3
+file_id: pht006415v3p3
+file_name: ABI_DERV
 variable_name: ABI4
-source_variable_description: "Age [Ankle Brachial BP index, ABI. Visit 5]"
+source_variable_description: "Age [Ankle Brachial BP index - Derived, ABI-DERV. Visit 5]"
 data_type: integer
 unit: UCUM:a

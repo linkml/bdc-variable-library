@@ -1,0 +1,11 @@
+id: FHSshareidphv00002204s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Participant Identifier"
+concept_type: OMOP:42528934
+variable_label: "Participant Identifier"
+source_id: phv00002204v1p16
+file_id: pht000015v3p16
+file_name: ex0_13s
+variable_name: shareid
+source_variable_description: "UNIQUE PARTICIPANT ID"
+data_type: uriorcurie

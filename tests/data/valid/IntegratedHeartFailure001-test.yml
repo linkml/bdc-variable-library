@@ -1,0 +1,10 @@
+id: DMCharmonizationPilotHeartFailure
+associated_study: DMCPilotv1
+variable_description: "Heart failure status"
+concept_type: MONDO:0005252
+variable_label: "Heart failure"
+cde_id: CONDOR:00004
+bdchm_type: condition
+integrates:
+  - FHSg3b0147phv00177351c
+  - CHSHRTFLR07phv00099017c

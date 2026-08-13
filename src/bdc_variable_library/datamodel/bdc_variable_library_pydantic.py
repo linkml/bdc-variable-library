@@ -2664,11 +2664,11 @@ class MetadataVariable(Entity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/linkml/bdc-variable-library'})
 
-    microschema_slot: Optional[ClinicalMicroschemaEnum] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
+    microschema_slot: Optional[list[ClinicalMicroschemaEnum]] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
     id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
 
 
-class DocumentationVariable(Entity):
+class DocumentationVariable(ConfiguredBaseModel):
     """
     Information derived from study documentation or text in a data dictionary that provides essential metadata for a variable
     """
@@ -2692,8 +2692,7 @@ class DocumentationVariable(Entity):
                                                                                'name': 'microschema_slot'}}}}]})
 
     contr_vocab: Optional[str] = Field(default=None, description="""Value from an enum""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentationVariable']} })
-    microschema_slot: Optional[ClinicalMicroschemaEnum] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
-    id: str = Field(default=..., description="""A unique identifier for a variable within BDC""", json_schema_extra = { "linkml_meta": {'domain_of': ['Entity'], 'slot_uri': 'schema:identifier'} })
+    microschema_slot: Optional[list[ClinicalMicroschemaEnum]] = Field(default=None, description="""The slot that the variable identified in the variable path should go""", json_schema_extra = { "linkml_meta": {'domain_of': ['MetadataVariable', 'DocumentationVariable']} })
 
 
 class CompoundHeight002(CompoundVariable):

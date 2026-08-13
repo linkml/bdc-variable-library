@@ -6,21 +6,31 @@ variable_label: "Asthma"
 cde_id: CONDOR:00004
 bdchm_type: condition
 documentation_metadata:
-  - id: dm:003
-    contr_vocab: MONDO:0004979
-    microschema_slot: condition_concept
+  - contr_vocab: MONDO:0004979
+    microschema_slot:
+      - condition_concept
+  - contr_vocab: oneself
+    microschema_slot:
+      - relationship_to_participant
 row_metadata:
   - id: FHSg3a539phv00274119s
-    microschema_slot: condition_status
+    microschema_slot:
+      - condition_status
   - id: FHSg3a540phv00274120s
-    microschema_slot: condition_status
+    microschema_slot:
+      - condition_status
   - id: FHSage1phv00177930s
-    microschema_slot: age_at_condition_record
+    microschema_slot:
+      - age_at_condition_record
   - id: FHSshareidphv00273700s
-    microschema_slot: subject_identifier
+    microschema_slot:
+      - subject_identifier
   - id: FHSg3a542phv00274122s
-    microschema_slot: age_at_condition_start
+    microschema_slot:
+      - age_at_condition_start
   - id: FHSg3a543phv00274123s
-    microschema_slot: age_at_condition_end
+    microschema_slot:
+      - age_at_condition_end
   - id: FHSg3a541phv00274121s
-    microschema_slot: condition_provenance
+    microschema_slot:
+      - condition_provenance

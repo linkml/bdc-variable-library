@@ -8,15 +8,21 @@ bdchm_type: observation
 unit: https://units-of-measurement.org/%5Bin_i%5D
 row_metadata:
   - id: FHSg3b0483phv00177539s
-    microschema_slot: measurement_value
+    microschema_slot:
+      - measurement_value
   - id: FHSage2phv00177932s
-    microschema_slot: age_at_measurement
+    microschema_slot:
+      - age_at_measurement
   - id: FHSshareidphv00177237s
-    microschema_slot: subject_identifier
+    microschema_slot:
+      - subject_identifier
 documentation_metadata:
-  - id: dm:001
-    contr_vocab: wall_mounted_stadiometer
-    microschema_slot: instrument
-  - id: dm:002
-    contr_vocab: anthropometry
-    microschema_slot: method_type
+  - contr_vocab: wall_mounted_stadiometer
+    microschema_slot:
+      - instrument
+  - contr_vocab: anthropometry
+    microschema_slot:
+      - method_type
+  - contr_vocab: orthostatic_body_position
+    microschema_slot:
+      - body_position

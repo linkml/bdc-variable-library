@@ -1,0 +1,15 @@
+id: FHSage10phv00177948s
+associated_study: FraminghamHeartStudy000007
+variable_description: "Participant age at exam 10"
+variable_label: "Participant Age"
+source_id: phv00177948v10p16
+concept_type: OMOP:4265453
+file_id: pht003099v10p16
+file_name: vr_dates_2022_a_1487s
+variable_name: age10
+source_variable_description: "Age at Exam 10"
+data_type: integer
+unit: UCUM:a
+minimum_value: 46
+maximum_value: 89
+comment: "For those who had a televisit only (medical history and tech questions only), age was calculated at time of televisit."

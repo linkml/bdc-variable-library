@@ -1,11 +1,11 @@
-id: ARICSUBJECT_IDphv00294489s
+id: ARICSUBJECT_IDphv00297645s
 associated_study: ARIC000280
 variable_description: "Participant Identifier"
 variable_label: "Participant Identifier"
 concept_type: OMOP:42528934
-source_id: phv00294489v3p3
-file_id: pht006414v3p3
-file_name: ABI
-variable_name: shareid
-source_variable_description: "De-identified ARIC subject ID [Ankle Brachial BP Index, ABI. Visit 5]"
+source_id: phv00297645v3p3
+file_id: pht006469v3p3
+file_name: PWV
+variable_name: SUBJECT_ID
+source_variable_description: "De-identified ARIC subject ID [Pulse Wave Velocity/Ankle-Brachial Index Data Sheet, PWV. Visit 5]"
 data_type: string

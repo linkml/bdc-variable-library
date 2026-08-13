@@ -1,0 +1,9 @@
+id: DMCharmonizationPilotObesity
+associated_study: DMCPilotv1
+variable_description: "Obesity status"
+concept_type: MONDO:0005139
+variable_label: "Obesity"
+bdchm_type: condition
+integrates:
+  - FHSFC141phv00001479c
+  - FHSFF282phv00002201c

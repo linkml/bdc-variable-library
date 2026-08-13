@@ -146,7 +146,6 @@ classes:
       - microschema_slot
 
   DocumentationVariable:
-    is_a: Entity
     description: >-
       Information derived from study documentation or text in a data dictionary
       that provides essential metadata for a variable
@@ -380,6 +379,7 @@ slots:
       CURIE describing the meaning of the indicator
   microschema_slot:
     range: ClinicalMicroschemaEnum
+    multivalued: true
     description: >-
       The slot that the variable identified in the variable path should go
   integrates:
