@@ -1,0 +1,11 @@
+id: WHISUBJIDphv00154925s
+associated_study: WHI000200
+variable_description: "Participant Identifier"
+variable_label: "Participant Identifier"
+concept_type: OMOP:42528934
+source_id: phv00154925v5p3
+file_id: pht002118v5p3
+file_name: ecg_rel2
+variable_name: SUBJID
+source_variable_description: "WHI dbGaP Subject ID"
+data_type: string

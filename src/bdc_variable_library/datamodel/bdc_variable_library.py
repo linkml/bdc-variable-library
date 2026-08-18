@@ -1,5 +1,5 @@
 # Auto generated from bdc_variable_library.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-13T16:51:34
+# Generation date: 2026-08-18T10:29:47
 # Schema: bdc-variable-library
 #
 # id: https://w3id.org/linkml/bdc-variable-library
@@ -2853,10 +2853,15 @@ class ClinicalMicroschemaEnum(EnumDefinitionImpl):
     condition_severity = PermissibleValue(text="condition_severity")
     relationship_to_participant = PermissibleValue(text="relationship_to_participant")
     method_type = PermissibleValue(text="method_type")
-    drug_concept = PermissibleValue(text="drug_concept")
+    drug_type = PermissibleValue(text="drug_type")
     exposure_status = PermissibleValue(text="exposure_status")
     exposure_provenance = PermissibleValue(text="exposure_provenance")
     age_at_exposure_record = PermissibleValue(text="age_at_exposure_record")
+    procedure_type = PermissibleValue(text="procedure_type")
+    procedure_provenance = PermissibleValue(text="procedure_provenance")
+    procedure_status = PermissibleValue(text="procedure_status")
+    age_at_procedure_record = PermissibleValue(text="age_at_procedure_record")
+    affected_body_site = PermissibleValue(text="affected_body_site")
 
     _defn = EnumDefinition(
         name="ClinicalMicroschemaEnum",

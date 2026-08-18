@@ -1,0 +1,19 @@
+id: WHIELE_PACEphv00155223s
+associated_study: WHI000200
+variable_description: "Pacemaker status"
+concept_type: OMOP:4144921
+variable_label: "Pacemaker"
+source_id: phv00155223v5p3
+file_id: pht002118v5p3
+file_name: ecg_rel2
+variable_name: ELE_PACE
+source_variable_description: "Electronic pacemaker"
+data_type: enum
+missing_value:
+  - indicator_char: ""
+    indicator_meaning: NULL
+coded_values:
+  - indicator_char: "0"
+    indicator_meaning: "No"
+  - indicator_char: "1"
+    indicator_meaning: "Yes"

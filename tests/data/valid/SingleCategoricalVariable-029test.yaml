@@ -1,0 +1,18 @@
+id: ARICDSRA9phv00205047s
+associated_study: ARIC000280
+variable_description: "Pacemaker status"
+concept_type: OMOP:4144921
+variable_label: "Pacemaker"
+source_id: phv00205047.v3.p3
+file_id: pht004067.v4.p3
+file_name: DSRA04
+variable_name: DSRA9
+source_variable_description: "Do you have a cardiac pacemaker? Q9 [Dental Screening Form, DSRA04. Visit 4]"
+data_type: enum
+coded_values:
+  - indicator_char: "N"
+    indicator_meaning: "No"
+  - indicator_char: "Y"
+    indicator_meaning: "Yes"
+  - indicator_char: "U"
+    indicator_meaning: "Unknown"

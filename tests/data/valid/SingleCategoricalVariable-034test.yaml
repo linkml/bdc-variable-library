@@ -1,0 +1,18 @@
+id: WHIECGVTYPphv00154926s
+associated_study: WHI000200
+variable_description: "Visit type"
+variable_label: "Visit type"
+concept_type: OMOP:44819039
+source_id: phv00154926v5p3
+file_id: pht002118v5p3
+file_name: ecg_rel2
+variable_name: ECGVTYP
+source_variable_description: "ECG visit type"
+data_type: enum
+coded_values:
+  - indicator_char: "1"
+    indicator_meaning: "Screening Visit"
+  - indicator_char: "2"
+    indicator_meaning: "Semi-Annual Visit"
+  - indicator_char: "3"
+    indicator_meaning: "Annual Visit"

@@ -709,10 +709,15 @@ class ClinicalMicroschemaEnum(str, Enum):
     condition_severity = "condition_severity"
     relationship_to_participant = "relationship_to_participant"
     method_type = "method_type"
-    drug_concept = "drug_concept"
+    drug_type = "drug_type"
     exposure_status = "exposure_status"
     exposure_provenance = "exposure_provenance"
     age_at_exposure_record = "age_at_exposure_record"
+    procedure_type = "procedure_type"
+    procedure_provenance = "procedure_provenance"
+    procedure_status = "procedure_status"
+    age_at_procedure_record = "age_at_procedure_record"
+    affected_body_site = "affected_body_site"
 
 
 

@@ -1,0 +1,14 @@
+id: WHIECGVYphv00154927s
+associated_study: WHI000200
+variable_description: "Visit year"
+variable_label: "Visit year"
+source_id: phv00154927v5p3
+file_id: pht002118v5p3
+file_name: ecg_rel2
+variable_name: ECGVY
+source_variable_description: "ECG visit year"
+comment: "Visit year for which this ECG was collected."
+data_type: integer
+minimum_value: 0
+maximum_value: 11
+unit: UCUM:a

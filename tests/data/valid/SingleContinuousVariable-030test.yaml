@@ -1,0 +1,12 @@
+id: ARICV4AGE41phv00511996s
+associated_study: ARIC000280
+variable_description: "Participant age at visit 4"
+variable_label: "Participant Age"
+concept_type: OMOP:4265453
+source_id: phv00511996v2p3
+file_id: pht012813v2p3
+file_name: DERIVE48
+variable_name: V4AGE41
+source_variable_description: "Age At Visit 4 [Derived Variable Dataset. Visit 4]"
+data_type: integer
+unit: UCUM:a

@@ -1,0 +1,29 @@
+id: WHIELE_PACEphv00155223c
+associated_study: WHI000200
+variable_description: "Pacemaker status"
+concept_type: OMOP:4144921
+variable_label: "Pacemaker"
+bdchm_type: procedure
+documentation_metadata:
+  - contr_vocab: OMOP:4144921
+    microschema_slot:
+      - procedure_type
+  - contr_vocab: patient_self_report
+    microschema_slot:
+      - procedure_provenance
+  - contr_vocab: UBERON:0000948
+    microschema_slot:
+      - affected_body_site
+row_metadata:
+  - id: WHIELE_PACEphv00155223s
+    microschema_slot:
+      - procedure_status
+  - id: WHIECGVTYPphv00154926s
+    microschema_slot:
+      - age_at_procedure_record
+  - id: WHISUBJIDphv00154925s
+    microschema_slot:
+      - subject_identifier
+  - id: WHIECGVYphv00154927s
+    microschema_slot:
+      - age_at_procedure_record

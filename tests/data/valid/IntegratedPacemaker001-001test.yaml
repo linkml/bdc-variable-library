@@ -1,0 +1,9 @@
+id: DMCharmonizationPilotObesity
+associated_study: DMCPilotv1
+variable_description: "Pacemaker status"
+concept_type: OMOP:4144921
+variable_label: "Pacemaker"
+bdchm_type: procedure
+integrates:
+  - ARICDSRA9phv00205047c
+  - WHIELE_PACEphv00155223c

@@ -7,7 +7,7 @@ bdchm_type: drugexposure
 documentation_metadata:
   - contr_vocab: RxCUI:1191
     microschema_slot:
-      - drug_concept
+      - drug_type
   - contr_vocab: patient_self_reported_medication
     microschema_slot:
       - exposure_provenance

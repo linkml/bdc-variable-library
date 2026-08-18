@@ -1,0 +1,26 @@
+id: ARICDSRA9phv00205047c
+associated_study: ARIC000280
+variable_description: "Pacemaker status"
+concept_type: OMOP:4144921
+variable_label: "Pacemaker"
+bdchm_type: procedure
+documentation_metadata:
+  - contr_vocab: OMOP:4144921
+    microschema_slot:
+      - procedure_type
+  - contr_vocab: patient_self_report
+    microschema_slot:
+      - procedure_provenance
+  - contr_vocab: UBERON:0000948
+    microschema_slot:
+      - affected_body_site
+row_metadata:
+  - id: ARICDSRA9phv00205047s
+    microschema_slot:
+      - procedure_status
+  - id: ARICV4AGE41phv00511996s
+    microschema_slot:
+      - age_at_procedure_record
+  - id: ARICSUBJECT_IDphv00205057s
+    microschema_slot:
+      - subject_identifier
