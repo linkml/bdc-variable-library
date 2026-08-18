@@ -414,14 +414,24 @@ enums:
         text: relationship_to_participant
       method_type:
         text: method_type
-      drug_concept:
-        text: drug_concept
+      drug_type:
+        text: drug_type
       exposure_status:
         text: exposure_status
       exposure_provenance:
         text: exposure_provenance
       age_at_exposure_record:
         text: age_at_exposure_record
+      procedure_type:
+        text: procedure_type
+      procedure_provenance:
+        text: procedure_provenance
+      procedure_status:
+        text: procedure_status
+      age_at_procedure_record:
+        text: age_at_procedure_record
+      affected_body_site:
+        text: affected_body_site
   ComparatorEnum:
     name: ComparatorEnum
     definition_uri: https://w3id.org/linkml/linkml-microschema-profile/ComparatorEnum
@@ -5736,7 +5746,7 @@ classes:
     class_uri: cms:HumanBasophilCountQuantity002
 metamodel_version: 1.11.0
 source_file: bdc_variable_library.yaml
-source_file_date: '2026-08-13T21:10:50'
-source_file_size: 13336
-generation_date: '2026-08-13T21:11:00'
+source_file_date: '2026-08-18T14:38:54'
+source_file_size: 13464
+generation_date: '2026-08-18T14:39:08'
 
