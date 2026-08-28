@@ -295,7 +295,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-conditionstatusrecord">Class: ConditionStatusRecord</h1>
-<p><em>Record suggesting the presence of a disease or medical condition stated as a diagnosis, sign, or symptom</em></p>
+<p><em>Record suggesting the presence of a disease or medical condition stated as a  diagnosis, sign, or symptom</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/bdchm/Condition">bdchm:Condition</a></p>
 <pre class="mermaid"><code> classDiagram
@@ -307,6 +307,36 @@
         click HeartFailureStatusRecord href "../HeartFailureStatusRecord/"
       ConditionStatusRecord &lt;|-- ObesityStatusRecord
         click ObesityStatusRecord href "../ObesityStatusRecord/"
+      ConditionStatusRecord &lt;|-- AtrialFibrillationStatusRecord
+        click AtrialFibrillationStatusRecord href "../AtrialFibrillationStatusRecord/"
+      ConditionStatusRecord &lt;|-- AnginaStatusRecord
+        click AnginaStatusRecord href "../AnginaStatusRecord/"
+      ConditionStatusRecord &lt;|-- CardiovascularDiseaseStatusRecord
+        click CardiovascularDiseaseStatusRecord href "../CardiovascularDiseaseStatusRecord/"
+      ConditionStatusRecord &lt;|-- CarotidPlaqueStatusRecord
+        click CarotidPlaqueStatusRecord href "../CarotidPlaqueStatusRecord/"
+      ConditionStatusRecord &lt;|-- COPDStatusRecord
+        click COPDStatusRecord href "../COPDStatusRecord/"
+      ConditionStatusRecord &lt;|-- DiabetesStatusRecord
+        click DiabetesStatusRecord href "../DiabetesStatusRecord/"
+      ConditionStatusRecord &lt;|-- StrokeStatusRecord
+        click StrokeStatusRecord href "../StrokeStatusRecord/"
+      ConditionStatusRecord &lt;|-- HeartDiseaseStatusRecord
+        click HeartDiseaseStatusRecord href "../HeartDiseaseStatusRecord/"
+      ConditionStatusRecord &lt;|-- MyocardialInfarctionStatusRecord
+        click MyocardialInfarctionStatusRecord href "../MyocardialInfarctionStatusRecord/"
+      ConditionStatusRecord &lt;|-- HypertensionStatusRecord
+        click HypertensionStatusRecord href "../HypertensionStatusRecord/"
+      ConditionStatusRecord &lt;|-- LeftVentricularHypertrophyStatusRecord
+        click LeftVentricularHypertrophyStatusRecord href "../LeftVentricularHypertrophyStatusRecord/"
+      ConditionStatusRecord &lt;|-- PeripheralArterialDiseaseStatusRecord
+        click PeripheralArterialDiseaseStatusRecord href "../PeripheralArterialDiseaseStatusRecord/"
+      ConditionStatusRecord &lt;|-- SleepApneaStatusRecord
+        click SleepApneaStatusRecord href "../SleepApneaStatusRecord/"
+      ConditionStatusRecord &lt;|-- ValvularHeartDiseaseStatusRecord
+        click ValvularHeartDiseaseStatusRecord href "../ValvularHeartDiseaseStatusRecord/"
+      ConditionStatusRecord &lt;|-- VenousThromboembolismStatusRecord
+        click VenousThromboembolismStatusRecord href "../VenousThromboembolismStatusRecord/"
 
       ConditionStatusRecord : age_at_condition_end
 
@@ -418,6 +448,21 @@
 <li><a href="../AsthmaStatusRecord/">AsthmaStatusRecord</a></li>
 <li><a href="../HeartFailureStatusRecord/">HeartFailureStatusRecord</a></li>
 <li><a href="../ObesityStatusRecord/">ObesityStatusRecord</a></li>
+<li><a href="../AtrialFibrillationStatusRecord/">AtrialFibrillationStatusRecord</a></li>
+<li><a href="../AnginaStatusRecord/">AnginaStatusRecord</a></li>
+<li><a href="../CardiovascularDiseaseStatusRecord/">CardiovascularDiseaseStatusRecord</a></li>
+<li><a href="../CarotidPlaqueStatusRecord/">CarotidPlaqueStatusRecord</a></li>
+<li><a href="../COPDStatusRecord/">COPDStatusRecord</a></li>
+<li><a href="../DiabetesStatusRecord/">DiabetesStatusRecord</a></li>
+<li><a href="../StrokeStatusRecord/">StrokeStatusRecord</a></li>
+<li><a href="../HeartDiseaseStatusRecord/">HeartDiseaseStatusRecord</a></li>
+<li><a href="../MyocardialInfarctionStatusRecord/">MyocardialInfarctionStatusRecord</a></li>
+<li><a href="../HypertensionStatusRecord/">HypertensionStatusRecord</a></li>
+<li><a href="../LeftVentricularHypertrophyStatusRecord/">LeftVentricularHypertrophyStatusRecord</a></li>
+<li><a href="../PeripheralArterialDiseaseStatusRecord/">PeripheralArterialDiseaseStatusRecord</a></li>
+<li><a href="../SleepApneaStatusRecord/">SleepApneaStatusRecord</a></li>
+<li><a href="../ValvularHeartDiseaseStatusRecord/">ValvularHeartDiseaseStatusRecord</a></li>
+<li><a href="../VenousThromboembolismStatusRecord/">VenousThromboembolismStatusRecord</a></li>
 </ul>
 </li>
 </ul>
@@ -566,7 +611,7 @@
 <span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_of_use</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clinical</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Record suggesting the presence of a disease or medical condition stated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a diagnosis, sign, or symptom</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a  diagnosis, sign, or symptom</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subject_identifier</span>
@@ -609,7 +654,7 @@
 <span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_of_use</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clinical</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Record suggesting the presence of a disease or medical condition stated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a diagnosis, sign, or symptom</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a  diagnosis, sign, or symptom</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">subject_identifier</span><span class="p">:</span>

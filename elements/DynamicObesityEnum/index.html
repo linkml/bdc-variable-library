@@ -365,10 +365,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enumeration-source" class="md-nav__link">
+  <a href="#enumeration-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enumeration Source
+        Enumeration Operations
       
     </span>
   </a>
@@ -436,15 +436,28 @@
 
 
 <h1 id="enum-dynamicobesityenum">Enum: DynamicObesityEnum</h1>
-<p><em>Obesity and related terms from HPO</em></p>
+<p><em>Obesity and related terms from HPO and Mondo</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/DynamicObesityEnum">bdc_variable_library:DynamicObesityEnum</a></p>
-<h2 id="enumeration-source">Enumeration Source</h2>
-<p><strong>Reachable From:</strong>
-- <strong>Source:</strong> NONE
-- <strong>Nodes:</strong> HP:0001513
-- <strong>Via:</strong> rdfs:subClassOf</p>
 <p><em>This is a dynamic enum</em></p>
+<h2 id="enumeration-operations">Enumeration Operations</h2>
+<p><strong>Includes:</strong></p>
+<ul>
+<li>
+<p><strong>Reachable from</strong> <a href="obo:hp">obo:hp</a></p>
+<ul>
+<li>Source nodes: HP:0001513</li>
+<li>Via relationships: rdfs:subClassOf</li>
+</ul>
+</li>
+<li>
+<p><strong>Reachable from</strong> <a href="obo:mondo">obo:mondo</a></p>
+<ul>
+<li>Source nodes: MONDO:0011122</li>
+<li>Via relationships: rdfs:subClassOf</li>
+</ul>
+</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -453,15 +466,22 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DynamicObesityEnum</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Obesity and related terms from HPO</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Obesity and related terms from HPO and Mondo</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">reachable_from</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">source_ontology</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">obo:hp</span>
-<span class="w">  </span><span class="nt">source_nodes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HP:0001513</span>
-<span class="w">  </span><span class="nt">relationship_types</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdfs:subClassOf</span>
+<span class="nt">include</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">reachable_from</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source_ontology</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">obo:hp</span>
+<span class="w">    </span><span class="nt">source_nodes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HP:0001513</span>
+<span class="w">    </span><span class="nt">relationship_types</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdfs:subClassOf</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">reachable_from</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">source_ontology</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">obo:mondo</span>
+<span class="w">    </span><span class="nt">source_nodes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MONDO:0011122</span>
+<span class="w">    </span><span class="nt">relationship_types</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdfs:subClassOf</span>
 </code></pre></div>
 </details>
 </div>

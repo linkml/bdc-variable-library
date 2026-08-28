@@ -541,6 +541,36 @@
 <td></td>
 </tr>
 <tr>
+<td>predicted_value</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>lower_limit_normal</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>upper_limit_normal</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>percent_predicted_value</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>activity_type</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>relative_timing</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>condition_type</td>
 <td>None</td>
 <td></td>
@@ -576,11 +606,6 @@
 <td></td>
 </tr>
 <tr>
-<td>condition_concept</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>condition_severity</td>
 <td>None</td>
 <td></td>
@@ -591,27 +616,42 @@
 <td></td>
 </tr>
 <tr>
-<td>method_type</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>drug_type</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>exposure_status</td>
+<td>age_at_drug_start</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>exposure_provenance</td>
+<td>age_at_drug_end</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>age_at_exposure_record</td>
+<td>age_at_drug_record</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>route_of_administration</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>dose</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>frequency</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>indication</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -621,22 +661,17 @@
 <td></td>
 </tr>
 <tr>
-<td>procedure_provenance</td>
+<td>age_at_procedure_start</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
-<td>procedure_status</td>
+<td>age_at_procedure_end</td>
 <td>None</td>
 <td></td>
 </tr>
 <tr>
 <td>age_at_procedure_record</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>affected_body_site</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -701,6 +736,18 @@
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">study_site</span>
 <span class="w">  </span><span class="nt">absolute_time</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">absolute_time</span>
+<span class="w">  </span><span class="nt">predicted_value</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predicted_value</span>
+<span class="w">  </span><span class="nt">lower_limit_normal</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lower_limit_normal</span>
+<span class="w">  </span><span class="nt">upper_limit_normal</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upper_limit_normal</span>
+<span class="w">  </span><span class="nt">percent_predicted_value</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percent_predicted_value</span>
+<span class="w">  </span><span class="nt">activity_type</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">activity_type</span>
+<span class="w">  </span><span class="nt">relative_timing</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relative_timing</span>
 <span class="w">  </span><span class="nt">condition_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_type</span>
 <span class="w">  </span><span class="nt">associated_evidence</span><span class="p">:</span>
@@ -715,32 +762,34 @@
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_status</span>
 <span class="w">  </span><span class="nt">condition_provenance</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_provenance</span>
-<span class="w">  </span><span class="nt">condition_concept</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_concept</span>
 <span class="w">  </span><span class="nt">condition_severity</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">condition_severity</span>
 <span class="w">  </span><span class="nt">relationship_to_participant</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relationship_to_participant</span>
-<span class="w">  </span><span class="nt">method_type</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method_type</span>
 <span class="w">  </span><span class="nt">drug_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drug_type</span>
-<span class="w">  </span><span class="nt">exposure_status</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposure_status</span>
-<span class="w">  </span><span class="nt">exposure_provenance</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exposure_provenance</span>
-<span class="w">  </span><span class="nt">age_at_exposure_record</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_exposure_record</span>
+<span class="w">  </span><span class="nt">age_at_drug_start</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_drug_start</span>
+<span class="w">  </span><span class="nt">age_at_drug_end</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_drug_end</span>
+<span class="w">  </span><span class="nt">age_at_drug_record</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_drug_record</span>
+<span class="w">  </span><span class="nt">route_of_administration</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">route_of_administration</span>
+<span class="w">  </span><span class="nt">dose</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dose</span>
+<span class="w">  </span><span class="nt">frequency</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frequency</span>
+<span class="w">  </span><span class="nt">indication</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">indication</span>
 <span class="w">  </span><span class="nt">procedure_type</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">procedure_type</span>
-<span class="w">  </span><span class="nt">procedure_provenance</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">procedure_provenance</span>
-<span class="w">  </span><span class="nt">procedure_status</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">procedure_status</span>
+<span class="w">  </span><span class="nt">age_at_procedure_start</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_procedure_start</span>
+<span class="w">  </span><span class="nt">age_at_procedure_end</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_procedure_end</span>
 <span class="w">  </span><span class="nt">age_at_procedure_record</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_procedure_record</span>
-<span class="w">  </span><span class="nt">affected_body_site</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">affected_body_site</span>
 </code></pre></div>
 </details>
 </div>

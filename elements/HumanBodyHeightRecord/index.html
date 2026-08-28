@@ -573,7 +573,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:VT0001253'}, {'equals_string': 'OMOP:903133'}, {'equals_string': 'LOINC:3036277'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'cm'}, {'equals_string': '[in_i]'}, {'equals_string': 'm'}, {'equals_string': '[ft_i]'}]}, 'instrument': {'any_of': [{'equals_string': 'wall_mounted_stadiometer'}, {'equals_string': 'flexible_measuring_tape'}, {'equals_string': 'portable_stadiometer'}, {'equals_string': 'anthropometer_rod'}, {'equals_string': 'sonar_stadiometer'}, {'equals_string': 'infantometer'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'cm'}, {'equals_string': '[in_i]'}, {'equals_string': 'm'}, {'equals_string': '[ft_i]'}]}, 'instrument': {'any_of': [{'equals_string': 'wall_mounted_stadiometer'}, {'equals_string': 'flexible_measuring_tape'}, {'equals_string': 'portable_stadiometer'}, {'equals_string': 'anthropometer_rod'}, {'equals_string': 'sonar_stadiometer'}, {'equals_string': 'infantometer'}, {'equals_string': 'unknown'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}, {'equals_string': 'survey'}, {'equals_string': 'interview'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -642,6 +642,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometer_rod</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar_stadiometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
@@ -649,6 +650,8 @@
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">survey</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interview</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -853,6 +856,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometer_rod</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar_stadiometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
@@ -860,6 +864,8 @@
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">survey</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interview</span>
 </code></pre></div>
 </details>
 </div>

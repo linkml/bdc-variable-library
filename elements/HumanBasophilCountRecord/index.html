@@ -561,7 +561,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:VT0002607'}, {'equals_string': 'OMOP:3006315'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': '10*3/uL'}, {'equals_string': '{#}/uL'}]}, 'instrument': {'any_of': [{'equals_string': 'flow cytometer'}, {'equals_string': 'microscope'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'CBC'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': '10*3/uL'}, {'equals_string': '{#}/uL'}]}, 'instrument': {'any_of': [{'equals_string': 'flow_cytometer'}, {'equals_string': 'microscope'}, {'equals_string': 'particle_counter'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'cbc'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -620,15 +620,16 @@
 <span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flow cytometer</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flow_cytometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microscope</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">particle_counter</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CBC</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cbc</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -823,15 +824,16 @@
 <span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flow cytometer</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flow_cytometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microscope</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">particle_counter</span>
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CBC</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cbc</span>
 </code></pre></div>
 </details>
 </div>
