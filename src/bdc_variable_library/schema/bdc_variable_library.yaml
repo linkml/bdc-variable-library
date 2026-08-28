@@ -32,7 +32,7 @@ default_range: string
 imports:
   - linkml:types
   - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.3/src/clinical_microschemas/schema/clinical_microschemas
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.4/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
@@ -164,7 +164,7 @@ classes:
       - preconditions:
           slot_conditions:
             microschema_slot:
-              equals_string: method_type
+              equals_string: method
         postconditions:
           slot_conditions:
             contr_vocab:
@@ -172,7 +172,7 @@ classes:
       - preconditions:
           slot_conditions:
             microschema_slot:
-              equals_string: condition_concept
+              equals_string: condition_type
         postconditions:
           slot_conditions:
             contr_vocab:
@@ -208,7 +208,166 @@ classes:
     is_a: IntegratedVariable
     description: >-
       Height variable containing data from multiple studies, normalized to cm
-  
+
+  CompoundWeight001:
+    is_a: CompoundVariable
+    description: >-
+      Weight variable with metadata, measured in kg using a mechanical beam balance
+    instantiates:
+      - HumanBodyWeightRecord001
+
+  CompoundWeight002:
+    is_a: CompoundVariable
+    description: >-
+      Weight variable with metadata, measured in pounds using a mechanical beam balance
+    instantiates:
+      - HumanBodyWeightRecord002
+
+  CompoundWeight003:
+    is_a: CompoundVariable
+    description: >-
+      Weight variable with metadata, measured in kg using a body composition analyzer
+    instantiates:
+      - HumanBodyWeightRecord003
+
+  CompoundWeight004:
+    is_a: CompoundVariable
+    description: >-
+      Weight variable with metadata, measured in kg using a digital scale
+    instantiates:
+      - HumanBodyWeightRecord004
+
+  IntegratedWeight001:
+    is_a: IntegratedVariable
+    description: >-
+      Weight variable containing data from multiple studies, normalized to kg
+
+  CompoundBMI001:
+    is_a: CompoundVariable
+    description: >-
+      Body mass index variable with metadata, calculated as weight (kg) divided by height (m) squared
+    instantiates:
+      - BodyMassIndexRecord
+
+  IntegratedBMI001:
+    is_a: IntegratedVariable
+    description: >-
+      Body mass index variable containing data from multiple studies, normalized to kg/m2
+
+  CompoundBasophilCount001:
+    is_a: CompoundVariable
+    description: >-
+      Basophil count variable with metadata, measured in 10*3/uL
+    instantiates:
+      - HumanBasophilCountRecord001
+
+  CompoundBasophilCount002:
+    is_a: CompoundVariable
+    description: >-
+      Basophil count variable with metadata, measured in cells/uL
+    instantiates:
+      - HumanBasophilCountRecord002
+
+  IntegratedBasophilCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Basophil count variable containing data from multiple studies, normalized to 10*3/uL
+
+  Compound8epiPGF2a001:
+    is_a: CompoundVariable
+    description: >-
+      8-epi-prostaglandin F2 alpha concentration in urine variable with metadata, measured in pg/mL
+    instantiates:
+      - Human8epiPGF2aUrineRecord001
+
+  Integrated8epiPGF2a001:
+    is_a: IntegratedVariable
+    description: >-
+      8-epi-prostaglandin F2 alpha concentration in urine variable containing data from multiple studies, normalized to pg/mL
+
+  CompoundLPPLA2Activity001:
+    is_a: CompoundVariable
+    description: >-
+      LP-PLA2 activity in blood variable with metadata, measured in nmol/min/mL
+    instantiates:
+      - HumanLPPLA2ActivityBloodRecord
+
+  IntegratedLPPLA2Activity001:
+    is_a: IntegratedVariable
+    description: >-
+      LP-PLA2 activity in blood variable containing data from multiple studies, normalized to nmol/min/mL
+
+  CompoundCreatinineUrine001:
+    is_a: CompoundVariable
+    description: >-
+      Creatinine concentration in urine variable with metadata, measured in mg/dL using the Jaffe reaction
+    instantiates:
+      - HumanCreatinineUrineRecord001
+
+  CompoundCreatinineUrine002:
+    is_a: CompoundVariable
+    description: >-
+      Creatinine concentration in urine variable with metadata, measured in mmol/L using the Jaffe reaction
+    instantiates:
+      - HumanCreatinineUrineRecord002
+
+  IntegratedCreatinineUrine001:
+    is_a: IntegratedVariable
+    description: >-
+      Creatinine concentration in urine variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundAlbuminUrine001:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in urine variable with metadata, measured in mg/dL using immunoturbidometry
+    instantiates:
+      - HumanAlbuminUrineRecord001
+
+  CompoundAlbuminUrine002:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in urine variable with metadata, measured in mg/L using an albumin dipstick
+    instantiates:
+      - HumanAlbuminUrineRecord002
+
+  CompoundAlbuminUrine003:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in urine variable with metadata, measured in mg/L using HPLC
+    instantiates:
+      - HumanAlbuminUrineRecord003
+
+  CompoundAlbuminUrine004:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in urine variable with metadata, measured in mg/L using immunonephelometry
+    instantiates:
+      - HumanAlbuminUrineRecord004
+
+  CompoundAlbuminUrine005:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in urine variable with metadata, measured in mg/L using immunoturbidometry
+    instantiates:
+      - HumanAlbuminUrineRecord005
+
+  IntegratedAlbuminUrine001:
+    is_a: IntegratedVariable
+    description: >-
+      Albumin concentration in urine variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundAlbuminCreatinineRatioUrine001:
+    is_a: CompoundVariable
+    description: >-
+      Albumin to creatinine ratio in urine variable with metadata, measured in mg/g{creat}
+    instantiates:
+      - HumanAlbuminCreatinineRatioUrineRecord
+
+  IntegratedAlbuminCreatinineRatioUrine001:
+    is_a: IntegratedVariable
+    description: >-
+      Albumin to creatinine ratio in urine variable containing data from multiple studies, normalized to mg/g{creat}
+
   CompoundAsthma001:
     is_a: CompoundVariable
     description: >-
@@ -268,6 +427,438 @@ classes:
     is_a: IntegratedVariable
     description: >-
       Participant pacemaker status containing data from multiple studies
+
+  CompoundAtrialFibrillation001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant atrial fibrillation status
+    instantiates:
+      - AtrialFibrillationStatusRecord
+
+  IntegratedAtrialFibrillation001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant atrial fibrillation status containing data from multiple studies
+
+  CompoundAngina001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant angina status
+    instantiates:
+      - AnginaStatusRecord
+
+  IntegratedAngina001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant angina status containing data from multiple studies
+
+  CompoundCardiovascularDisease001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant cardiovascular disease status
+    instantiates:
+      - CardiovascularDiseaseStatusRecord
+
+  IntegratedCardiovascularDisease001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant cardiovascular disease status containing data from multiple studies
+
+  CompoundCarotidPlaque001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant carotid plaque status
+    instantiates:
+      - CarotidPlaqueStatusRecord
+
+  IntegratedCarotidPlaque001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant carotid plaque status containing data from multiple studies
+
+  CompoundCOPD001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant COPD status
+    instantiates:
+      - COPDStatusRecord
+
+  IntegratedCOPD001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant COPD status containing data from multiple studies
+
+  CompoundDiabetes001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant diabetes status
+    instantiates:
+      - DiabetesStatusRecord
+
+  IntegratedDiabetes001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant diabetes status containing data from multiple studies
+
+  CompoundStroke001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant stroke status
+    instantiates:
+      - StrokeStatusRecord
+
+  IntegratedStroke001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant stroke status containing data from multiple studies
+
+  CompoundHeartDisease001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant heart disease status
+    instantiates:
+      - HeartDiseaseStatusRecord
+
+  IntegratedHeartDisease001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant heart disease status containing data from multiple studies
+
+  CompoundMyocardialInfarction001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant myocardial infarction status
+    instantiates:
+      - MyocardialInfarctionStatusRecord
+
+  IntegratedMyocardialInfarction001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant myocardial infarction status containing data from multiple studies
+
+  CompoundHypertension001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant hypertension status
+    instantiates:
+      - HypertensionStatusRecord
+
+  IntegratedHypertension001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant hypertension status containing data from multiple studies
+
+  CompoundLeftVentricularHypertrophy001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant left ventricular hypertrophy status
+    instantiates:
+      - LeftVentricularHypertrophyStatusRecord
+
+  IntegratedLeftVentricularHypertrophy001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant left ventricular hypertrophy status containing data from multiple studies
+
+  CompoundPeripheralArterialDisease001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant peripheral arterial disease status
+    instantiates:
+      - PeripheralArterialDiseaseStatusRecord
+
+  IntegratedPeripheralArterialDisease001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant peripheral arterial disease status containing data from multiple studies
+
+  CompoundSleepApnea001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant sleep apnea status
+    instantiates:
+      - SleepApneaStatusRecord
+
+  IntegratedSleepApnea001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant sleep apnea status containing data from multiple studies
+
+  CompoundValvularHeartDisease001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant valvular heart disease status
+    instantiates:
+      - ValvularHeartDiseaseStatusRecord
+
+  IntegratedValvularHeartDisease001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant valvular heart disease status containing data from multiple studies
+
+  CompoundVenousThromboembolism001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant venous thromboembolism status
+    instantiates:
+      - VenousThromboembolismStatusRecord
+
+  IntegratedVenousThromboembolism001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant venous thromboembolism status containing data from multiple studies
+
+  CompoundBetaBlocker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant beta blocker usage status
+    instantiates:
+      - BetaBlockerStatusRecord
+
+  IntegratedBetaBlocker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant beta blocker status containing data from multiple studies
+
+  CompoundDiabetesMedication001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant diabetes medication usage status
+    instantiates:
+      - DiabetesMedicationStatusRecord
+
+  IntegratedDiabetesMedication001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant diabetes medication status containing data from multiple studies
+
+  CompoundHypertensionMedication001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant hypertension medication usage status
+    instantiates:
+      - HypertensionMedicationStatusRecord
+
+  IntegratedHypertensionMedication001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant hypertension medication status containing data from multiple studies
+
+  CompoundAceInhibitor001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant ACE inhibitor usage status
+    instantiates:
+      - AceInhibitorStatusRecord
+
+  IntegratedAceInhibitor001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant ACE inhibitor status containing data from multiple studies
+
+  CompoundAldosteroneReceptorBlocker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant aldosterone receptor blocker usage status
+    instantiates:
+      - AldosteroneReceptorBlockerStatusRecord
+
+  IntegratedAldosteroneReceptorBlocker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant aldosterone receptor blocker status containing data from multiple studies
+
+  CompoundAlphaBlocker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant alpha blocker usage status
+    instantiates:
+      - AlphaBlockerStatusRecord
+
+  IntegratedAlphaBlocker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant alpha blocker status containing data from multiple studies
+
+  CompoundAngiotensinReceptorBlocker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant angiotensin receptor blocker usage status
+    instantiates:
+      - AngiotensinReceptorBlockerStatusRecord
+
+  IntegratedAngiotensinReceptorBlocker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant angiotensin receptor blocker status containing data from multiple studies
+
+  CompoundCalciumChannelBlocker001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant calcium channel blocker usage status
+    instantiates:
+      - CalciumChannelBlockerStatusRecord
+
+  IntegratedCalciumChannelBlocker001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant calcium channel blocker status containing data from multiple studies
+
+  CompoundCentrallyActingAgents001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant centrally acting agent usage status
+    instantiates:
+      - CentrallyActingAgentsStatusRecord
+
+  IntegratedCentrallyActingAgents001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant centrally acting agent status containing data from multiple studies
+
+  CompoundDiuretics001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant diuretic usage status
+    instantiates:
+      - DiureticsStatusRecord
+
+  IntegratedDiuretics001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant diuretic status containing data from multiple studies
+
+  CompoundInsulin001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant insulin usage status
+    instantiates:
+      - InsulinStatusRecord
+
+  IntegratedInsulin001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant insulin status containing data from multiple studies
+
+  CompoundNiacinMedication001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant niacin medication usage status
+    instantiates:
+      - NiacinMedicationStatusRecord
+
+  IntegratedNiacinMedication001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant niacin medication status containing data from multiple studies
+
+  CompoundLipidLoweringMedication001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant lipid-lowering medication usage status
+    instantiates:
+      - LipidLoweringMedicationStatusRecord
+
+  IntegratedLipidLoweringMedication001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant lipid-lowering medication status containing data from multiple studies
+
+  CompoundFibrates001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant fibrate usage status
+    instantiates:
+      - FibratesStatusRecord
+
+  IntegratedFibrates001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant fibrate status containing data from multiple studies
+
+  CompoundBileAcidSequestrant001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant bile acid sequestrant usage status
+    instantiates:
+      - BileAcidSequestrantStatusRecord
+
+  IntegratedBileAcidSequestrant001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant bile acid sequestrant status containing data from multiple studies
+
+  CompoundOralHypoglycemicAgent001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant oral hypoglycemic agent usage status
+    instantiates:
+      - OralHypoglycemicAgentStatusRecord
+
+  IntegratedOralHypoglycemicAgent001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant oral hypoglycemic agent status containing data from multiple studies
+
+  CompoundStatin001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant statin usage status
+    instantiates:
+      - StatinStatusRecord
+
+  IntegratedStatin001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant statin status containing data from multiple studies
+
+  CompoundSystemicSteroid001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant systemic steroid usage status
+    instantiates:
+      - SystemicSteroidStatusRecord
+
+  IntegratedSystemicSteroid001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant systemic steroid status containing data from multiple studies
+
+  CompoundVasodilator001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant vasodilator usage status
+    instantiates:
+      - VasodilatorStatusRecord
+
+  IntegratedVasodilator001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant vasodilator status containing data from multiple studies
+
+  CompoundCoronaryAngioplasty001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant coronary angioplasty procedure status
+    instantiates:
+      - CoronaryAngioplastyStatusRecord
+
+  IntegratedCoronaryAngioplasty001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant coronary angioplasty status containing data from multiple studies
+
+  CompoundCoronaryBypass001:
+    is_a: CompoundVariable
+    description: >-
+      A record of participant coronary artery bypass graft procedure status
+    instantiates:
+      - CoronaryBypassStatusRecord
+
+  IntegratedCoronaryBypass001:
+    is_a: IntegratedVariable
+    description: >-
+      Participant coronary artery bypass graft status containing data from multiple studies
 
   ResearchStudy:
     is_a: Entity
@@ -461,6 +1052,12 @@ enums:
       age_at_measurement:
       study_site:
       absolute_time:
+      predicted_value:
+      lower_limit_normal:
+      upper_limit_normal:
+      percent_predicted_value:
+      activity_type:
+      relative_timing:
       condition_type:
       associated_evidence:
       age_at_condition_start:
@@ -468,17 +1065,18 @@ enums:
       age_at_condition_record:
       condition_status:
       condition_provenance:
-      condition_concept:
       condition_severity:
       relationship_to_participant:
-      method_type:
       drug_type:
-      exposure_status:
-      exposure_provenance:
-      age_at_exposure_record:
+      age_at_drug_start:
+      age_at_drug_end:
+      age_at_drug_record:
+      route_of_administration:
+      dose:
+      frequency:
+      indication:
       procedure_type:
-      procedure_provenance:
-      procedure_status:
+      age_at_procedure_start:
+      age_at_procedure_end:
       age_at_procedure_record:
-      affected_body_site:
 
