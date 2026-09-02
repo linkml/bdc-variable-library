@@ -32,7 +32,7 @@ default_range: string
 imports:
   - linkml:types
   - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.4/src/clinical_microschemas/schema/clinical_microschemas
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.5/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
@@ -859,6 +859,1125 @@ classes:
     is_a: IntegratedVariable
     description: >-
       Participant coronary artery bypass graft status containing data from multiple studies
+
+  CompoundApneaHypopneaIndex001:
+    is_a: CompoundVariable
+    description: >-
+      Apnea-hypopnea index variable with metadata, measured in events/h using polysomnography
+      or home sleep apnea testing
+    instantiates:
+      - ApneaHypopneaIndexRecord
+
+  IntegratedApneaHypopneaIndex001:
+    is_a: IntegratedVariable
+    description: >-
+      Apnea-hypopnea index variable containing data from multiple studies, normalized to events/h
+
+  CompoundAlbuminBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Albumin concentration in blood variable with metadata, measured in g/dL using BCG/BCP
+      colorimetric assay
+    instantiates:
+      - HumanAlbuminBloodRecord
+
+  IntegratedAlbuminBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Albumin concentration in blood variable containing data from multiple studies, normalized to g/dL
+
+  CompoundAlcoholConsumption001:
+    is_a: CompoundVariable
+    description: >-
+      Alcohol consumption variable with metadata, measured in servings per week using
+      questionnaire, survey, or interview
+    instantiates:
+      - AlcoholConsumptionRecord
+
+  IntegratedAlcoholConsumption001:
+    is_a: IntegratedVariable
+    description: >-
+      Alcohol consumption variable containing data from multiple studies, normalized to servings per week
+
+  CompoundAltSgpt001:
+    is_a: CompoundVariable
+    description: >-
+      ALT (alanine transaminase/SGPT) concentration in blood variable with metadata,
+      measured in IU/L using an enzymatic kinetic assay
+    instantiates:
+      - HumanAltSgptRecord
+
+  IntegratedAltSgpt001:
+    is_a: IntegratedVariable
+    description: >-
+      ALT (SGPT) concentration in blood variable containing data from multiple studies, normalized to IU/L
+
+  CompoundAstSgot001:
+    is_a: CompoundVariable
+    description: >-
+      AST (aspartate aminotransferase/SGOT) concentration in blood variable with metadata,
+      measured in IU/L using an enzymatic kinetic assay
+    instantiates:
+      - HumanAstSgotRecord
+
+  IntegratedAstSgot001:
+    is_a: IntegratedVariable
+    description: >-
+      AST (SGOT) concentration in blood variable containing data from multiple studies, normalized to IU/L
+
+  CompoundBilirubinConjugated001:
+    is_a: CompoundVariable
+    description: >-
+      Conjugated (direct) bilirubin concentration in blood variable with metadata,
+      measured in mg/dL using the diazo colorimetric method
+    instantiates:
+      - HumanBilirubinConjugatedRecord
+
+  IntegratedBilirubinConjugated001:
+    is_a: IntegratedVariable
+    description: >-
+      Conjugated bilirubin concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundBilirubinTotal001:
+    is_a: CompoundVariable
+    description: >-
+      Total bilirubin concentration in blood variable with metadata, measured in mg/dL
+      using the diazo colorimetric method
+    instantiates:
+      - HumanBilirubinTotalRecord
+
+  IntegratedBilirubinTotal001:
+    is_a: IntegratedVariable
+    description: >-
+      Total bilirubin concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundBNP001:
+    is_a: CompoundVariable
+    description: >-
+      BNP (B-type natriuretic peptide) concentration in blood variable with metadata,
+      measured in pg/mL using chemiluminescence immunoassay or ELISA
+    instantiates:
+      - HumanBNPRecord
+
+  IntegratedBNP001:
+    is_a: IntegratedVariable
+    description: >-
+      BNP concentration in blood variable containing data from multiple studies, normalized to pg/mL
+
+  CompoundBloodPressure001:
+    is_a: CompoundVariable
+    description: >-
+      Blood pressure variable with metadata, represented as a systolic/diastolic string
+      calculated from blood pressure measurements
+    instantiates:
+      - HumanBloodPressureRecord
+
+  IntegratedBloodPressure001:
+    is_a: IntegratedVariable
+    description: >-
+      Blood pressure variable containing data from multiple studies
+
+  CompoundBloodUreaNitrogen001:
+    is_a: CompoundVariable
+    description: >-
+      Blood urea nitrogen (BUN) concentration variable with metadata, measured in mg/dL
+      using the urease-GLDH method
+    instantiates:
+      - HumanBloodUreaNitrogenRecord
+
+  IntegratedBloodUreaNitrogen001:
+    is_a: IntegratedVariable
+    description: >-
+      Blood urea nitrogen concentration variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundBodyTemperature001:
+    is_a: CompoundVariable
+    description: >-
+      Body temperature variable with metadata, measured in degrees Celsius using thermometry
+    instantiates:
+      - HumanBodyTemperatureRecord
+
+  IntegratedBodyTemperature001:
+    is_a: IntegratedVariable
+    description: >-
+      Body temperature variable containing data from multiple studies, normalized to degrees Celsius
+
+  CompoundBUNCreatinineRatio001:
+    is_a: CompoundVariable
+    description: >-
+      BUN to creatinine ratio variable with metadata, calculated from blood urea nitrogen
+      and creatinine measurements
+    instantiates:
+      - HumanBUNCreatinineRatioRecord
+
+  IntegratedBUNCreatinineRatio001:
+    is_a: IntegratedVariable
+    description: >-
+      BUN to creatinine ratio variable containing data from multiple studies
+
+  CompoundCarotidIntimamediaThickness001:
+    is_a: CompoundVariable
+    description: >-
+      Carotid intima-media thickness variable with metadata, measured in mm using
+      carotid ultrasound
+    instantiates:
+      - CarotidIntimamediaThicknessRecord
+
+  IntegratedCarotidIntimamediaThickness001:
+    is_a: IntegratedVariable
+    description: >-
+      Carotid intima-media thickness variable containing data from multiple studies, normalized to mm
+
+  CompoundCarotidStenosisLeft001:
+    is_a: CompoundVariable
+    description: >-
+      Left carotid artery stenosis variable with metadata, measured as percent stenosis
+      using duplex ultrasound or CT angiography
+    instantiates:
+      - CarotidStenosisLeftRecord
+
+  IntegratedCarotidStenosisLeft001:
+    is_a: IntegratedVariable
+    description: >-
+      Left carotid artery stenosis variable containing data from multiple studies,
+      normalized to percent stenosis
+
+  CompoundCarotidStenosisRight001:
+    is_a: CompoundVariable
+    description: >-
+      Right carotid artery stenosis variable with metadata, measured as percent stenosis
+      using duplex ultrasound or CT angiography
+    instantiates:
+      - CarotidStenosisRightRecord
+
+  IntegratedCarotidStenosisRight001:
+    is_a: IntegratedVariable
+    description: >-
+      Right carotid artery stenosis variable containing data from multiple studies,
+      normalized to percent stenosis
+
+  CompoundCESDScore001:
+    is_a: CompoundVariable
+    description: >-
+      CES-D (Center for Epidemiological Studies Depression Scale) score variable with
+      metadata, collected via questionnaire
+    instantiates:
+      - CESDScoreRecord
+
+  IntegratedCESDScore001:
+    is_a: IntegratedVariable
+    description: >-
+      CES-D depression scale score variable containing data from multiple studies
+
+  CompoundChlorideBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Chloride concentration in blood variable with metadata, measured in mmol/L using
+      an ion selective electrode
+    instantiates:
+      - HumanChlorideBloodRecord001
+
+  CompoundChlorideBlood002:
+    is_a: CompoundVariable
+    description: >-
+      Chloride concentration in blood variable with metadata, measured in mmol/dL using
+      an ion selective electrode
+    instantiates:
+      - HumanChlorideBloodRecord002
+
+  IntegratedChlorideBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Chloride concentration in blood variable containing data from multiple studies, normalized to mmol/L
+
+  CompoundCoronaryArteryCalciumScore001:
+    is_a: CompoundVariable
+    description: >-
+      Coronary artery calcium Agatston score variable with metadata, derived from
+      non-contrast cardiac CT using Agatston scoring
+    instantiates:
+      - CoronaryArteryCalciumScoreRecord
+
+  IntegratedCoronaryArteryCalciumScore001:
+    is_a: IntegratedVariable
+    description: >-
+      Coronary artery calcium Agatston score variable containing data from multiple studies
+
+  CompoundCoronaryArteryCalciumVolume001:
+    is_a: CompoundVariable
+    description: >-
+      Coronary artery calcium volume variable with metadata, measured in mm3 by CT
+      using volume scoring
+    instantiates:
+      - CoronaryArteryCalciumVolumeRecord
+
+  IntegratedCoronaryArteryCalciumVolume001:
+    is_a: IntegratedVariable
+    description: >-
+      Coronary artery calcium volume variable containing data from multiple studies, normalized to mm3
+
+  CompoundCReactiveProtein001:
+    is_a: CompoundVariable
+    description: >-
+      C-reactive protein (CRP) concentration in blood variable with metadata, measured
+      in mg/L using immunoturbidometry or immunonephelometry
+    instantiates:
+      - HumanCReactiveProteinRecord001
+
+  CompoundCReactiveProtein002:
+    is_a: CompoundVariable
+    description: >-
+      C-reactive protein (CRP) concentration in blood variable with metadata, measured
+      in mg/dL using immunoturbidometry or immunonephelometry
+    instantiates:
+      - HumanCReactiveProteinRecord002
+
+  CompoundCReactiveProtein003:
+    is_a: CompoundVariable
+    description: >-
+      C-reactive protein (CRP) concentration in blood variable with metadata, measured
+      in ug/mL using immunoturbidometry or immunonephelometry
+    instantiates:
+      - HumanCReactiveProteinRecord003
+
+  IntegratedCReactiveProtein001:
+    is_a: IntegratedVariable
+    description: >-
+      C-reactive protein concentration in blood variable containing data from multiple studies,
+      normalized to mg/L
+
+  CompoundCreatinineBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Creatinine concentration in blood variable with metadata, measured in mg/dL using
+      the Jaffe reaction or enzymatic creatinine assay
+    instantiates:
+      - HumanCreatinineBloodRecord
+
+  IntegratedCreatinineBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Creatinine concentration in blood variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundCystatinCBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Cystatin C concentration in blood variable with metadata, measured in mg/L using
+      immunoturbidometry or immunonephelometry
+    instantiates:
+      - HumanCystatinCBloodRecord
+
+  IntegratedCystatinCBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Cystatin C concentration in blood variable containing data from multiple studies, normalized to mg/L
+
+  CompoundDDimer001:
+    is_a: CompoundVariable
+    description: >-
+      D-dimer concentration in blood variable with metadata, measured in ug/mL
+      fibrinogen-equivalent units (FEU)
+    instantiates:
+      - HumanDDimerRecord001
+
+  CompoundDDimer002:
+    is_a: CompoundVariable
+    description: >-
+      D-dimer concentration in blood variable with metadata, measured in ng/mL
+      fibrinogen-equivalent units (FEU)
+    instantiates:
+      - HumanDDimerRecord002
+
+  IntegratedDDimer001:
+    is_a: IntegratedVariable
+    description: >-
+      D-dimer concentration in blood variable containing data from multiple studies,
+      normalized to ug/mL (FEU)
+
+  CompoundDiastolicBloodPressure001:
+    is_a: CompoundVariable
+    description: >-
+      Diastolic blood pressure variable with metadata, measured in mmHg using
+      auscultatory or oscillometric method
+    instantiates:
+      - HumanDiastolicBloodPressureRecord
+
+  IntegratedDiastolicBloodPressure001:
+    is_a: IntegratedVariable
+    description: >-
+      Diastolic blood pressure variable containing data from multiple studies, normalized to mmHg
+
+  CompoundEosinophilCount001:
+    is_a: CompoundVariable
+    description: >-
+      Eosinophil count variable with metadata, measured in 10*3/uL using a complete
+      blood count or manual differential
+    instantiates:
+      - HumanEosinophilCountRecord
+
+  IntegratedEosinophilCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Eosinophil count variable containing data from multiple studies, normalized to 10*3/uL
+
+  CompoundESelectinBlood001:
+    is_a: CompoundVariable
+    description: >-
+      E-selectin concentration in blood variable with metadata, measured in ng/mL using ELISA
+    instantiates:
+      - HumanESelectinBloodRecord
+
+  IntegratedESelectinBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      E-selectin concentration in blood variable containing data from multiple studies, normalized to ng/mL
+
+  CompoundEstimatedGFR001:
+    is_a: CompoundVariable
+    description: >-
+      Estimated glomerular filtration rate (eGFR) variable with metadata, calculated
+      from serum creatinine and other factors, measured in mL/min/1.73m2
+    instantiates:
+      - HumanEstimatedGFRRecord
+
+  IntegratedEstimatedGFR001:
+    is_a: IntegratedVariable
+    description: >-
+      Estimated glomerular filtration rate variable containing data from multiple studies,
+      normalized to mL/min/1.73m2
+
+  CompoundFactorVII001:
+    is_a: CompoundVariable
+    description: >-
+      Factor VII (proconvertin) activity variable with metadata, measured as percent of
+      normal using one-stage clotting assay
+    instantiates:
+      - HumanFactorVIIRecord
+
+  IntegratedFactorVII001:
+    is_a: IntegratedVariable
+    description: >-
+      Factor VII activity variable containing data from multiple studies,
+      normalized to percent of normal
+
+  CompoundFactorVIII001:
+    is_a: CompoundVariable
+    description: >-
+      Factor VIII activity variable with metadata, measured in IU/mL using one-stage
+      clotting or chromogenic assay
+    instantiates:
+      - HumanFactorVIIIRecord
+
+  IntegratedFactorVIII001:
+    is_a: IntegratedVariable
+    description: >-
+      Factor VIII activity variable containing data from multiple studies, normalized to IU/mL
+
+  CompoundFastingGlucose001:
+    is_a: CompoundVariable
+    description: >-
+      Fasting glucose concentration in blood variable with metadata, measured in mg/dL
+      using hexokinase or glucose oxidase method
+    instantiates:
+      - HumanFastingGlucoseRecord001
+
+  CompoundFastingGlucose002:
+    is_a: CompoundVariable
+    description: >-
+      Fasting glucose concentration in blood variable with metadata, measured in mmol/L
+      using hexokinase or glucose oxidase method
+    instantiates:
+      - HumanFastingGlucoseRecord002
+
+  IntegratedFastingGlucose001:
+    is_a: IntegratedVariable
+    description: >-
+      Fasting glucose concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundFerritin001:
+    is_a: CompoundVariable
+    description: >-
+      Ferritin concentration in blood variable with metadata, measured in ng/mL using
+      chemiluminescence immunoassay or ELISA
+    instantiates:
+      - HumanFerritinRecord
+
+  IntegratedFerritin001:
+    is_a: IntegratedVariable
+    description: >-
+      Ferritin concentration in blood variable containing data from multiple studies, normalized to ng/mL
+
+  CompoundFibrinogen001:
+    is_a: CompoundVariable
+    description: >-
+      Fibrinogen concentration in plasma variable with metadata, measured in mg/dL using
+      the Clauss assay or immunoturbidometry
+    instantiates:
+      - HumanFibrinogenRecord
+
+  IntegratedFibrinogen001:
+    is_a: IntegratedVariable
+    description: >-
+      Fibrinogen concentration in plasma variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundFruitConsumption001:
+    is_a: CompoundVariable
+    description: >-
+      Fruit consumption variable with metadata, measured in servings per week using
+      questionnaire, survey, or interview
+    instantiates:
+      - FruitConsumptionRecord
+
+  IntegratedFruitConsumption001:
+    is_a: IntegratedVariable
+    description: >-
+      Fruit consumption variable containing data from multiple studies, normalized to servings per week
+
+  CompoundGFR001:
+    is_a: CompoundVariable
+    description: >-
+      Glomerular filtration rate (GFR) variable with metadata, measured in mL/min/1.73m2
+      using a clearance test
+    instantiates:
+      - HumanGFRRecord
+
+  IntegratedGFR001:
+    is_a: IntegratedVariable
+    description: >-
+      Glomerular filtration rate variable containing data from multiple studies,
+      normalized to mL/min/1.73m2
+
+  CompoundGlucoseBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Blood glucose concentration variable with metadata, measured in mg/dL using
+      hexokinase or glucose oxidase method
+    instantiates:
+      - HumanGlucoseBloodRecord
+
+  IntegratedGlucoseBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Blood glucose concentration variable containing data from multiple studies, normalized to mg/dL
+
+  CompoundHDL001:
+    is_a: CompoundVariable
+    description: >-
+      HDL cholesterol concentration in blood variable with metadata, measured in mg/dL
+      using direct homogeneous enzymatic or precipitation method
+    instantiates:
+      - HumanHDLRecord001
+
+  CompoundHDL002:
+    is_a: CompoundVariable
+    description: >-
+      HDL cholesterol concentration in blood variable with metadata, measured in mmol/L
+      using direct homogeneous enzymatic or precipitation method
+    instantiates:
+      - HumanHDLRecord002
+
+  IntegratedHDL001:
+    is_a: IntegratedVariable
+    description: >-
+      HDL cholesterol concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundHeartRate001:
+    is_a: CompoundVariable
+    description: >-
+      Heart rate variable with metadata, measured in beats per minute using
+      electrocardiography, pulse oximetry, or manual pulse palpation
+    instantiates:
+      - HumanHeartRateRecord
+
+  IntegratedHeartRate001:
+    is_a: IntegratedVariable
+    description: >-
+      Heart rate variable containing data from multiple studies, normalized to beats per minute
+
+  CompoundHematocrit001:
+    is_a: CompoundVariable
+    description: >-
+      Hematocrit variable with metadata, measured as percent using complete blood count
+      or microhematocrit centrifugation
+    instantiates:
+      - HumanHematocritRecord
+
+  IntegratedHematocrit001:
+    is_a: IntegratedVariable
+    description: >-
+      Hematocrit variable containing data from multiple studies, normalized to percent
+
+  CompoundHemoglobin001:
+    is_a: CompoundVariable
+    description: >-
+      Hemoglobin concentration in blood variable with metadata, measured in g/dL using
+      cyanmethemoglobin or complete blood count method
+    instantiates:
+      - HumanHemoglobinRecord
+
+  IntegratedHemoglobin001:
+    is_a: IntegratedVariable
+    description: >-
+      Hemoglobin concentration in blood variable containing data from multiple studies, normalized to g/dL
+
+  CompoundHipCircumference001:
+    is_a: CompoundVariable
+    description: >-
+      Hip circumference variable with metadata, measured in cm using a flexible measuring tape
+    instantiates:
+      - HumanHipCircumferenceRecord001
+
+  CompoundHipCircumference002:
+    is_a: CompoundVariable
+    description: >-
+      Hip circumference variable with metadata, measured in inches using a flexible measuring tape
+    instantiates:
+      - HumanHipCircumferenceRecord002
+
+  IntegratedHipCircumference001:
+    is_a: IntegratedVariable
+    description: >-
+      Hip circumference variable containing data from multiple studies, normalized to cm
+
+  CompoundInsulinBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Insulin concentration in blood variable with metadata, measured in pmol/L using
+      chemiluminescence immunoassay or ELISA
+    instantiates:
+      - HumanInsulinBloodRecord001
+
+  CompoundInsulinBlood002:
+    is_a: CompoundVariable
+    description: >-
+      Insulin concentration in blood variable with metadata, measured in uIU/mL using
+      chemiluminescence immunoassay or ELISA
+    instantiates:
+      - HumanInsulinBloodRecord002
+
+  IntegratedInsulinBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Insulin concentration in blood variable containing data from multiple studies, normalized to pmol/L
+
+  CompoundLactateBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Lactate concentration in blood variable with metadata, measured in mmol/L using
+      an enzymatic kinetic assay
+    instantiates:
+      - HumanLactateBloodRecord
+
+  IntegratedLactateBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Lactate concentration in blood variable containing data from multiple studies, normalized to mmol/L
+
+  CompoundLactateDehydrogenase001:
+    is_a: CompoundVariable
+    description: >-
+      Lactate dehydrogenase (LDH) activity in blood variable with metadata, measured in
+      IU/L using an enzymatic kinetic assay
+    instantiates:
+      - HumanLactateDehydrogenaseRecord
+
+  IntegratedLactateDehydrogenase001:
+    is_a: IntegratedVariable
+    description: >-
+      Lactate dehydrogenase activity in blood variable containing data from multiple studies,
+      normalized to IU/L
+
+  CompoundLDL001:
+    is_a: CompoundVariable
+    description: >-
+      LDL cholesterol concentration in blood variable with metadata, measured in mg/dL
+      derived from the Friedewald calculation
+    instantiates:
+      - HumanLDLRecord001
+
+  IntegratedLDL001:
+    is_a: IntegratedVariable
+    description: >-
+      LDL cholesterol concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundLymphocyteCount001:
+    is_a: CompoundVariable
+    description: >-
+      Lymphocyte count variable with metadata, measured in 10*3/uL using a complete blood
+      count or manual differential
+    instantiates:
+      - HumanLymphocyteCountRecord
+
+  IntegratedLymphocyteCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Lymphocyte count variable containing data from multiple studies, normalized to 10*3/uL
+
+  CompoundLymphocytePercent001:
+    is_a: CompoundVariable
+    description: >-
+      Lymphocyte percent of total leukocytes variable with metadata, calculated from
+      lymphocyte and white blood cell counts
+    instantiates:
+      - HumanLymphocytePercentRecord001
+
+  IntegratedLymphocytePercent001:
+    is_a: IntegratedVariable
+    description: >-
+      Lymphocyte percent variable containing data from multiple studies, normalized to
+      percent of total white blood cells
+
+  CompoundMCH001:
+    is_a: CompoundVariable
+    description: >-
+      Mean corpuscular hemoglobin (MCH) variable with metadata, calculated average
+      amount of hemoglobin per red blood cell, measured in pg/cell
+    instantiates:
+      - HumanMCHRecord001
+
+  IntegratedMCH001:
+    is_a: IntegratedVariable
+    description: >-
+      Mean corpuscular hemoglobin variable containing data from multiple studies, normalized to pg/cell
+
+  CompoundMCHC001:
+    is_a: CompoundVariable
+    description: >-
+      Mean corpuscular hemoglobin concentration (MCHC) variable with metadata, calculated
+      average concentration of hemoglobin within red blood cells, measured in g/dL
+    instantiates:
+      - HumanMCHCRecord001
+
+  IntegratedMCHC001:
+    is_a: IntegratedVariable
+    description: >-
+      Mean corpuscular hemoglobin concentration variable containing data from multiple studies,
+      normalized to g/dL
+
+  CompoundMCV001:
+    is_a: CompoundVariable
+    description: >-
+      Mean corpuscular volume (MCV) variable with metadata, calculated average size of
+      red blood cells, measured in fL
+    instantiates:
+      - HumanMCVRecord001
+
+  IntegratedMCV001:
+    is_a: IntegratedVariable
+    description: >-
+      Mean corpuscular volume variable containing data from multiple studies, normalized to fL
+
+  CompoundMeanArterialPressure001:
+    is_a: CompoundVariable
+    description: >-
+      Mean arterial pressure variable with metadata, calculated from systolic and diastolic
+      blood pressure, measured in mmHg
+    instantiates:
+      - HumanMeanArterialPressureRecord001
+
+  IntegratedMeanArterialPressure001:
+    is_a: IntegratedVariable
+    description: >-
+      Mean arterial pressure variable containing data from multiple studies, normalized to mmHg
+
+  CompoundMonocyteCount001:
+    is_a: CompoundVariable
+    description: >-
+      Monocyte count variable with metadata, measured in 10*3/uL using a complete blood
+      count or manual differential
+    instantiates:
+      - HumanMonocyteCountRecord
+
+  IntegratedMonocyteCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Monocyte count variable containing data from multiple studies, normalized to 10*3/uL
+
+  CompoundMPV001:
+    is_a: CompoundVariable
+    description: >-
+      Mean platelet volume (MPV) variable with metadata, measured in fL using a complete
+      blood count
+    instantiates:
+      - HumanMPVRecord
+
+  IntegratedMPV001:
+    is_a: IntegratedVariable
+    description: >-
+      Mean platelet volume variable containing data from multiple studies, normalized to fL
+
+  CompoundMyeloperoxidaseBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Myeloperoxidase (MPO) concentration in blood variable with metadata, measured in
+      ng/mL using ELISA or chemiluminescence immunoassay
+    instantiates:
+      - HumanMyeloperoxidaseBloodRecord
+
+  IntegratedMyeloperoxidaseBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Myeloperoxidase concentration in blood variable containing data from multiple studies,
+      normalized to ng/mL
+
+  CompoundNeutrophilCount001:
+    is_a: CompoundVariable
+    description: >-
+      Neutrophil count variable with metadata, measured in 10*3/uL using a complete blood
+      count or manual differential
+    instantiates:
+      - HumanNeutrophilCountRecord
+
+  IntegratedNeutrophilCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Neutrophil count variable containing data from multiple studies, normalized to 10*3/uL
+
+  CompoundNeutrophilPercent001:
+    is_a: CompoundVariable
+    description: >-
+      Neutrophil percent of total leukocytes variable with metadata, calculated from
+      neutrophil and white blood cell counts
+    instantiates:
+      - HumanNeutrophilPercentRecord001
+
+  IntegratedNeutrophilPercent001:
+    is_a: IntegratedVariable
+    description: >-
+      Neutrophil percent variable containing data from multiple studies, normalized to
+      percent of total white blood cells
+
+  CompoundNTproBNP001:
+    is_a: CompoundVariable
+    description: >-
+      NT-proBNP (N-terminal prohormone of brain natriuretic peptide) concentration in blood
+      variable with metadata, measured in pg/mL using chemiluminescence immunoassay
+    instantiates:
+      - HumanNTproBNPRecord
+
+  IntegratedNTproBNP001:
+    is_a: IntegratedVariable
+    description: >-
+      NT-proBNP concentration in blood variable containing data from multiple studies, normalized to pg/mL
+
+  CompoundOsteoprotegerinBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Osteoprotegerin (OPG) concentration in blood variable with metadata, measured in
+      ng/mL using ELISA
+    instantiates:
+      - HumanOsteoprotegerinBloodRecord
+
+  IntegratedOsteoprotegerinBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Osteoprotegerin concentration in blood variable containing data from multiple studies,
+      normalized to ng/mL
+
+  CompoundPlateletCount001:
+    is_a: CompoundVariable
+    description: >-
+      Platelet count variable with metadata, measured in 10*3/uL using a complete blood count
+    instantiates:
+      - HumanPlateletCountRecord
+
+  IntegratedPlateletCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Platelet count variable containing data from multiple studies, normalized to 10*3/uL
+
+  CompoundPotassiumBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Potassium concentration in blood variable with metadata, measured in mmol/L using
+      an ion selective electrode
+    instantiates:
+      - HumanPotassiumBloodRecord
+
+  IntegratedPotassiumBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Potassium concentration in blood variable containing data from multiple studies, normalized to mmol/L
+
+  CompoundPRInterval001:
+    is_a: CompoundVariable
+    description: >-
+      PR interval variable with metadata, measured in ms using electrocardiography
+    instantiates:
+      - HumanPRIntervalRecord
+
+  IntegratedPRInterval001:
+    is_a: IntegratedVariable
+    description: >-
+      PR interval variable containing data from multiple studies, normalized to ms
+
+  CompoundPSelectinBlood001:
+    is_a: CompoundVariable
+    description: >-
+      P-selectin concentration in blood variable with metadata, measured in ng/mL using ELISA
+    instantiates:
+      - HumanPSelectinBloodRecord
+
+  IntegratedPSelectinBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      P-selectin concentration in blood variable containing data from multiple studies, normalized to ng/mL
+
+  CompoundQRSInterval001:
+    is_a: CompoundVariable
+    description: >-
+      QRS interval variable with metadata, measured in ms using electrocardiography
+    instantiates:
+      - HumanQRSIntervalRecord
+
+  IntegratedQRSInterval001:
+    is_a: IntegratedVariable
+    description: >-
+      QRS interval variable containing data from multiple studies, normalized to ms
+
+  CompoundQTInterval001:
+    is_a: CompoundVariable
+    description: >-
+      QT interval variable with metadata, measured in ms using electrocardiography
+    instantiates:
+      - HumanQTIntervalRecord
+
+  IntegratedQTInterval001:
+    is_a: IntegratedVariable
+    description: >-
+      QT interval variable containing data from multiple studies, normalized to ms
+
+  CompoundRBCCount001:
+    is_a: CompoundVariable
+    description: >-
+      Red blood cell (RBC) count variable with metadata, measured in 10*6/uL using a
+      complete blood count
+    instantiates:
+      - HumanRBCCountRecord
+
+  IntegratedRBCCount001:
+    is_a: IntegratedVariable
+    description: >-
+      Red blood cell count variable containing data from multiple studies, normalized to 10*6/uL
+
+  CompoundRDW001:
+    is_a: CompoundVariable
+    description: >-
+      Red cell distribution width (RDW) variable with metadata, measured as percent using
+      a complete blood count
+    instantiates:
+      - HumanRDWRecord
+
+  IntegratedRDW001:
+    is_a: IntegratedVariable
+    description: >-
+      Red cell distribution width variable containing data from multiple studies, normalized to percent
+
+  CompoundSleepDuration001:
+    is_a: CompoundVariable
+    description: >-
+      Sleep duration variable with metadata, measured in hours per night using
+      questionnaire, survey, actigraphy, or polysomnography
+    instantiates:
+      - HumanSleepDurationRecord
+
+  IntegratedSleepDuration001:
+    is_a: IntegratedVariable
+    description: >-
+      Sleep duration variable containing data from multiple studies, normalized to hours per night
+
+  CompoundSodiumBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Sodium concentration in blood variable with metadata, measured in mmol/L using
+      an ion selective electrode
+    instantiates:
+      - HumanSodiumBloodRecord
+
+  IntegratedSodiumBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Sodium concentration in blood variable containing data from multiple studies, normalized to mmol/L
+
+  CompoundSodiumIntake001:
+    is_a: CompoundVariable
+    description: >-
+      Sodium intake variable with metadata, measured in mg per day using questionnaire,
+      survey, or interview
+    instantiates:
+      - SodiumIntakeRecord
+
+  IntegratedSodiumIntake001:
+    is_a: IntegratedVariable
+    description: >-
+      Sodium intake variable containing data from multiple studies, normalized to mg per day
+
+  CompoundSystolicBloodPressure001:
+    is_a: CompoundVariable
+    description: >-
+      Systolic blood pressure variable with metadata, measured in mmHg using auscultatory
+      or oscillometric method
+    instantiates:
+      - HumanSystolicBloodPressureRecord
+
+  IntegratedSystolicBloodPressure001:
+    is_a: IntegratedVariable
+    description: >-
+      Systolic blood pressure variable containing data from multiple studies, normalized to mmHg
+
+  CompoundTNFAlphaBlood001:
+    is_a: CompoundVariable
+    description: >-
+      TNF-alpha (tumor necrosis factor alpha) concentration in blood variable with metadata,
+      measured in pg/mL using ELISA or multiplex bead immunoassay
+    instantiates:
+      - HumanTNFAlphaBloodRecord
+
+  IntegratedTNFAlphaBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      TNF-alpha concentration in blood variable containing data from multiple studies, normalized to pg/mL
+
+  CompoundTotalCholesterol001:
+    is_a: CompoundVariable
+    description: >-
+      Total cholesterol concentration in blood variable with metadata, measured in mg/dL
+      using an enzymatic kinetic assay
+    instantiates:
+      - HumanTotalCholesterolRecord001
+
+  CompoundTotalCholesterol002:
+    is_a: CompoundVariable
+    description: >-
+      Total cholesterol concentration in blood variable with metadata, measured in mmol/L
+      using an enzymatic kinetic assay
+    instantiates:
+      - HumanTotalCholesterolRecord002
+
+  IntegratedTotalCholesterol001:
+    is_a: IntegratedVariable
+    description: >-
+      Total cholesterol concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundTriglyceridesBlood001:
+    is_a: CompoundVariable
+    description: >-
+      Triglycerides concentration in blood variable with metadata, measured in mg/dL using
+      an enzymatic kinetic assay
+    instantiates:
+      - HumanTriglyceridesBloodRecord001
+
+  CompoundTriglyceridesBlood002:
+    is_a: CompoundVariable
+    description: >-
+      Triglycerides concentration in blood variable with metadata, measured in mmol/L using
+      an enzymatic kinetic assay
+    instantiates:
+      - HumanTriglyceridesBloodRecord002
+
+  IntegratedTriglyceridesBlood001:
+    is_a: IntegratedVariable
+    description: >-
+      Triglycerides concentration in blood variable containing data from multiple studies,
+      normalized to mg/dL
+
+  CompoundTroponin001:
+    is_a: CompoundVariable
+    description: >-
+      Troponin concentration in blood variable with metadata, measured in ng/mL using
+      chemiluminescence immunoassay
+    instantiates:
+      - HumanTroponinRecord
+
+  IntegratedTroponin001:
+    is_a: IntegratedVariable
+    description: >-
+      Troponin concentration in blood variable containing data from multiple studies, normalized to ng/mL
+
+  CompoundVegetableConsumption001:
+    is_a: CompoundVariable
+    description: >-
+      Vegetable consumption variable with metadata, measured in servings per week using
+      questionnaire, survey, or interview
+    instantiates:
+      - VegetableConsumptionRecord
+
+  IntegratedVegetableConsumption001:
+    is_a: IntegratedVariable
+    description: >-
+      Vegetable consumption variable containing data from multiple studies, normalized to servings per week
+
+  CompoundVonWillebrandFactor001:
+    is_a: CompoundVariable
+    description: >-
+      Von Willebrand factor (VWF) variable with metadata, measured as percent of normal
+      using immunoturbidometry or ristocetin cofactor assay
+    instantiates:
+      - HumanVonWillebrandFactorRecord
+
+  IntegratedVonWillebrandFactor001:
+    is_a: IntegratedVariable
+    description: >-
+      Von Willebrand factor variable containing data from multiple studies,
+      normalized to percent of normal
+
+  CompoundWaistCircumference001:
+    is_a: CompoundVariable
+    description: >-
+      Waist circumference variable with metadata, measured in cm using a flexible measuring tape
+    instantiates:
+      - HumanWaistCircumferenceRecord001
+
+  CompoundWaistCircumference002:
+    is_a: CompoundVariable
+    description: >-
+      Waist circumference variable with metadata, measured in mm using a flexible measuring tape
+    instantiates:
+      - HumanWaistCircumferenceRecord002
+
+  CompoundWaistCircumference003:
+    is_a: CompoundVariable
+    description: >-
+      Waist circumference variable with metadata, measured in inches using a flexible measuring tape
+    instantiates:
+      - HumanWaistCircumferenceRecord003
+
+  IntegratedWaistCircumference001:
+    is_a: IntegratedVariable
+    description: >-
+      Waist circumference variable containing data from multiple studies, normalized to cm
+
+  CompoundWaistHipRatio001:
+    is_a: CompoundVariable
+    description: >-
+      Waist-to-hip ratio variable with metadata, calculated from waist and hip circumference
+      measurements
+    instantiates:
+      - HumanWaistHipRatioRecord
+
+  IntegratedWaistHipRatio001:
+    is_a: IntegratedVariable
+    description: >-
+      Waist-to-hip ratio variable containing data from multiple studies
+
+  CompoundWhiteBloodCellCount001:
+    is_a: CompoundVariable
+    description: >-
+      White blood cell (WBC) count variable with metadata, measured in 10*3/uL using a
+      complete blood count or manual differential
+    instantiates:
+      - HumanWhiteBloodCellCountRecord
+
+  IntegratedWhiteBloodCellCount001:
+    is_a: IntegratedVariable
+    description: >-
+      White blood cell count variable containing data from multiple studies, normalized to 10*3/uL
 
   ResearchStudy:
     is_a: Entity
