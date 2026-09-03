@@ -296,31 +296,23 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-humanfvcrecord">Class: HumanFvcRecord</h1>
-<p><em>Total amount of air a person can forcibly exhale after taking the deepest breath possible. This microschema uses the Relativity mixin to bundle measured, predicted, and percent predicted values.</em></p>
+<p><em>Total amount of air a person can forcibly exhale after taking the deepest breath possible.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/HumanFvcRecord">bdc_variable_library:HumanFvcRecord</a></p>
 <pre class="mermaid"><code> classDiagram
     class HumanFvcRecord
     click HumanFvcRecord href "../HumanFvcRecord/"
-      Relativity &lt;|-- HumanFvcRecord
-        click Relativity href "../Relativity/"
-      Context &lt;|-- HumanFvcRecord
-        click Context href "../Context/"
       ClinicalMeasurementRecord &lt;|-- HumanFvcRecord
         click ClinicalMeasurementRecord href "../ClinicalMeasurementRecord/"
 
+
+      HumanFvcRecord &lt;|-- HumanFvcRecord001
+        click HumanFvcRecord001 href "../HumanFvcRecord001/"
+      HumanFvcRecord &lt;|-- HumanFvcRecord002
+        click HumanFvcRecord002 href "../HumanFvcRecord002/"
+
+
       HumanFvcRecord : absolute_time
-
-      HumanFvcRecord : activity_type
-
-
-
-
-
-        HumanFvcRecord --&gt; "0..1" ActivityTypeEnum : activity_type
-        click ActivityTypeEnum href "../ActivityTypeEnum/"
-
-
 
       HumanFvcRecord : age_at_measurement
 
@@ -392,8 +384,6 @@
 
 
 
-      HumanFvcRecord : lower_limit_normal
-
       HumanFvcRecord : measurement_type
 
       HumanFvcRecord : measurement_value
@@ -418,10 +408,6 @@
 
 
 
-      HumanFvcRecord : percent_predicted_value
-
-      HumanFvcRecord : predicted_value
-
       HumanFvcRecord : reagent_kit
 
 
@@ -433,30 +419,21 @@
 
 
 
-      HumanFvcRecord : relative_timing
-
-
-
-
-
-        HumanFvcRecord --&gt; "0..1" RelativeTimingEnum : relative_timing
-        click RelativeTimingEnum href "../RelativeTimingEnum/"
-
-
-
       HumanFvcRecord : study_site
 
       HumanFvcRecord : subject_identifier
 
       HumanFvcRecord : unit
 
-      HumanFvcRecord : upper_limit_normal
-
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a><ul>
-<li><strong>HumanFvcRecord</strong> [ <a href="../Relativity/">Relativity</a> <a href="../Context/">Context</a>]</li>
+<li><strong>HumanFvcRecord</strong><ul>
+<li><a href="../HumanFvcRecord001/">HumanFvcRecord001</a></li>
+<li><a href="../HumanFvcRecord002/">HumanFvcRecord002</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -471,42 +448,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../predicted_value/">predicted_value</a></td>
-<td>1 <br/> <a href="../Decimal/">Decimal</a></td>
-<td>A predicted measurement value based on a reference population, range, equatio...</td>
-<td><a href="../Relativity/">Relativity</a></td>
-</tr>
-<tr>
-<td><a href="../lower_limit_normal/">lower_limit_normal</a></td>
-<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
-<td>placeholder</td>
-<td><a href="../Relativity/">Relativity</a></td>
-</tr>
-<tr>
-<td><a href="../upper_limit_normal/">upper_limit_normal</a></td>
-<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
-<td>placeholder</td>
-<td><a href="../Relativity/">Relativity</a></td>
-</tr>
-<tr>
-<td><a href="../percent_predicted_value/">percent_predicted_value</a></td>
-<td>1 <br/> <a href="../Decimal/">Decimal</a></td>
-<td>Ratio of the actual measured value to the predicted value</td>
-<td><a href="../Relativity/">Relativity</a></td>
-</tr>
-<tr>
-<td><a href="../activity_type/">activity_type</a></td>
-<td>0..1 <br/> <a href="../ActivityTypeEnum/">ActivityTypeEnum</a></td>
-<td>Activity that adds context to a clinical measurement</td>
-<td><a href="../Context/">Context</a></td>
-</tr>
-<tr>
-<td><a href="../relative_timing/">relative_timing</a></td>
-<td>0..1 <br/> <a href="../RelativeTimingEnum/">RelativeTimingEnum</a></td>
-<td>Timing of the activity relative to the clinical measurement</td>
-<td><a href="../Context/">Context</a></td>
-</tr>
 <tr>
 <td><a href="../subject_identifier/">subject_identifier</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
@@ -620,7 +561,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OMOP:4176265'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'L'}, {'equals_string': 'mL'}]}, 'instrument': {'any_of': [{'equals_string': 'spirometer'}, {'equals_string': 'vitalograph'}, {'equals_string': 'body_plesmograph'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'spirometry'}, {'equals_string': 'body_plesmography'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'L'}, {'equals_string': 'mL'}]}, 'instrument': {'any_of': [{'equals_string': 'spirometer'}, {'equals_string': 'vitalograph'}, {'equals_string': 'body_plesmograph'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'spirometry'}, {'equals_string': 'body_plesmography'}]}, 'context': {'any_of': [{'equals_string': 'before_bronchodilator'}, {'equals_string': 'after_bronchodilator'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -655,23 +596,13 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Total amount of air a person can forcibly exhale after taking the deepest</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">breath possible. This microschema uses the Relativity mixin to bundle measured,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">predicted, and percent predicted values.</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">breath possible.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Context</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcQuantity</span>
-<span class="w">  </span><span class="nt">predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predicted_value</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">percent_predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percent_predicted_value</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">rules</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
@@ -700,88 +631,25 @@
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spirometry</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_plesmography</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">before_bronchodilator</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">after_bronchodilator</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Total amount of air a person can forcibly exhale after taking the deepest</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">breath possible. This microschema uses the Relativity mixin to bundle measured,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">predicted, and percent predicted values.</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">breath possible.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Context</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcQuantity</span>
-<span class="w">  </span><span class="nt">predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predicted_value</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">percent_predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percent_predicted_value</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">predicted_value</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A predicted measurement value based on a reference population, range,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">equation, or other relevant information. Often used to normalize a measurement</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">based on body size, age, or sex</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">lower_limit_normal</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lower_limit_normal</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">placeholder</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">  </span><span class="nt">upper_limit_normal</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upper_limit_normal</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">placeholder</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">  </span><span class="nt">percent_predicted_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">percent_predicted_value</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ratio of the actual measured value to the predicted value</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relativity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">activity_type</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">activity_type</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity that adds context to a clinical measurement</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Context</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivityTypeEnum</span>
-<span class="w">  </span><span class="nt">relative_timing</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relative_timing</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Timing of the activity relative to the clinical measurement</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Context</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RelativeTimingEnum</span>
 <span class="w">  </span><span class="nt">subject_identifier</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subject_identifier</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An identifier for the subject of the datum</span>
@@ -973,6 +841,11 @@
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spirometry</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_plesmography</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">before_bronchodilator</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">after_bronchodilator</span>
 </code></pre></div>
 </details>
 </div>

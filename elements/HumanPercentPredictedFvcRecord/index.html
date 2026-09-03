@@ -550,7 +550,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OMOP:4253179'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': '%'}]}, 'data_type': {'equals_string': 'decimal'}, 'calculated_from': {'equals_expression': '({HumanMeasuredFvcRecord001} / {HumanPredictedFvcRecord}) * 100'}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': '%'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'equals_string': 'calculated'}, 'calculated_from': {'any_of': [{'equals_expression': '({HumanFvcRecord001} / {HumanPredictedFvcRecord}) * 100'}, {'equals_expression': '(({HumanFvcRecord002} / 1000) / {HumanPredictedFvcRecord}) * 100'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -607,10 +607,15 @@
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
+<span class="w">      </span><span class="nt">method</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
+<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated</span>
 <span class="w">      </span><span class="nt">calculated_from</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated_from</span>
-<span class="w">        </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanMeasuredFvcRecord001} / {HumanPredictedFvcRecord})</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">* 100</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanFvcRecord001} / {HumanPredictedFvcRecord}) * 100</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(({HumanFvcRecord002} / 1000) / {HumanPredictedFvcRecord})</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">* 100</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -803,10 +808,15 @@
 <span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
 <span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
+<span class="w">      </span><span class="nt">method</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
+<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated</span>
 <span class="w">      </span><span class="nt">calculated_from</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated_from</span>
-<span class="w">        </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanMeasuredFvcRecord001} / {HumanPredictedFvcRecord})</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">* 100</span>
+<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanFvcRecord001} / {HumanPredictedFvcRecord}) * 100</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(({HumanFvcRecord002} / 1000) / {HumanPredictedFvcRecord})</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">* 100</span>
 </code></pre></div>
 </details>
 </div>

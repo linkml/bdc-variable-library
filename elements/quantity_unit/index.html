@@ -567,16 +567,16 @@
 </tr>
 <tr>
 <td><a href="../HumanFvcQuantity/">HumanFvcQuantity</a></td>
-<td>FVC measurement, bounded 0–12000</td>
+<td>FVC measurement, negative values are impossible</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HumanMeasuredFvcQuantity/">HumanMeasuredFvcQuantity</a></td>
-<td>Measured FVC, bounded 0–12000</td>
+<td><a href="../HumanFvcQuantity002/">HumanFvcQuantity002</a></td>
+<td>Measured FVC in mL, bounded 0–12000</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HumanMeasuredFvcQuantity001/">HumanMeasuredFvcQuantity001</a></td>
+<td><a href="../HumanFvcQuantity001/">HumanFvcQuantity001</a></td>
 <td>Measured FVC in L, bounded 0–12</td>
 <td>no</td>
 </tr>
@@ -592,7 +592,27 @@
 </tr>
 <tr>
 <td><a href="../HumanFev1Quantity/">HumanFev1Quantity</a></td>
-<td>FEV1 measurement, bounded 0–12000</td>
+<td>FEV1 measurement, negative values are impossible</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFev1Quantity002/">HumanFev1Quantity002</a></td>
+<td>Measured FEV1 in mL, bounded 0–12000</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFev1Quantity001/">HumanFev1Quantity001</a></td>
+<td>Measured FEV1 in L, bounded 0–12</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPredictedFev1Quantity/">HumanPredictedFev1Quantity</a></td>
+<td>Predicted FEV1 in L, bounded 0–12</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPercentPredictedFev1Quantity/">HumanPercentPredictedFev1Quantity</a></td>
+<td>Percent-predicted FEV1, bounded 0–150</td>
 <td>no</td>
 </tr>
 <tr>
@@ -673,6 +693,576 @@
 <tr>
 <td><a href="../HumanAlbuminCreatinineRatioUrineQuantity/">HumanAlbuminCreatinineRatioUrineQuantity</a></td>
 <td>Calculation of the ratio of albumin to creatinine in urine, bounded to mg/g{c...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ApneaHypopneaIndexQuantity/">ApneaHypopneaIndexQuantity</a></td>
+<td>Apnea-hypopnea index (AHI) in events per hour</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanAlbuminBloodQuantity/">HumanAlbuminBloodQuantity</a></td>
+<td>Albumin concentration in blood, bounded 1</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AlcoholConsumptionQuantity/">AlcoholConsumptionQuantity</a></td>
+<td>Alcohol servings per week</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanAltSgptQuantity/">HumanAltSgptQuantity</a></td>
+<td>ALT/SGPT activity in blood in IU/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanAstSgotQuantity/">HumanAstSgotQuantity</a></td>
+<td>AST/SGOT activity in blood in IU/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBilirubinConjugatedQuantity/">HumanBilirubinConjugatedQuantity</a></td>
+<td>Conjugated (direct) bilirubin concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBilirubinTotalQuantity/">HumanBilirubinTotalQuantity</a></td>
+<td>Total bilirubin concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBNPQuantity/">HumanBNPQuantity</a></td>
+<td>BNP concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBloodUreaNitrogenQuantity/">HumanBloodUreaNitrogenQuantity</a></td>
+<td>Blood urea nitrogen (BUN) concentration in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBUNCreatinineRatioQuantity/">HumanBUNCreatinineRatioQuantity</a></td>
+<td>Ratio of blood urea nitrogen to creatinine</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCReactiveProteinQuantity/">HumanCReactiveProteinQuantity</a></td>
+<td>C-reactive protein (CRP) concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCReactiveProteinQuantity001/">HumanCReactiveProteinQuantity001</a></td>
+<td>C-reactive protein (CRP) concentration in blood in mg/L or ug/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCReactiveProteinQuantity002/">HumanCReactiveProteinQuantity002</a></td>
+<td>C-reactive protein (CRP) concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CoronaryArteryCalciumScoreQuantity/">CoronaryArteryCalciumScoreQuantity</a></td>
+<td>Coronary artery calcium (CAC) Agatston score</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CoronaryArteryCalciumVolumeQuantity/">CoronaryArteryCalciumVolumeQuantity</a></td>
+<td>Volume of coronary artery calcium in mm³</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CarotidIntimamediaThicknessQuantity/">CarotidIntimamediaThicknessQuantity</a></td>
+<td>Carotid intima-media thickness in mm</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CarotidStenosisQuantity/">CarotidStenosisQuantity</a></td>
+<td>Carotid artery stenosis as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCD40BloodQuantity/">HumanCD40BloodQuantity</a></td>
+<td>CD40 concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CESDScoreQuantity/">CESDScoreQuantity</a></td>
+<td>CES-D depression scale score</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanChlorideBloodQuantity/">HumanChlorideBloodQuantity</a></td>
+<td>Chloride concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanChlorideBloodQuantity001/">HumanChlorideBloodQuantity001</a></td>
+<td>Chloride concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanChlorideBloodQuantity002/">HumanChlorideBloodQuantity002</a></td>
+<td>Chloride concentration in blood in mmol/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCreatinineBloodQuantity/">HumanCreatinineBloodQuantity</a></td>
+<td>Creatinine concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanCystatinCBloodQuantity/">HumanCystatinCBloodQuantity</a></td>
+<td>Cystatin C concentration in blood in mg/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanDDimerQuantity/">HumanDDimerQuantity</a></td>
+<td>D-dimer concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanDDimerQuantity001/">HumanDDimerQuantity001</a></td>
+<td>D-dimer concentration in blood in ug/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanDDimerQuantity002/">HumanDDimerQuantity002</a></td>
+<td>D-dimer concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanDiastolicBloodPressureQuantity/">HumanDiastolicBloodPressureQuantity</a></td>
+<td>Diastolic blood pressure in mm[Hg]</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanESelectinBloodQuantity/">HumanESelectinBloodQuantity</a></td>
+<td>E-selectin concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanEstimatedGFRQuantity/">HumanEstimatedGFRQuantity</a></td>
+<td>Estimated glomerular filtration rate (eGFR) in mL/min/1</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanEosinophilCountQuantity/">HumanEosinophilCountQuantity</a></td>
+<td>Eosinophil count in whole blood in 10*3/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFactorVIIQuantity/">HumanFactorVIIQuantity</a></td>
+<td>Factor VII activity in plasma as % of normal</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFactorVIIIQuantity/">HumanFactorVIIIQuantity</a></td>
+<td>Factor VIII activity in plasma in IU/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFastingGlucoseQuantity/">HumanFastingGlucoseQuantity</a></td>
+<td>Fasting blood glucose concentration</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFastingGlucoseQuantity001/">HumanFastingGlucoseQuantity001</a></td>
+<td>Fasting blood glucose concentration in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFastingGlucoseQuantity002/">HumanFastingGlucoseQuantity002</a></td>
+<td>Fasting blood glucose concentration in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFerritinQuantity/">HumanFerritinQuantity</a></td>
+<td>Ferritin concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFEV1FVCRatioQuantity/">HumanFEV1FVCRatioQuantity</a></td>
+<td>FEV1/FVC ratio as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFEV1FVCRatioQuantity001/">HumanFEV1FVCRatioQuantity001</a></td>
+<td>FEV1/FVC given as a ratio</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFEV1FVCRatioQuantity002/">HumanFEV1FVCRatioQuantity002</a></td>
+<td>FEV1/FVC given as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPredictedFEV1FVCRatioQuantity/">HumanPredictedFEV1FVCRatioQuantity</a></td>
+<td>Predicted FEV1/FVC given as a ratio</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPercentPredictedFEV1FVCRatioQuantity/">HumanPercentPredictedFEV1FVCRatioQuantity</a></td>
+<td>Percent of predicted FEV1/FVC that the patient achieves given as a percent</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanFibrinogenQuantity/">HumanFibrinogenQuantity</a></td>
+<td>Fibrinogen concentration in plasma in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FruitConsumptionQuantity/">FruitConsumptionQuantity</a></td>
+<td>Fruit servings per week</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanGFRQuantity/">HumanGFRQuantity</a></td>
+<td>Glomerular filtration rate (GFR) in mL/min/1</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanGlucoseBloodQuantity/">HumanGlucoseBloodQuantity</a></td>
+<td>Glucose concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHDLQuantity/">HumanHDLQuantity</a></td>
+<td>HDL cholesterol concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHDLQuantity001/">HumanHDLQuantity001</a></td>
+<td>HDL cholesterol concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHDLQuantity002/">HumanHDLQuantity002</a></td>
+<td>HDL cholesterol concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHeartRateQuantity/">HumanHeartRateQuantity</a></td>
+<td>Heart rate in beats per minute</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHematocritQuantity/">HumanHematocritQuantity</a></td>
+<td>Hematocrit (packed cell volume) as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHemoglobinQuantity/">HumanHemoglobinQuantity</a></td>
+<td>Hemoglobin concentration in whole blood in g/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHemoglobinA1cQuantity/">HumanHemoglobinA1cQuantity</a></td>
+<td>Hemoglobin A1c (HbA1c) as a percentage of total hemoglobin</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHipCircumferenceQuantity/">HumanHipCircumferenceQuantity</a></td>
+<td>Hip circumference</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHipCircumferenceQuantity001/">HumanHipCircumferenceQuantity001</a></td>
+<td>Hip circumference in cm</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanHipCircumferenceQuantity002/">HumanHipCircumferenceQuantity002</a></td>
+<td>Hip circumference in inches</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanICAM1BloodQuantity/">HumanICAM1BloodQuantity</a></td>
+<td>ICAM-1 concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInsulinBloodQuantity/">HumanInsulinBloodQuantity</a></td>
+<td>Insulin concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInsulinBloodQuantity001/">HumanInsulinBloodQuantity001</a></td>
+<td>Insulin concentration in blood in pmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInsulinBloodQuantity002/">HumanInsulinBloodQuantity002</a></td>
+<td>Insulin concentration in blood in u[iU]/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInterleukin18BloodQuantity/">HumanInterleukin18BloodQuantity</a></td>
+<td>IL-18 concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInterleukin1BetaBloodQuantity/">HumanInterleukin1BetaBloodQuantity</a></td>
+<td>IL-1β concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInterleukin10BloodQuantity/">HumanInterleukin10BloodQuantity</a></td>
+<td>IL-10 concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanInterleukin6BloodQuantity/">HumanInterleukin6BloodQuantity</a></td>
+<td>IL-6 concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLactateDehydrogenaseQuantity/">HumanLactateDehydrogenaseQuantity</a></td>
+<td>Lactate dehydrogenase (LDH) activity in blood in IU/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLactateBloodQuantity/">HumanLactateBloodQuantity</a></td>
+<td>Lactate concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLDLQuantity/">HumanLDLQuantity</a></td>
+<td>LDL cholesterol concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLymphocyteCountQuantity/">HumanLymphocyteCountQuantity</a></td>
+<td>Lymphocyte count in whole blood in 10*3/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLymphocytePercentQuantity/">HumanLymphocytePercentQuantity</a></td>
+<td>Lymphocyte percent of total leukocytes</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanLPPLA2MassBloodQuantity/">HumanLPPLA2MassBloodQuantity</a></td>
+<td>Lp-PLA2 mass concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMCP1BloodQuantity/">HumanMCP1BloodQuantity</a></td>
+<td>MCP-1/CCL2 concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMeanArterialPressureQuantity/">HumanMeanArterialPressureQuantity</a></td>
+<td>Mean arterial pressure (MAP) in mm[Hg]</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMCHQuantity/">HumanMCHQuantity</a></td>
+<td>Mean corpuscular hemoglobin (MCH) in pg/cell</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMCHCQuantity/">HumanMCHCQuantity</a></td>
+<td>Mean corpuscular hemoglobin concentration (MCHC) in g/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMCVQuantity/">HumanMCVQuantity</a></td>
+<td>Mean corpuscular volume (MCV) in fL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMPVQuantity/">HumanMPVQuantity</a></td>
+<td>Mean platelet volume (MPV) in fL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMMP9BloodQuantity/">HumanMMP9BloodQuantity</a></td>
+<td>MMP-9 concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMonocyteCountQuantity/">HumanMonocyteCountQuantity</a></td>
+<td>Monocyte count in whole blood in 10*3/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanMyeloperoxidaseBloodQuantity/">HumanMyeloperoxidaseBloodQuantity</a></td>
+<td>Myeloperoxidase (MPO) concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanNeutrophilCountQuantity/">HumanNeutrophilCountQuantity</a></td>
+<td>Neutrophil count in whole blood in 10*3/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanNeutrophilPercentQuantity/">HumanNeutrophilPercentQuantity</a></td>
+<td>Neutrophil percent of total leukocytes</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanNTproBNPQuantity/">HumanNTproBNPQuantity</a></td>
+<td>NT-proBNP concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanOsteoprotegerinBloodQuantity/">HumanOsteoprotegerinBloodQuantity</a></td>
+<td>Osteoprotegerin (OPG) concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPSelectinBloodQuantity/">HumanPSelectinBloodQuantity</a></td>
+<td>P-selectin concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPlateletCountQuantity/">HumanPlateletCountQuantity</a></td>
+<td>Platelet count in whole blood in 10*3/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPotassiumBloodQuantity/">HumanPotassiumBloodQuantity</a></td>
+<td>Potassium concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanPRIntervalQuantity/">HumanPRIntervalQuantity</a></td>
+<td>PR interval duration in ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanQRSIntervalQuantity/">HumanQRSIntervalQuantity</a></td>
+<td>QRS interval duration in ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanQTIntervalQuantity/">HumanQTIntervalQuantity</a></td>
+<td>QT interval duration in ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanRBCCountQuantity/">HumanRBCCountQuantity</a></td>
+<td>Red blood cell count in whole blood in 10*6/uL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanRDWQuantity/">HumanRDWQuantity</a></td>
+<td>Red cell distribution width (RDW) as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanSleepDurationQuantity/">HumanSleepDurationQuantity</a></td>
+<td>Sleep duration in hours per night</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanSodiumBloodQuantity/">HumanSodiumBloodQuantity</a></td>
+<td>Sodium concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SodiumIntakeQuantity/">SodiumIntakeQuantity</a></td>
+<td>Dietary sodium intake in mg/day</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanSpO2Quantity/">HumanSpO2Quantity</a></td>
+<td>Arterial oxygen saturation (SpO2) as a percentage</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanSystolicBloodPressureQuantity/">HumanSystolicBloodPressureQuantity</a></td>
+<td>Systolic blood pressure in mm[Hg]</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanBodyTemperatureQuantity/">HumanBodyTemperatureQuantity</a></td>
+<td>Body temperature in degrees Celsius</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTNFAlphaBloodQuantity/">HumanTNFAlphaBloodQuantity</a></td>
+<td>TNF-alpha concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTNFAlphaR1BloodQuantity/">HumanTNFAlphaR1BloodQuantity</a></td>
+<td>TNF receptor 1 (TNFR1) concentration in blood in pg/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTotalCholesterolQuantity/">HumanTotalCholesterolQuantity</a></td>
+<td>Total cholesterol concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTotalCholesterolQuantity001/">HumanTotalCholesterolQuantity001</a></td>
+<td>Total cholesterol concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTotalCholesterolQuantity002/">HumanTotalCholesterolQuantity002</a></td>
+<td>Total cholesterol concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTriglyceridesBloodQuantity/">HumanTriglyceridesBloodQuantity</a></td>
+<td>Triglycerides concentration in blood</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTriglyceridesBloodQuantity001/">HumanTriglyceridesBloodQuantity001</a></td>
+<td>Triglycerides concentration in blood in mg/dL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTriglyceridesBloodQuantity002/">HumanTriglyceridesBloodQuantity002</a></td>
+<td>Triglycerides concentration in blood in mmol/L</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanTroponinQuantity/">HumanTroponinQuantity</a></td>
+<td>Troponin concentration in blood in ng/mL</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../VegetableConsumptionQuantity/">VegetableConsumptionQuantity</a></td>
+<td>Vegetable servings per week</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanVonWillebrandFactorQuantity/">HumanVonWillebrandFactorQuantity</a></td>
+<td>Von Willebrand factor (VWF) activity or antigen as % of normal</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWaistCircumferenceQuantity/">HumanWaistCircumferenceQuantity</a></td>
+<td>Waist circumference in cm</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWaistCircumferenceQuantity001/">HumanWaistCircumferenceQuantity001</a></td>
+<td>Waist circumference in cm</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWaistCircumferenceQuantity002/">HumanWaistCircumferenceQuantity002</a></td>
+<td>Waist circumference in mm</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWaistCircumferenceQuantity003/">HumanWaistCircumferenceQuantity003</a></td>
+<td>Waist circumference in inches</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWaistHipRatioQuantity/">HumanWaistHipRatioQuantity</a></td>
+<td>Waist-to-hip ratio</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HumanWBCCountQuantity/">HumanWBCCountQuantity</a></td>
+<td>White blood cell (WBC) count in whole blood in 10*3/uL</td>
 <td>no</td>
 </tr>
 </tbody>
