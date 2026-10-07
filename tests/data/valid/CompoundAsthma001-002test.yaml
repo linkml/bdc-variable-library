@@ -8,7 +8,7 @@ bdchm_type: condition
 documentation_metadata:
   - contr_vocab: MONDO:0004979
     microschema_slot:
-      - condition_concept
+      - condition_type
   - contr_vocab: oneself
     microschema_slot:
       - relationship_to_participant

@@ -22,4 +22,4 @@ documentation_metadata:
       - instrument
   - contr_vocab: anthropometry
     microschema_slot:
-      - method_type
+      - method

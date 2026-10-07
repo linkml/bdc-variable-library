@@ -7,7 +7,7 @@ bdchm_type: condition
 documentation_metadata:
   - contr_vocab: MONDO:0005139
     microschema_slot:
-      - condition_concept
+      - condition_type
   - contr_vocab: working_diagnosis
     microschema_slot:
       - condition_provenance

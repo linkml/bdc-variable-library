@@ -22,7 +22,7 @@ documentation_metadata:
       - instrument
   - contr_vocab: anthropometry
     microschema_slot:
-      - method_type
+      - method
   - contr_vocab: orthostatic_body_position
     microschema_slot:
       - body_position
