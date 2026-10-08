@@ -375,15 +375,6 @@
 
       HumanFvcRecord : instrument
 
-
-
-
-
-        HumanFvcRecord --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       HumanFvcRecord : measurement_type
 
       HumanFvcRecord : measurement_value
@@ -468,7 +459,7 @@
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -480,7 +471,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -561,7 +552,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OMOP:4176265'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'L'}, {'equals_string': 'mL'}]}, 'instrument': {'any_of': [{'equals_string': 'spirometer'}, {'equals_string': 'vitalograph'}, {'equals_string': 'body_plesmograph'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'spirometry'}, {'equals_string': 'body_plesmography'}]}, 'context': {'any_of': [{'equals_string': 'before_bronchodilator'}, {'equals_string': 'after_bronchodilator'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'L'}, {'equals_string': 'mL'}]}, 'instrument': {'any_of': [{'equals_string': 'spirometer'}, {'equals_string': 'vitalograph'}, {'equals_string': 'body_plesmograph'}]}, 'method': {'any_of': [{'equals_string': 'spirometry'}, {'equals_string': 'body_plesmography'}]}, 'context': {'any_of': [{'equals_string': 'before_bronchodilator'}, {'equals_string': 'after_bronchodilator'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -623,9 +614,6 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spirometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vitalograph</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_plesmograph</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
@@ -696,7 +684,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The method used for the measurement</span>
@@ -716,7 +704,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -744,6 +732,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanFvcRecord</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
@@ -833,9 +822,6 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spirometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vitalograph</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_plesmograph</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>

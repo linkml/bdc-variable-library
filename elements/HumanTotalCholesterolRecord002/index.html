@@ -349,15 +349,6 @@
 
       HumanTotalCholesterolRecord002 : instrument
 
-
-
-
-
-        HumanTotalCholesterolRecord002 --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       HumanTotalCholesterolRecord002 : measurement_type
 
       HumanTotalCholesterolRecord002 : measurement_value
@@ -366,8 +357,8 @@
 
 
 
-        HumanTotalCholesterolRecord002 --&gt; "1" HumanTotalCholesterolQuantity002 : measurement_value
-        click HumanTotalCholesterolQuantity002 href "../HumanTotalCholesterolQuantity002/"
+        HumanTotalCholesterolRecord002 --&gt; "1" HumanTotalCholesterolQuantity : measurement_value
+        click HumanTotalCholesterolQuantity href "../HumanTotalCholesterolQuantity/"
 
 
 
@@ -435,13 +426,13 @@
 </tr>
 <tr>
 <td><a href="../measurement_value/">measurement_value</a></td>
-<td>1 <br/> <a href="../HumanTotalCholesterolQuantity002/">HumanTotalCholesterolQuantity002</a></td>
+<td>1 <br/> <a href="../HumanTotalCholesterolQuantity/">HumanTotalCholesterolQuantity</a></td>
 <td>The "value" in the observation key/value pair</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -453,7 +444,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -553,9 +544,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolQuantity002</span>
 <span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
 <span class="w">    </span><span class="nt">any_of</span><span class="p">:</span>
@@ -570,9 +558,6 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolQuantity002</span>
 <span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
 <span class="w">    </span><span class="nt">any_of</span><span class="p">:</span>
@@ -610,7 +595,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolRecord002</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolQuantity002</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolQuantity</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
@@ -624,7 +609,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mmol/L</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
@@ -646,7 +631,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -674,6 +659,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanTotalCholesterolRecord002</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>

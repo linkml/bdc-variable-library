@@ -208,25 +208,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#rules">
-<span class="md-ellipsis">
-      
-        Rules
-      
-    </span>
-</a>
-<nav aria-label="Rules" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_1">
-<span class="md-ellipsis">
-</span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       
@@ -296,7 +277,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-humanbodyheightrecord003">Class: HumanBodyHeightRecord003</h1>
-<p><em>Measurement of linear distance of a standing human body from the bottom of a flat foot to the top-most point of the head measured in inches with a portable stadiometer</em></p>
+<p><em>Measurement of linear distance of a standing human body (adult) from the bottom of a flat foot to the top-most point of the head measured in feet</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/HumanBodyHeightRecord003">bdc_variable_library:HumanBodyHeightRecord003</a></p>
 <pre class="mermaid"><code> classDiagram
@@ -368,15 +349,6 @@
 
       HumanBodyHeightRecord003 : instrument
 
-
-
-
-
-        HumanBodyHeightRecord003 --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       HumanBodyHeightRecord003 : measurement_type
 
       HumanBodyHeightRecord003 : measurement_value
@@ -385,8 +357,8 @@
 
 
 
-        HumanBodyHeightRecord003 --&gt; "1" HumanBodyHeightQuantity002 : measurement_value
-        click HumanBodyHeightQuantity002 href "../HumanBodyHeightQuantity002/"
+        HumanBodyHeightRecord003 --&gt; "1" HumanBodyHeightQuantity : measurement_value
+        click HumanBodyHeightQuantity href "../HumanBodyHeightQuantity/"
 
 
 
@@ -454,13 +426,13 @@
 </tr>
 <tr>
 <td><a href="../measurement_value/">measurement_value</a></td>
-<td>1 <br/> <a href="../HumanBodyHeightQuantity002/">HumanBodyHeightQuantity002</a></td>
+<td>1 <br/> <a href="../HumanBodyHeightQuantity/">HumanBodyHeightQuantity</a></td>
 <td>The "value" in the observation key/value pair</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -472,7 +444,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -538,26 +510,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="rules">Rules</h2>
-<h3 id="_1"></h3>
-<table>
-<thead>
-<tr>
-<th>Rule Applied</th>
-<th>Preconditions</th>
-<th>Postconditions</th>
-<th>Elseconditions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>slot_conditions</td>
-<td><code>{'instrument': {'any_of': [{'equals_string': 'portable_stadiometer'}]}, 'unit': {'any_of': [{'equals_string': '[in_i]'}]}}</code></td>
-<td><code>{'body_position': {'any_of': [{'equals_string': 'standing'}]}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -587,50 +539,33 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord003</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Measurement of linear distance of a standing human body from the bottom</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">of a flat foot to the top-most point of the head measured in inches with a portable</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">stadiometer</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Measurement of linear distance of a standing human body (adult) from</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">the bottom of a flat foot to the top-most point of the head measured in feet</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightQuantity002</span>
-<span class="nt">rules</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portable_stadiometer</span>
-<span class="w">      </span><span class="nt">unit</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[in_i]'</span>
-<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">body_position</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standing</span>
-<span class="w">      </span><span class="nt">method</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
+<span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[ft_i]'</span>
+<span class="w">  </span><span class="nt">age_at_measurement</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_measurement</span>
+<span class="w">    </span><span class="nt">minimum_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord003</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Measurement of linear distance of a standing human body from the bottom</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">of a flat foot to the top-most point of the head measured in inches with a portable</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">stadiometer</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Measurement of linear distance of a standing human body (adult) from</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">the bottom of a flat foot to the top-most point of the head measured in feet</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">measurement_value</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurement_value</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightQuantity002</span>
+<span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[ft_i]'</span>
+<span class="w">  </span><span class="nt">age_at_measurement</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_measurement</span>
+<span class="w">    </span><span class="nt">minimum_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">subject_identifier</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subject_identifier</span>
@@ -664,7 +599,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord003</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightQuantity002</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightQuantity</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">unit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
@@ -678,7 +613,8 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[ft_i]'</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The method used for the measurement</span>
@@ -698,7 +634,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -726,6 +662,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord003</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
@@ -776,6 +713,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantity</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">minimum_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
 <span class="w">  </span><span class="nt">study_site</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">study_site</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Institution name, clinic name, or other indication of where a measurement</span>
@@ -795,27 +733,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datetime</span>
-<span class="nt">rules</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">portable_stadiometer</span>
-<span class="w">      </span><span class="nt">unit</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[in_i]'</span>
-<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">body_position</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standing</span>
-<span class="w">      </span><span class="nt">method</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
 </code></pre></div>
 </details>
 </div>

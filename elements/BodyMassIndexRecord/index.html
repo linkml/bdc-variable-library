@@ -296,7 +296,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-bodymassindexrecord">Class: BodyMassIndexRecord</h1>
-<p>_A calculated numerical quantity representing an individual's weight-to-height ratio. BMI is calculated as weight (kg) divided by height (m) squared. _</p>
+<p><em>A calculated numerical quantity representing an individual's weight-to-height ratio. BMI is calculated as weight (kg) divided by height (m) squared.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/linkml/bdc-variable-library/BodyMassIndexRecord">bdc_variable_library:BodyMassIndexRecord</a></p>
 <pre class="mermaid"><code> classDiagram
@@ -304,6 +304,13 @@
     click BodyMassIndexRecord href "../BodyMassIndexRecord/"
       ClinicalMeasurementRecord &lt;|-- BodyMassIndexRecord
         click ClinicalMeasurementRecord href "../ClinicalMeasurementRecord/"
+
+
+      BodyMassIndexRecord &lt;|-- AdultBodyMassIndexRecord
+        click AdultBodyMassIndexRecord href "../AdultBodyMassIndexRecord/"
+      BodyMassIndexRecord &lt;|-- ChildBodyMassIndexRecord
+        click ChildBodyMassIndexRecord href "../ChildBodyMassIndexRecord/"
+
 
       BodyMassIndexRecord : absolute_time
 
@@ -368,15 +375,6 @@
 
       BodyMassIndexRecord : instrument
 
-
-
-
-
-        BodyMassIndexRecord --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       BodyMassIndexRecord : measurement_type
 
       BodyMassIndexRecord : measurement_value
@@ -422,7 +420,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a><ul>
-<li><strong>BodyMassIndexRecord</strong></li>
+<li><strong>BodyMassIndexRecord</strong><ul>
+<li><a href="../AdultBodyMassIndexRecord/">AdultBodyMassIndexRecord</a></li>
+<li><a href="../ChildBodyMassIndexRecord/">ChildBodyMassIndexRecord</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -457,7 +459,7 @@
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -469,7 +471,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -550,7 +552,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:0002045455'}, {'equals_string': 'OMOP:3038553'}, {'equals_string': 'LOINC:39156-5'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'kg/m2'}]}, 'method': {'any_of': [{'equals_string': 'calculated'}]}, 'data_type': {'equals_string': 'decimal'}, 'calculated_from': {'any_of': [{'equals_expression': '{HumanBodyWeightRecord001} / ({HumanBodyHeightRecord001} / 100)^2'}, {'equals_expression': '{HumanBodyWeightRecord001} / ({HumanBodyHeightRecord003} / 100)^2'}, {'equals_expression': '{HumanBodyWeightRecord003} / ({HumanBodyHeightRecord001} / 100)^2'}, {'equals_expression': '{HumanBodyWeightRecord004} / ({HumanBodyHeightRecord001} / 100)^2'}, {'equals_expression': '{HumanBodyWeightRecord003} / ({HumanBodyHeightRecord003} / 100)^2'}, {'equals_expression': '{HumanBodyWeightRecord004} / ({HumanBodyHeightRecord003} / 100)^2'}, {'equals_expression': '({HumanBodyWeightRecord002} / 2.2) / ({HumanBodyHeightRecord002} / 39.37)^2'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'kg/m2'}]}, 'method': {'any_of': [{'equals_string': 'calculated'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -584,8 +586,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BodyMassIndexRecord</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">calculated</span><span class="nv"> </span><span class="s">numerical</span><span class="nv"> </span><span class="s">quantity</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">individual</span><span class="se">''</span><span class="s">s</span><span class="nv"> </span><span class="s">weight-to-height</span>
-<span class="w">  </span><span class="s">ratio.</span><span class="nv"> </span><span class="s">BMI</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">calculated</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">weight</span><span class="nv"> </span><span class="s">(kg)</span><span class="nv"> </span><span class="s">divided</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">height</span><span class="nv"> </span><span class="s">(m)</span><span class="nv"> </span><span class="s">squared.</span><span class="nv"> </span><span class="s">'</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A calculated numerical quantity representing an individual's weight-to-height</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ratio. BMI is calculated as weight (kg) divided by height (m) squared.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
@@ -611,33 +613,13 @@
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">      </span><span class="nt">calculated_from</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated_from</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord001}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord001}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord003}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord004}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord003}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord004}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanBodyWeightRecord002} / 2.2) / ({HumanBodyHeightRecord002}</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">/ 39.37)^2</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BodyMassIndexRecord</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">calculated</span><span class="nv"> </span><span class="s">numerical</span><span class="nv"> </span><span class="s">quantity</span><span class="nv"> </span><span class="s">representing</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">individual</span><span class="se">''</span><span class="s">s</span><span class="nv"> </span><span class="s">weight-to-height</span>
-<span class="w">  </span><span class="s">ratio.</span><span class="nv"> </span><span class="s">BMI</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">calculated</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">weight</span><span class="nv"> </span><span class="s">(kg)</span><span class="nv"> </span><span class="s">divided</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">height</span><span class="nv"> </span><span class="s">(m)</span><span class="nv"> </span><span class="s">squared.</span><span class="nv"> </span><span class="s">'</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A calculated numerical quantity representing an individual's weight-to-height</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ratio. BMI is calculated as weight (kg) divided by height (m) squared.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
@@ -691,7 +673,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The method used for the measurement</span>
@@ -711,7 +693,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -739,6 +721,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BodyMassIndexRecord</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
@@ -827,26 +810,6 @@
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="w">      </span><span class="nt">calculated_from</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">calculated_from</span>
-<span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord001}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord001}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord003}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord004}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord001}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord003}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="s">'{HumanBodyWeightRecord004}</span><span class="nv"> </span><span class="s">/</span><span class="nv"> </span><span class="s">({HumanBodyHeightRecord003}</span>
-<span class="w">            </span><span class="s">/</span><span class="nv"> </span><span class="s">100)^2'</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_expression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">({HumanBodyWeightRecord002} / 2.2) / ({HumanBodyHeightRecord002}</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">/ 39.37)^2</span>
 </code></pre></div>
 </details>
 </div>

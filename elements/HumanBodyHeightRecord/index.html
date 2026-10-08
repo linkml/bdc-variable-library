@@ -223,6 +223,12 @@
 </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+</span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -314,10 +320,6 @@
         click HumanBodyHeightRecord003 href "../HumanBodyHeightRecord003/"
       HumanBodyHeightRecord &lt;|-- HumanBodyHeightRecord004
         click HumanBodyHeightRecord004 href "../HumanBodyHeightRecord004/"
-      HumanBodyHeightRecord &lt;|-- HumanBodyHeightRecord005
-        click HumanBodyHeightRecord005 href "../HumanBodyHeightRecord005/"
-      HumanBodyHeightRecord &lt;|-- HumanBodyHeightRecord006
-        click HumanBodyHeightRecord006 href "../HumanBodyHeightRecord006/"
 
 
       HumanBodyHeightRecord : absolute_time
@@ -383,15 +385,6 @@
 
       HumanBodyHeightRecord : instrument
 
-
-
-
-
-        HumanBodyHeightRecord --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       HumanBodyHeightRecord : measurement_type
 
       HumanBodyHeightRecord : measurement_value
@@ -442,8 +435,6 @@
 <li><a href="../HumanBodyHeightRecord002/">HumanBodyHeightRecord002</a></li>
 <li><a href="../HumanBodyHeightRecord003/">HumanBodyHeightRecord003</a></li>
 <li><a href="../HumanBodyHeightRecord004/">HumanBodyHeightRecord004</a></li>
-<li><a href="../HumanBodyHeightRecord005/">HumanBodyHeightRecord005</a></li>
-<li><a href="../HumanBodyHeightRecord006/">HumanBodyHeightRecord006</a></li>
 </ul>
 </li>
 </ul>
@@ -480,7 +471,7 @@
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -492,7 +483,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -573,7 +564,26 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:VT0001253'}, {'equals_string': 'OMOP:903133'}, {'equals_string': 'LOINC:3036277'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'cm'}, {'equals_string': '[in_i]'}, {'equals_string': 'm'}, {'equals_string': '[ft_i]'}]}, 'instrument': {'any_of': [{'equals_string': 'wall_mounted_stadiometer'}, {'equals_string': 'flexible_measuring_tape'}, {'equals_string': 'portable_stadiometer'}, {'equals_string': 'anthropometer_rod'}, {'equals_string': 'sonar_stadiometer'}, {'equals_string': 'infantometer'}, {'equals_string': 'unknown'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}, {'equals_string': 'survey'}, {'equals_string': 'interview'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'cm'}, {'equals_string': '[in_i]'}, {'equals_string': 'm'}, {'equals_string': '[ft_i]'}]}, 'instrument': {'any_of': [{'equals_string': 'wall_mounted_stadiometer'}, {'equals_string': 'flexible_measuring_tape'}, {'equals_string': 'portable_stadiometer'}, {'equals_string': 'anthropometer_rod'}, {'equals_string': 'sonar_stadiometer'}, {'equals_string': 'infantometer'}, {'equals_string': 'unknown'}]}, 'method': {'any_of': [{'equals_string': 'anthropometry'}, {'equals_string': 'survey'}, {'equals_string': 'interview'}]}}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2"></h3>
+<table>
+<thead>
+<tr>
+<th>Rule Applied</th>
+<th>Preconditions</th>
+<th>Postconditions</th>
+<th>Elseconditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slot_conditions</td>
+<td><code>{'age_at_measurement': {'minimum_value': 18}}</code></td>
+<td><code>{'instrument': {'none_of': [{'equals_string': 'infantometer'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -643,15 +653,23 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar_stadiometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">survey</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interview</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">age_at_measurement</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_measurement</span>
+<span class="w">        </span><span class="nt">minimum_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
+<span class="w">        </span><span class="nt">none_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -712,7 +730,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The method used for the measurement</span>
@@ -732,7 +750,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -760,6 +778,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyHeightRecord</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
@@ -857,15 +876,23 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonar_stadiometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropometry</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">survey</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interview</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">age_at_measurement</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_measurement</span>
+<span class="w">        </span><span class="nt">minimum_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18</span>
+<span class="w">  </span><span class="nt">postconditions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
+<span class="w">        </span><span class="nt">none_of</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infantometer</span>
 </code></pre></div>
 </details>
 </div>

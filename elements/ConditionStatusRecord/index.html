@@ -295,7 +295,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-conditionstatusrecord">Class: ConditionStatusRecord</h1>
-<p><em>Record suggesting the presence of a disease or medical condition stated as a  diagnosis, sign, or symptom</em></p>
+<p><em>Record suggesting the presence of a disease or medical condition stated as a diagnosis, sign, or symptom</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/bdchm/Condition">bdchm:Condition</a></p>
 <pre class="mermaid"><code> classDiagram
@@ -419,15 +419,6 @@
 
       ConditionStatusRecord : instrument
 
-
-
-
-
-        ConditionStatusRecord --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       ConditionStatusRecord : relationship_to_participant
 
 
@@ -512,7 +503,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td>direct</td>
 </tr>
@@ -611,7 +602,7 @@
 <span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_of_use</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clinical</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Record suggesting the presence of a disease or medical condition stated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a  diagnosis, sign, or symptom</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a diagnosis, sign, or symptom</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subject_identifier</span>
@@ -654,7 +645,7 @@
 <span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_of_use</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clinical</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Record suggesting the presence of a disease or medical condition stated</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a  diagnosis, sign, or symptom</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as a diagnosis, sign, or symptom</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">subject_identifier</span><span class="p">:</span>
@@ -715,7 +706,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">age_at_condition_start</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_condition_start</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Age of the subject at the start of the condition</span>
@@ -736,8 +727,8 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantity</span>
 <span class="w">  </span><span class="nt">age_at_condition_record</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_condition_record</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Age of participant when record of the condition was collected. This  slot</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">can accommodate an "age at encounter" where a medical history was  collected,</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Age of participant when record of the condition was collected. This</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">slot can accommodate an "age at encounter" where a medical history was collected,</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">or a record was adjudicated.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>

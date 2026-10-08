@@ -319,6 +319,8 @@
 
 
 
+      CoronaryBypassStatusRecord : body_location
+
       CoronaryBypassStatusRecord : collected_by
 
 
@@ -327,6 +329,28 @@
 
         CoronaryBypassStatusRecord --&gt; "0..1" CollectedByEnum : collected_by
         click CollectedByEnum href "../CollectedByEnum/"
+
+
+
+      CoronaryBypassStatusRecord : procedure_provenance
+
+
+
+
+
+        CoronaryBypassStatusRecord --&gt; "0..1" ProvenanceEnum : procedure_provenance
+        click ProvenanceEnum href "../ProvenanceEnum/"
+
+
+
+      CoronaryBypassStatusRecord : procedure_status
+
+
+
+
+
+        CoronaryBypassStatusRecord --&gt; "0..1" HistoricalStatusEnum : procedure_status
+        click HistoricalStatusEnum href "../HistoricalStatusEnum/"
 
 
 
@@ -387,6 +411,24 @@
 <td><a href="../age_at_procedure_record/">age_at_procedure_record</a></td>
 <td>1 <br/> <a href="../Quantity/">Quantity</a></td>
 <td>Age of participant when record of the procedure was collected</td>
+<td><a href="../ProcedureStatusRecord/">ProcedureStatusRecord</a></td>
+</tr>
+<tr>
+<td><a href="../procedure_status/">procedure_status</a></td>
+<td>0..1 <br/> <a href="../HistoricalStatusEnum/">HistoricalStatusEnum</a></td>
+<td>A value indicating whether the medical procedure described in this record is ...</td>
+<td><a href="../ProcedureStatusRecord/">ProcedureStatusRecord</a></td>
+</tr>
+<tr>
+<td><a href="../procedure_provenance/">procedure_provenance</a></td>
+<td>0..1 <br/> <a href="../ProvenanceEnum/">ProvenanceEnum</a></td>
+<td>A value representing the provenance of the Procedure record</td>
+<td><a href="../ProcedureStatusRecord/">ProcedureStatusRecord</a></td>
+</tr>
+<tr>
+<td><a href="../body_location/">body_location</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A CURIE from UBERON</td>
 <td><a href="../ProcedureStatusRecord/">ProcedureStatusRecord</a></td>
 </tr>
 </tbody>
@@ -498,9 +540,9 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantity</span>
 <span class="w">  </span><span class="nt">age_at_procedure_record</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">age_at_procedure_record</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Age of participant when record of the procedure was collected. This  slot</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">can accommodate an "age at encounter" where the participant was asked for their</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">medical history.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Age of participant when record of the procedure was collected. This</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">slot can accommodate an "age at encounter" where the participant was asked for</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">their medical history.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoronaryBypassStatusRecord</span>
@@ -508,6 +550,37 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quantity</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">procedure_status</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">procedure_status</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A value indicating whether the medical procedure described in this</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">record is present, absent, historically present, or unknown for this individual</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">patient.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoronaryBypassStatusRecord</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HistoricalStatusEnum</span>
+<span class="w">  </span><span class="nt">procedure_provenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">procedure_provenance</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A value representing the provenance of the Procedure record.</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoronaryBypassStatusRecord</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProvenanceEnum</span>
+<span class="w">  </span><span class="nt">body_location</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_location</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A CURIE from UBERON</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/linkml/bdc-variable-library</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bdchm:BodySite</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CoronaryBypassStatusRecord</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 </code></pre></div>
 </details>
 </div>

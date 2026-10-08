@@ -306,14 +306,10 @@
         click ClinicalMeasurementRecord href "../ClinicalMeasurementRecord/"
 
 
-      HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord001
-        click HumanBodyWeightRecord001 href "../HumanBodyWeightRecord001/"
-      HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord002
-        click HumanBodyWeightRecord002 href "../HumanBodyWeightRecord002/"
-      HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord003
-        click HumanBodyWeightRecord003 href "../HumanBodyWeightRecord003/"
-      HumanBodyWeightRecord &lt;|-- HumanBodyWeightRecord004
-        click HumanBodyWeightRecord004 href "../HumanBodyWeightRecord004/"
+      HumanBodyWeightRecord &lt;|-- AdultHumanBodyWeightRecord
+        click AdultHumanBodyWeightRecord href "../AdultHumanBodyWeightRecord/"
+      HumanBodyWeightRecord &lt;|-- ChildHumanBodyWeightRecord
+        click ChildHumanBodyWeightRecord href "../ChildHumanBodyWeightRecord/"
 
 
       HumanBodyWeightRecord : absolute_time
@@ -379,15 +375,6 @@
 
       HumanBodyWeightRecord : instrument
 
-
-
-
-
-        HumanBodyWeightRecord --&gt; "0..1" InstrumentEnum : instrument
-        click InstrumentEnum href "../InstrumentEnum/"
-
-
-
       HumanBodyWeightRecord : measurement_type
 
       HumanBodyWeightRecord : measurement_value
@@ -434,10 +421,8 @@
 <ul>
 <li><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a><ul>
 <li><strong>HumanBodyWeightRecord</strong><ul>
-<li><a href="../HumanBodyWeightRecord001/">HumanBodyWeightRecord001</a></li>
-<li><a href="../HumanBodyWeightRecord002/">HumanBodyWeightRecord002</a></li>
-<li><a href="../HumanBodyWeightRecord003/">HumanBodyWeightRecord003</a></li>
-<li><a href="../HumanBodyWeightRecord004/">HumanBodyWeightRecord004</a></li>
+<li><a href="../AdultHumanBodyWeightRecord/">AdultHumanBodyWeightRecord</a></li>
+<li><a href="../ChildHumanBodyWeightRecord/">ChildHumanBodyWeightRecord</a></li>
 </ul>
 </li>
 </ul>
@@ -474,7 +459,7 @@
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A unit from UCUM</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -486,7 +471,7 @@
 </tr>
 <tr>
 <td><a href="../instrument/">instrument</a></td>
-<td>0..1 <br/> <a href="../InstrumentEnum/">InstrumentEnum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The instrument used for the measurement</td>
 <td><a href="../ClinicalMeasurementRecord/">ClinicalMeasurementRecord</a></td>
 </tr>
@@ -567,7 +552,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'measurement_type': {'any_of': [{'equals_string': 'OBA:VT0001259'}, {'equals_string': 'OMOP:903121'}, {'equals_string': 'LOINC:29463-7'}, {'equals_string': 'LOINC:3141-9'}]}}</code></td>
-<td><code>{'unit': {'any_of': [{'equals_string': 'kg'}, {'equals_string': '[lb_av]'}, {'equals_string': 'g'}]}, 'instrument': {'any_of': [{'equals_string': 'mechanical_beam_balance_scale'}, {'equals_string': 'digital_scale'}, {'equals_string': 'spring_scale'}, {'equals_string': 'bariatric_scale'}, {'equals_string': 'body_composition_analyzer'}, {'equals_string': 'digital_baby_scale'}, {'equals_string': 'mechanical_baby_scale'}]}, 'data_type': {'equals_string': 'decimal'}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
+<td><code>{'unit': {'any_of': [{'equals_string': 'kg'}, {'equals_string': '[lb_av]'}, {'equals_string': 'g'}, {'equals_string': '[oz_av]'}]}, 'instrument': {'any_of': [{'equals_string': 'mechanical_beam_balance_scale'}, {'equals_string': 'digital_scale'}, {'equals_string': 'spring_scale'}, {'equals_string': 'bariatric_scale'}, {'equals_string': 'body_composition_analyzer'}, {'equals_string': 'digital_baby_scale'}, {'equals_string': 'mechanical_baby_scale'}]}, 'method': {'any_of': [{'equals_string': 'anthropometry'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -626,6 +611,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kg</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[lb_av]'</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[oz_av]'</span>
 <span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
@@ -636,9 +622,6 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_composition_analyzer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">digital_baby_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mechanical_baby_scale</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
@@ -702,7 +685,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompoundVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegratedVariable</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The method used for the measurement</span>
@@ -722,7 +705,7 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConditionStatusRecord</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InstrumentEnum</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">reagent_kit</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reagent_kit</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The reagent kit used for the measurement</span>
@@ -750,6 +733,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HumanBodyWeightRecord</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClinicalMeasurementRecord</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProcedureStatusRecord</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
 <span class="w">  </span><span class="nt">body_position</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_position</span>
@@ -837,6 +821,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kg</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[lb_av]'</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="s">'[oz_av]'</span>
 <span class="w">      </span><span class="nt">instrument</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instrument</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
@@ -847,9 +832,6 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">body_composition_analyzer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">digital_baby_scale</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mechanical_baby_scale</span>
-<span class="w">      </span><span class="nt">data_type</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data_type</span>
-<span class="w">        </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
 <span class="w">      </span><span class="nt">method</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method</span>
 <span class="w">        </span><span class="nt">any_of</span><span class="p">:</span>
