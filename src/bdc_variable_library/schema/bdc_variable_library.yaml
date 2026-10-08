@@ -32,7 +32,7 @@ default_range: string
 imports:
   - linkml:types
   - https://raw.githubusercontent.com/linkml/linkml-microschema-profile/v0.3.0/src/linkml_microschema_profile/schema/linkml_microschema_profile
-  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.5/src/clinical_microschemas/schema/clinical_microschemas
+  - https://raw.githubusercontent.com/linkml/clinical-microschemas/v0.0.8/src/clinical_microschemas/schema/clinical_microschemas
 
 classes:
 
@@ -214,28 +214,28 @@ classes:
     description: >-
       Weight variable with metadata, measured in kg using a mechanical beam balance
     instantiates:
-      - HumanBodyWeightRecord001
+      - AdultHumanBodyWeightRecord001
 
   CompoundWeight002:
     is_a: CompoundVariable
     description: >-
       Weight variable with metadata, measured in pounds using a mechanical beam balance
     instantiates:
-      - HumanBodyWeightRecord002
+      - AdultHumanBodyWeightRecord002
 
   CompoundWeight003:
     is_a: CompoundVariable
     description: >-
       Weight variable with metadata, measured in kg using a body composition analyzer
     instantiates:
-      - HumanBodyWeightRecord003
+      - AdultHumanBodyWeightRecord001
 
   CompoundWeight004:
     is_a: CompoundVariable
     description: >-
       Weight variable with metadata, measured in kg using a digital scale
     instantiates:
-      - HumanBodyWeightRecord004
+      - AdultHumanBodyWeightRecord001
 
   IntegratedWeight001:
     is_a: IntegratedVariable
@@ -2198,4 +2198,8 @@ enums:
       age_at_procedure_start:
       age_at_procedure_end:
       age_at_procedure_record:
+      procedure_status:
+      procedure_provenance:
+      exposure_status:
+      exposure_provenance:
 

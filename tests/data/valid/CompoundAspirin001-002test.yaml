@@ -17,7 +17,7 @@ row_metadata:
       - exposure_status
   - id: HCHSSOLAGEphv00226251s
     microschema_slot:
-      - age_at_exposure_record
+      - age_at_drug_record
   - id: HCHSSOLSUBJECT_IDphv00226250s
     microschema_slot:
       - subject_identifier

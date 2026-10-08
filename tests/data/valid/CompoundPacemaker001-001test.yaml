@@ -13,7 +13,7 @@ documentation_metadata:
       - procedure_provenance
   - contr_vocab: UBERON:0000948
     microschema_slot:
-      - affected_body_site
+      - body_location
 row_metadata:
   - id: ARICDSRA9phv00205047s
     microschema_slot:
